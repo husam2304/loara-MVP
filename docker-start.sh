@@ -6,6 +6,17 @@ if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
 fi
 
+PORT="${PORT:-10000}"
+
+# Bind the port immediately. Render's free tier kills the deploy if it
+# doesn't detect an open port within a short scan window — migrations plus
+# the full demo seed (14 seeders) can take longer than that window, so the
+# server has to be listening *before* that work starts, not after.
+echo "Starting on port $PORT"
+php artisan serve --host=0.0.0.0 --port="$PORT" &
+SERVER_PID=$!
+sleep 2
+
 # Re-link storage (ephemeral filesystem on free tiers, so this must run every boot).
 php artisan storage:link || true
 
@@ -18,7 +29,8 @@ php artisan migrate --force
 # so this must not re-run and duplicate demo rows on every restart.
 # The whole seed run is wrapped in a DB transaction so a crash partway
 # through (as happened once) rolls back cleanly instead of leaving orphaned
-# rows that break a later retry.
+# rows that break a later retry. A seed failure here logs and moves on
+# instead of tearing down the already-running server.
 php -r "
 require 'vendor/autoload.php';
 \$app = require 'bootstrap/app.php';
@@ -48,15 +60,13 @@ try {
     echo \"Seed failed and was rolled back: \" . \$e->getMessage() . \"\n\";
     exit(1);
 }
-"
+" || echo "Seeding step failed — app is still running, but log in and check /platform once fixed."
 
-
-# Cache config/routes for a faster boot (skip in local/dev).
+# Cache config/routes for a faster boot on future restarts (skip in local/dev).
 if [ "$APP_ENV" != "local" ]; then
-    php artisan config:cache
-    php artisan route:cache
+    php artisan config:cache || true
+    php artisan route:cache || true
 fi
 
-PORT="${PORT:-10000}"
-echo "Starting on port $PORT"
-exec php artisan serve --host=0.0.0.0 --port="$PORT"
+echo "Startup tasks complete."
+wait "$SERVER_PID"
