@@ -20,9 +20,13 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Install PHP dependencies first (better layer caching)
+# Install PHP dependencies. Deliberately not using --no-dev: this deployment
+# runs DatabaseSeeder (demo super admin + demo clinic), which needs
+# fakerphp/faker — a require-dev package. Once you're past the test/demo
+# phase and stop needing the seeders, switch this back to --no-dev for a
+# leaner image.
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --no-scripts --no-autoloader --optimize-autoloader
+RUN composer install --no-scripts --no-autoloader --optimize-autoloader
 
 # Copy app code, then bring in built frontend assets from stage 1
 COPY . .

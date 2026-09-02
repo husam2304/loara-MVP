@@ -16,20 +16,40 @@ php artisan migrate --force
 # Seed demo data (super admin + demo clinic) only on a genuinely empty
 # database — Render's free tier restarts the container on every cold wake,
 # so this must not re-run and duplicate demo rows on every restart.
-NEEDS_SEED=$(php -r "
+# The whole seed run is wrapped in a DB transaction so a crash partway
+# through (as happened once) rolls back cleanly instead of leaving orphaned
+# rows that break a later retry.
+php -r "
 require 'vendor/autoload.php';
 \$app = require 'bootstrap/app.php';
-\$app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+\$kernel = \$app->make(Illuminate\Contracts\Console\Kernel::class);
+\$kernel->bootstrap();
+
+\$alreadySeeded = false;
 try {
-    echo \App\Models\User::count() > 0 ? 'no' : 'yes';
+    \$alreadySeeded = \App\Models\User::count() > 0 || \App\Models\Clinic::count() > 0;
 } catch (\Throwable \$e) {
-    echo 'no';
+    // Tables not reachable/ready — treat as not seeded, migrate already ran above.
 }
-")
-if [ "$NEEDS_SEED" = "yes" ]; then
-    echo 'Empty database detected — seeding demo data (super admin: hiro@mail.com / password)...'
-    php artisan db:seed --force
-fi
+
+if (\$alreadySeeded) {
+    echo \"Database already has data — skipping seed.\n\";
+    exit(0);
+}
+
+echo \"Empty database detected — seeding demo data (super admin: hiro@mail.com / password)...\n\";
+
+try {
+    \Illuminate\Support\Facades\DB::transaction(function () use (\$kernel) {
+        \$kernel->call('db:seed', ['--force' => true]);
+    });
+    echo \"Seed complete.\n\";
+} catch (\Throwable \$e) {
+    echo \"Seed failed and was rolled back: \" . \$e->getMessage() . \"\n\";
+    exit(1);
+}
+"
+
 
 # Cache config/routes for a faster boot (skip in local/dev).
 if [ "$APP_ENV" != "local" ]; then
