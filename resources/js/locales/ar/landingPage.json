@@ -1,0 +1,152 @@
+{
+  "cms": {
+    "title": "إدارة صفحة التسويق",
+    "subtitle": "إدارة محتوى صفحة التسويق العامة"
+  },
+  "common": {
+    "saving": "جاري الحفظ...",
+    "saveChanges": "حفظ التغييرات",
+    "sectionLabel": "تسمية القسم",
+    "heading": "العنوان الرئيسي",
+    "description": "الوصف",
+    "addItem": "إضافة عنصر"
+  },
+  "hero": {
+    "addBadge": "إضافة شارة"
+  },
+  "features": {
+    "addFeature": "إضافة ميزة"
+  },
+  "howItWorks": {
+    "addStep": "إضافة خطوة"
+  },
+  "stats": {
+    "addStat": "إضافة إحصائية"
+  },
+  "testimonials": {
+    "add": "إضافة رأي عميل"
+  },
+  "faq": {
+    "add": "إضافة سؤال"
+  },
+  "workflows": {
+    "add": "إضافة مسار"
+  },
+  "footer": {
+    "addLink": "إضافة رابط"
+  },
+  "editor": {
+    "tabs": {
+      "hero": "الرئيسية",
+      "features": "الميزات",
+      "showcase": "العرض التوضيحي",
+      "howItWorks": "آلية العمل",
+      "security": "الأمان",
+      "stats": "الإحصائيات",
+      "pricing": "التسعير",
+      "testimonials": "آراء العملاء",
+      "faq": "الأسئلة الشائعة",
+      "cta": "دعوة لاتخاذ إجراء",
+      "footer": "التذييل",
+      "workflows": "سير العمل"
+    },
+    "pageTitle": "صفحة الهبوط — إدارة المحتوى",
+    "sidebarTitle": "صفحة الهبوط",
+    "sidebarSubtitle": "إدارة محتوى صفحة الهبوط العامة",
+    "common": {
+      "icon": "الأيقونة",
+      "title": "العنوان",
+      "type": "النوع",
+      "content": "المحتوى",
+      "name": "الاسم"
+    },
+    "hero": {
+      "sectionTitle": "القسم الرئيسي",
+      "badgeText": "نص الشارة",
+      "badgeTextExample": "مثال: رعاية صحية مدعومة بالذكاء الاصطناعي",
+      "headlineLine1": "السطر الأول من العنوان",
+      "headlineLine2": "السطر الثاني من العنوان",
+      "highlightWord": "الكلمة المميّزة",
+      "highlightWordPlaceholder": "الكلمة المراد تمييزها في العنوان",
+      "primaryCtaText": "نص الزر الأساسي",
+      "secondaryCtaText": "نص الزر الثانوي",
+      "buttonLabel": "نص الزر",
+      "badgeTextPlaceholder": "نص الشارة",
+      "sectionDescription": "البانر الرئيسي الذي يراه الزوار أولاً"
+    },
+    "features": {
+      "sectionTitle": "قسم الميزات",
+      "sectionDescription": "أبرز إمكانيات منتجك"
+    },
+    "howItWorks": {
+      "sectionTitle": "آلية العمل",
+      "number": "الرقم",
+      "sectionDescription": "شرح خطوة بخطوة للعملية"
+    },
+    "stats": {
+      "sectionTitle": "قسم الإحصائيات",
+      "labelExample": "مثال: رضا المرضى",
+      "sectionDescription": "مقاييس رئيسية لبناء الثقة"
+    },
+    "pricing": {
+      "sectionTitle": "قسم التسعير",
+      "labelExample": "مثال: التسعير",
+      "sectionDescription": "العنوان والنص الخاص بقسم التسعير — تُدار الباقات من إدارة > التسعير"
+    },
+    "cta": {
+      "sectionTitle": "دعوة لاتخاذ إجراء",
+      "headline": "العنوان",
+      "primaryButtonText": "نص الزر الأساسي",
+      "secondaryButtonText": "نص الزر الثانوي",
+      "sectionDescription": "قسم التحويل النهائي"
+    },
+    "footer": {
+      "sectionTitle": "التذييل",
+      "copyrightText": "نص حقوق النشر",
+      "urlPlaceholder": "https://...",
+      "addSocialLink": "إضافة رابط تواصل اجتماعي",
+      "sectionDescription": "القسم السفلي مع الروابط وحقوق النشر"
+    },
+    "workflows": {
+      "sectionTitle": "سير العمل",
+      "bookingFlow": "مسار الحجز",
+      "triageFlow": "مسار الفرز",
+      "topLabelOptional": "التسمية العلوية (اختياري)",
+      "badgeText": "نص الشارة",
+      "badgeColor": "لون الشارة",
+      "badgeColorExample": "مثال: emerald، blue",
+      "addCard": "إضافة بطاقة",
+      "sectionDescription": "مخططات تدفق مرئية للحجز والفرز"
+    },
+    "showcase": {
+      "sectionTitle": "عرض المنتج",
+      "items": "عناصر العرض",
+      "imageUrlLabel": "رابط الصورة (اختياري — يظهر عنصر نائب عند تركه فارغًا)",
+      "imageUrlPlaceholder": "/images/screenshot.png",
+      "bullets": "نقاط (سطر واحد لكل نقطة)",
+      "addItem": "إضافة عنصر عرض",
+      "sectionDescription": "صفوف متعاقبة من لقطات الشاشة والنصوص"
+    },
+    "security": {
+      "sectionTitle": "الأمان والامتثال",
+      "items": "عناصر الأمان",
+      "addItem": "إضافة عنصر أمان",
+      "sectionDescription": "إشارات ثقة لمشتري القطاع الصحي"
+    },
+    "testimonials": {
+      "sectionTitle": "آراء العملاء",
+      "items": "الآراء",
+      "quote": "الاقتباس",
+      "role": "المنصب / العيادة",
+      "sectionDescription": "اقتباسات العملاء والإثبات الاجتماعي"
+    },
+    "faq": {
+      "sectionTitle": "الأسئلة الشائعة",
+      "questions": "الأسئلة",
+      "question": "السؤال",
+      "answer": "الإجابة",
+      "addQuestion": "إضافة سؤال",
+      "sectionDescription": "أسئلة شائعة قبل الشراء"
+    }
+  }
+}

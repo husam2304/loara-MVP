@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Live Demo Setup — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="demo-setup">
+    <div class="eyebrow">Operations</div>
+    <h1>Live Demo Setup</h1>
+    <p class="lead">A reviewer (or prospective buyer) must be able to <strong>experience the AI agent actually answering</strong>, not just read about it. This page gets a public, reviewer-ready demo running — including the one-command Vapi provisioning helper.</p>
+
+    <div class="callout tip"><span class="ico">★</span><p>The fastest reviewer path is an <strong>in-browser web call</strong> — no phone number to buy. The command below wires the assistant; the reviewer then clicks "test call" inside the app.</p></div>
+
+    <h2>Prerequisites</h2>
+    <ul>
+        <li>A publicly reachable demo URL over <strong>HTTPS</strong> (Vapi webhooks require it).</li>
+        <li>A <a href="https://dashboard.vapi.ai" target="_blank" rel="noopener">Vapi</a> account with call balance, and your keys.</li>
+        <li><em>(Optional, for the billing demo)</em> Stripe <strong>test-mode</strong> keys.</li>
+    </ul>
+
+    <h2>Step 1 — Configure the environment</h2>
+    <p>In <code>.env</code> on the demo server:</p>
+    <pre><code>APP_ENV=production
+APP_DEBUG=false
+APP_NAME="Your Brand"
+APP_URL=https://demo.your-domain.com
+
+VAPI_PRIVATE_KEY=your-private-key
+VAPI_PUBLIC_KEY=your-public-key
+VAPI_SERVER_SECRET=a-long-random-string
+VAPI_WEBHOOK_URL=https://demo.your-domain.com/api/webhooks/vapi</code></pre>
+    <div class="callout warn"><span class="ico">!</span><p><code>APP_DEBUG</code> must be <code>false</code> — a stack trace shown to a reviewer is a common rejection reason. Set <code>APP_NAME</code> so the white-label shows your brand, not "Laravel".</p></div>
+    <p>Apply the config and build assets:</p>
+    <pre><code>php artisan config:clear
+npm run build</code></pre>
+
+    <h2>Step 2 — Seed demo data</h2>
+    <pre><code>php artisan migrate:fresh --seed</code></pre>
+    <p>This creates two clinics with realistic patients, providers, calls, and appointments, plus the demo logins:</p>
+    <table>
+        <thead><tr><th>Role</th><th>Email</th><th>Password</th></tr></thead>
+        <tbody>
+            <tr><td>SuperAdmin (platform)</td><td><code>hiro@mail.com</code></td><td><code>password</code></td></tr>
+            <tr><td>Clinic owner (Enterprise — all features)</td><td><code>clinic@mail.com</code></td><td><code>password</code></td></tr>
+        </tbody>
+    </table>
+
+    <h2>Step 3 — Provision the live AI assistant</h2>
+    <p>One command creates the demo clinic's Vapi assistant, syncs its function tools, and points it at your webhook:</p>
+    <pre><code>php artisan hiro:demo-setup</code></pre>
+    <p>To also provision a <strong>free, callable Vapi phone number</strong> linked to the assistant:</p>
+    <pre><code>php artisan hiro:demo-setup --phone --area-code=415</code></pre>
+    <p>Useful options:</p>
+    <table>
+        <thead><tr><th>Option</th><th>Effect</th></tr></thead>
+        <tbody>
+            <tr><td><code>--fresh</code></td><td>Wipe and reseed the database first.</td></tr>
+            <tr><td><code>--phone</code></td><td>Provision a free Vapi phone number for the demo assistant.</td></tr>
+            <tr><td><code>--area-code=NNN</code></td><td>Preferred US area code for the free number.</td></tr>
+        </tbody>
+    </table>
+    <p>The command prints the assistant ID, any phone number, the demo logins, and a final checklist. It refuses to run (with guidance) if <code>VAPI_PRIVATE_KEY</code> is missing.</p>
+    <div class="callout note"><span class="ico">ℹ</span><p>Re-running is safe — it updates the existing assistant instead of creating duplicates.</p></div>
+
+    <h2>Step 4 — Register the Vapi webhook</h2>
+    <p>In Vapi, point the assistant's server URL at <code>https://demo.your-domain.com/api/webhooks/vapi</code> and set the secret to your <code>VAPI_SERVER_SECRET</code>. The provisioning command already sets the assistant's server URL from <code>VAPI_WEBHOOK_URL</code>. See <a href="webhooks.html">Webhooks</a>.</p>
+
+    <h2>Step 5 — Verify the AI answers</h2>
+    <ol class="steps">
+        <li><span class="step-title">Web call</span> — log in as <code>clinic@mail.com</code>, open <strong>Settings → AI Assistant</strong>, and use the in-browser test-call widget (needs <code>VAPI_PUBLIC_KEY</code>). Talk to the assistant.</li>
+        <li><span class="step-title">Phone call</span> — if you provisioned a number, dial it and book a test appointment by voice.</li>
+        <li><span class="step-title">Confirm capture</span> — open <strong>Call Center</strong> and verify the call, transcript, and tool invocations were recorded.</li>
+    </ol>
+
+    <h2>Step 6 — (Optional) Billing demo</h2>
+    <ol class="steps">
+        <li>Add Stripe <strong>test-mode</strong> keys to <code>.env</code>.</li>
+        <li>In <strong>Platform → Pricing</strong>, sync plans to Stripe.</li>
+        <li>Add a Stripe webhook to <code>/api/webhooks/stripe</code>.</li>
+        <li>Show a checkout using Stripe's test card <code>4242 4242 4242 4242</code>.</li>
+    </ol>
+
+    <h2>Reviewer script</h2>
+    <p>Give the reviewer a short path so they see the value in 2 minutes:</p>
+    <ul>
+        <li>Log in as <code>clinic@mail.com</code> → <strong>Dashboard</strong> (live metrics) → <strong>Call Center</strong>.</li>
+        <li><strong>Settings → AI Assistant</strong> → start a web call → ask to book an appointment.</li>
+        <li>Return to <strong>Call Center</strong> → open the call → transcript &amp; tools.</li>
+        <li><strong>Workflow</strong> → see the multi-assistant builder. <strong>Analytics</strong> → real charts.</li>
+        <li>Log out → log in as <code>hiro@mail.com</code> → <strong>Platform</strong> panel (clinics, plans, settings).</li>
+    </ul>
+
+    <h2>Pre-submit checklist</h2>
+    <ul>
+        <li>☐ <code>APP_DEBUG=false</code>, <code>APP_ENV=production</code>, <code>APP_NAME</code> = your brand.</li>
+        <li>☐ HTTPS active; demo URL public.</li>
+        <li>☐ <code>php artisan hiro:demo-setup</code> ran successfully; assistant ID shown.</li>
+        <li>☐ Web call works (or phone number answers).</li>
+        <li>☐ Vapi webhook registered with matching secret; tools resolve.</li>
+        <li>☐ Queue worker + scheduler running (reminders, jobs).</li>
+        <li>☐ Both demo logins work; data looks realistic.</li>
+        <li>☐ <em>(If showing billing)</em> Stripe test keys + webhook configured.</li>
+        <li>☐ Clicked every sidebar page — no errors, no "coming soon".</li>
+    </ul>
+    <p>See <a href="deployment.html">Deployment</a> for production hardening and <a href="troubleshooting.html">Troubleshooting</a> if the AI doesn't answer.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

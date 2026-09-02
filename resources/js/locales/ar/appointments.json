@@ -1,0 +1,135 @@
+{
+    "priorities": {
+        "urgent": "عاجل",
+        "high": "مرتفع",
+        "medium": "متوسط",
+        "low": "منخفض"
+    },
+    "time": {
+        "today": "اليوم",
+        "oneDay": "يوم واحد",
+        "days": "{{count}} أيام",
+        "anyDate": "أي تاريخ",
+        "am": "ص",
+        "pm": "م"
+    },
+    "dashboard": {
+        "title": "المواعيد",
+        "subtitle": "إدارة مواعيد المرضى، الجدولة، والمتاحية",
+        "newAppointment": "موعد جديد",
+        "stats": {
+            "todaysAppointments": "مواعيد اليوم",
+            "remaining": "{{count}} متبقي",
+            "forToday": "لهذا اليوم",
+            "noShowRate": "معدل التغيب",
+            "vsLastMonth": "مقابل الشهر الماضي",
+            "waitlist": "قائمة الانتظار",
+            "priority": "{{count}} ذو أولوية",
+            "queueEntries": "في قائمة الانتظار",
+            "avgDuration": "متوسط المدة",
+            "thisMonth": "هذا الشهر",
+            "completed": "مكتمل"
+        },
+        "schedule": "الجدول",
+        "view": {
+            "day": "يوم",
+            "week": "أسبوع",
+            "today": "اليوم"
+        }
+    },
+    "appointmentBlock": {
+        "appointment": "موعد",
+        "aiBooked": "حجز بالذكاء الاصطناعي",
+        "blocked": "محجوز"
+    },
+    "selectedAppointment": {
+        "title": "الموعد المحدد",
+        "aiBooked": "حجز بالذكاء الاصطناعي",
+        "appointment": "موعد",
+        "details": {
+            "type": "النوع",
+            "time": "الوقت",
+            "doctor": "الطبيب",
+            "room": "الغرفة",
+            "status": "الحالة",
+            "notes": "الملاحظات",
+            "noNotes": "لا توجد ملاحظات."
+        },
+        "actions": {
+            "checkIn": "تسجيل الدخول",
+            "reschedule": "إعادة الجدولة"
+        },
+        "emptyState": "حدد موعداً لعرض التفاصيل"
+    },
+    "waitlist": {
+        "title": "قائمة الانتظار",
+        "emptyState": "لا يوجد مرضى في قائمة الانتظار",
+        "anyType": "أي نوع",
+        "requested": "مطلوب:",
+        "waiting": "في الانتظار"
+    },
+    "modals": {
+        "new": {
+            "title": "موعد جديد",
+            "patient": "المريض",
+            "searchPatient": "البحث عن مريض...",
+            "changePatient": "تغيير المريض",
+            "provider": "مقدم الرعاية",
+            "select": "اختر...",
+            "type": "النوع",
+            "dateTime": "التاريخ والوقت",
+            "room": "الغرفة (اختياري)",
+            "roomPlaceholder": "مثال: الغرفة أ",
+            "reason": "السبب (اختياري)",
+            "reasonPlaceholder": "سبب الزيارة...",
+            "cancel": "إلغاء",
+            "create": "إنشاء موعد",
+            "creating": "جاري الإنشاء..."
+        },
+        "reschedule": {
+            "title": "إعادة الجدولة",
+            "newDateTime": "التاريخ والوقت الجديد",
+            "provider": "مقدم الرعاية (تغيير اختياري)",
+            "reason": "السبب (اختياري)",
+            "reasonPlaceholder": "سبب إعادة الجدولة...",
+            "cancel": "إلغاء",
+            "reschedule": "إعادة الجدولة",
+            "rescheduling": "جاري إعادة الجدولة..."
+        },
+        "cancel": {
+            "title": "إلغاء الموعد",
+            "confirmation": "هل أنت متأكد أنك تريد إلغاء موعد <1>{{name}}</1>؟",
+            "reason": "السبب (اختياري)",
+            "reasonPlaceholder": "سبب الإلغاء...",
+            "keep": "احتفاظ",
+            "cancelAppointment": "إلغاء الموعد",
+            "cancelling": "جاري الإلغاء..."
+        },
+        "scheduleFromPatient": {
+            "title": "جدولة موعد",
+            "patient": "المريض",
+            "doctor": "الطبيب *",
+            "selectDoctor": "اختر طبيبًا...",
+            "appointmentType": "نوع الموعد *",
+            "selectType": "اختر النوع...",
+            "minSuffix": "دقيقة",
+            "dateTime": "التاريخ والوقت *",
+            "room": "الغرفة",
+            "selectRoom": "اختر الغرفة...",
+            "reason": "سبب الزيارة",
+            "reasonPlaceholder": "مثال: متابعة، فحص سنوي",
+            "notes": "ملاحظات",
+            "notesPlaceholder": "ملاحظات إضافية...",
+            "scheduling": "جارٍ الجدولة...",
+            "scheduleAppointment": "جدولة الموعد",
+            "rooms": {
+                "roomA": "الغرفة أ",
+                "roomB": "الغرفة ب",
+                "roomC": "الغرفة ج",
+                "roomD": "الغرفة د",
+                "exam1": "غرفة الفحص 1",
+                "exam2": "غرفة الفحص 2"
+            }
+        }
+    }
+}

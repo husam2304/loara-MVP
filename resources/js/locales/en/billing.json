@@ -1,0 +1,66 @@
+{
+  "title": "Billing",
+  "subtitle": "Manage your subscription, usage, and invoices",
+  "finalizing": "Finalizing your subscription… This page will update automatically once your payment is confirmed.",
+  "currentPlan": {
+    "title": "Current Plan",
+    "planSuffix": "Plan",
+    "perMonth": "/month",
+    "billedAnnually": "(billed annually)",
+    "currentPeriod": "Current period:",
+    "trialEnds": "Trial ends",
+    "cancelsAtEnd": "Cancels at end of period",
+    "resumeBtn": "Resume Subscription",
+    "managePaymentBtn": "Manage Payment",
+    "cancelBtn": "Cancel Plan",
+    "noSubscription": "No active subscription",
+    "choosePlanPrompt": "Choose a plan below to get started with a {{days}}-day free trial",
+    "cancelConfirm": "Are you sure you want to cancel your subscription? You will retain access until the end of your billing period."
+  },
+  "usage": {
+    "title": "Usage This Period",
+    "aiCallMinutes": "AI Call Minutes",
+    "dailyUsage": "Daily Usage (last 30 days)"
+  },
+  "plans": {
+    "title": "Plans",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save20": "Save 20%",
+    "current": "Current",
+    "perMo": "/mo",
+    "billedYearly": "billed yearly",
+    "unlimited": "Unlimited",
+    "minutesMo": "minutes/mo",
+    "currentBtn": "Current Plan",
+    "switchBtn": "Switch to",
+    "getStartedBtn": "Get Started"
+  },
+  "invoices": {
+    "title": "Invoice History",
+    "colInvoice": "Invoice",
+    "colDate": "Date",
+    "colAmount": "Amount",
+    "colStatus": "Status",
+    "colPdf": "PDF",
+    "noInvoices": "No invoices yet"
+  },
+  "status": {
+    "active": "Active",
+    "trialing": "Trial",
+    "past_due": "Past Due",
+    "cancelled": "Cancelled"
+  },
+  "features": {
+    "ai_calls": "AI Phone Calls",
+    "appointment_booking": "Appointment Booking",
+    "basic_analytics": "Basic Analytics",
+    "advanced_analytics": "Advanced Analytics",
+    "sms": "SMS Notifications",
+    "integrations": "EHR Integrations",
+    "triage": "AI Triage & Routing",
+    "campaigns": "Outbound Campaigns",
+    "custom_workflows": "Custom Workflows",
+    "priority_support": "Priority Support"
+  }
+}

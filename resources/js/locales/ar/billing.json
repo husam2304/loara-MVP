@@ -1,0 +1,66 @@
+{
+  "title": "الفوترة",
+  "subtitle": "إدارة اشتراكك، الاستخدام، والفواتير",
+  "finalizing": "جاري إنهاء اشتراكك... سيتم تحديث هذه الصفحة تلقائيًا بمجرد تأكيد الدفع.",
+  "currentPlan": {
+    "title": "الخطة الحالية",
+    "planSuffix": "خطة",
+    "perMonth": "/شهر",
+    "billedAnnually": "(تدفع سنوياً)",
+    "currentPeriod": "الفترة الحالية:",
+    "trialEnds": "تنتهي الفترة التجريبية في",
+    "cancelsAtEnd": "يُلغى في نهاية الفترة",
+    "resumeBtn": "استئناف الاشتراك",
+    "managePaymentBtn": "إدارة الدفع",
+    "cancelBtn": "إلغاء الخطة",
+    "noSubscription": "لا يوجد اشتراك نشط",
+    "choosePlanPrompt": "اختر خطة أدناه للبدء بفترة تجريبية مجانية لمدة {{days}} يوماً",
+    "cancelConfirm": "هل أنت متأكد من إلغاء اشتراكك؟ ستحتفظ بالوصول حتى نهاية فترة الفوترة الحالية."
+  },
+  "usage": {
+    "title": "الاستخدام لهذه الفترة",
+    "aiCallMinutes": "دقائق مكالمات الذكاء الاصطناعي",
+    "dailyUsage": "الاستخدام اليومي (آخر 30 يوماً)"
+  },
+  "plans": {
+    "title": "الخطط",
+    "monthly": "شهري",
+    "yearly": "سنوي",
+    "save20": "وفر 20%",
+    "current": "الحالية",
+    "perMo": "/شهر",
+    "billedYearly": "تدفع سنوياً",
+    "unlimited": "غير محدود",
+    "minutesMo": "دقيقة/شهر",
+    "currentBtn": "الخطة الحالية",
+    "switchBtn": "التبديل إلى",
+    "getStartedBtn": "ابدأ الآن"
+  },
+  "invoices": {
+    "title": "سجل الفواتير",
+    "colInvoice": "الفاتورة",
+    "colDate": "التاريخ",
+    "colAmount": "المبلغ",
+    "colStatus": "الحالة",
+    "colPdf": "ملف PDF",
+    "noInvoices": "لا توجد فواتير بعد"
+  },
+  "status": {
+    "active": "نشط",
+    "trialing": "تجريبي",
+    "past_due": "متأخر",
+    "cancelled": "ملغى"
+  },
+  "features": {
+    "ai_calls": "مكالمات هاتفية بالذكاء الاصطناعي",
+    "appointment_booking": "حجز المواعيد",
+    "basic_analytics": "تحليلات أساسية",
+    "advanced_analytics": "تحليلات متقدمة",
+    "sms": "إشعارات رسائل قصيرة SMS",
+    "integrations": "تكامل مع سجلات الصحة (EHR)",
+    "triage": "الفرز والتوجيه بالذكاء الاصطناعي",
+    "campaigns": "حملات صادرة",
+    "custom_workflows": "مسارات عمل مخصصة",
+    "priority_support": "دعم فني ذو أولوية"
+  }
+}

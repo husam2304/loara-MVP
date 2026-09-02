@@ -1,0 +1,199 @@
+{
+  "dashboard": {
+    "title": "PLATFORM DASHBOARD",
+    "subtitle": "Overview of all clinics, users, and revenue",
+    "stats": {
+      "totalClinics": "Total Clinics",
+      "totalUsers": "Total Users",
+      "activeSubscriptions": "Active Subscriptions",
+      "monthlyRevenue": "Monthly Revenue"
+    },
+    "recentRegistrations": "RECENT_REGISTRATIONS",
+    "table": {
+      "clinic": "Clinic",
+      "email": "Email",
+      "users": "Users",
+      "plan": "Plan",
+      "status": "Status",
+      "registered": "Registered",
+      "noClinics": "No clinics registered yet"
+    },
+    "status": {
+      "active": "Active",
+      "disabled": "Disabled"
+    }
+  },
+  "clinics": {
+    "title": "CLINICS",
+    "subtitle": "Manage all registered clinics",
+    "searchPlaceholder": "Search clinics...",
+    "table": {
+      "clinic": "Clinic",
+      "email": "Email",
+      "users": "Users",
+      "plan": "Plan",
+      "status": "Status",
+      "enabled": "Enabled",
+      "actions": "Actions",
+      "view": "View",
+      "noClinics": "No clinics found"
+    },
+    "subscriptionNone": "none",
+    "pagination": {
+      "showing": "Showing {{from}}-{{to}} of {{total}}"
+    }
+  },
+  "users": {
+    "title": "ALL USERS",
+    "subtitle": "Users across all clinics",
+    "searchPlaceholder": "Search users...",
+    "roles": {
+      "all": "All Roles",
+      "clinic_owner": "Clinic Owner",
+      "provider": "Provider",
+      "staff": "Staff",
+      "billing": "Billing",
+      "customer": "Customer"
+    },
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "clinic": "Clinic",
+      "role": "Role",
+      "status": "Status",
+      "noUsers": "No users found"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "pagination": {
+      "showing": "Showing {{from}}-{{to}} of {{total}}"
+    }
+  },
+  "clinicDetail": {
+    "subtitle": "Clinic details and user management",
+    "backToClinics": "Back to Clinics",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "info": {
+      "email": "Email",
+      "phone": "Phone",
+      "timezone": "Timezone",
+      "address": "Address",
+      "subscription": "Subscription",
+      "none": "None",
+      "noSubscription": "No subscription",
+      "aiAssistant": "AI Assistant",
+      "configured": "Configured",
+      "notConfigured": "Not configured",
+      "registered": "Registered"
+    },
+    "clinicUsers": "CLINIC_USERS",
+    "usersCount": "{{count}} users",
+    "table": {
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions",
+      "noUsers": "No users in this clinic"
+    },
+    "impersonate": "Impersonate"
+  },
+  "settings": {
+    "pageTitle": "PLATFORM SETTINGS",
+    "pageSubtitle": "Configure platform-wide services and branding",
+    "tabs": {
+      "branding": "Branding",
+      "paymentGateways": "Payment Gateways",
+      "smtp": "Email / SMTP",
+      "claimMd": "Claim.MD",
+      "vapi": "Vapi Voice AI"
+    },
+    "branding": {
+      "cardTitle": "APPLICATION BRANDING",
+      "appName": "Application Name",
+      "save": "Save"
+    },
+    "smtp": {
+      "cardTitle": "EMAIL / SMTP CONFIGURATION",
+      "cardSubtitle": "Configure how the platform sends emails",
+      "mailDriver": "Mail Driver",
+      "encryption": "Encryption",
+      "encryptionNone": "None",
+      "smtpHost": "SMTP Host",
+      "smtpPort": "SMTP Port",
+      "username": "Username",
+      "password": "Password",
+      "fromAddress": "From Address",
+      "fromName": "From Name",
+      "sendTestEmail": "Send Test Email",
+      "mailers": {
+        "smtp": "SMTP",
+        "ses": "Amazon SES",
+        "postmark": "Postmark",
+        "resend": "Resend",
+        "sendmail": "Sendmail",
+        "log": "Log (Testing)"
+      }
+    },
+    "paymentGateways": {
+      "cardTitle": "STRIPE",
+      "cardSubtitle": "Subscription billing payment gateway",
+      "status": {
+        "connected": "Connected",
+        "error": "Error",
+        "not_configured": "Not Configured"
+      },
+      "tested": "Tested {{date}}",
+      "webhookUrl": "Webhook URL",
+      "currentKeys": {
+        "publishable": "Publishable",
+        "secret": "Secret",
+        "webhook": "Webhook"
+      },
+      "publishableKey": "Publishable Key",
+      "secretKey": "Secret Key",
+      "webhookSecret": "Webhook Secret",
+      "saveCredentials": "Save Credentials",
+      "test": "Test",
+      "remove": "Remove",
+      "removeConfirm": "Remove credentials?"
+    },
+    "claimMd": {
+      "cardTitle": "CLAIM.MD CLEARINGHOUSE",
+      "cardSubtitle": "Claims submission, eligibility verification, and ERA processing",
+      "apiKeyConfigured": "API Key Configured",
+      "notConfigured": "Not Configured",
+      "apiKey": "Claim.MD API Key",
+      "apiKeyPlaceholder": "Enter your Claim.MD Account Key",
+      "saveApiKey": "Save API Key",
+      "testConnection": "Test Connection"
+    },
+    "failed": "Failed",
+    "vapi": {
+      "cardTitle": "VAPI VOICE AI",
+      "cardSubtitle": "API credentials for the AI voice assistant that powers calls and the mobile app",
+      "configured": "Configured (source: {{source}})",
+      "notConfigured": "Not Configured",
+      "sourceDatabase": "saved in Platform Settings",
+      "sourceEnv": ".env file",
+      "webhookUrl": "Webhook URL",
+      "webhookUrlHint": "Set this as the Server URL for your Vapi assistants so call events reach this app.",
+      "privateKey": "Private Key",
+      "privateKeyPlaceholder": "Enter your Vapi Private Key",
+      "privateKeyHint": "Used for all server-side Vapi API calls. Keep this secret.",
+      "publicKey": "Public Key",
+      "publicKeyPlaceholder": "Enter your Vapi Public Key",
+      "publicKeyHint": "Safe to expose client-side. Used by the mobile app to start calls.",
+      "serverSecret": "Server Secret",
+      "serverSecretPlaceholder": "Enter your Vapi Server Secret",
+      "baseUrl": "API Base URL",
+      "saveKeys": "Save Keys",
+      "testConnection": "Test Connection"
+    }
+  }
+}

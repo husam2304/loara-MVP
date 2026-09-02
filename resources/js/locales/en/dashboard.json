@@ -1,0 +1,73 @@
+{
+  "title": "Dashboard",
+  "headerTitle": "DASHBOARD",
+  "subtitle": "Here's your clinic overview",
+  "stats": {
+    "callsToday": "Total Calls Today",
+    "appointmentsToday": "Appointments Booked",
+    "avgResponseTime": "Avg Response Time",
+    "resolutionRate": "Resolution Rate",
+    "today": "today"
+  },
+  "callActivity": {
+    "title": "CALL_ACTIVITY",
+    "subtitle": "Inbound & outbound calls this week",
+    "inbound": "Inbound",
+    "outbound": "Outbound"
+  },
+  "recentCalls": {
+    "title": "RECENT_CALLS",
+    "viewAll": "View all",
+    "unknownCaller": "Unknown Caller",
+    "noRecentCalls": "No recent calls",
+    "resolution": {
+      "resolved": "Resolved",
+      "escalated": "Escalated",
+      "callback": "Callback",
+      "voicemail": "Voicemail"
+    },
+    "status": {
+      "completed": "Completed",
+      "missed": "Missed",
+      "active": "Active",
+      "ringing": "Ringing",
+      "failed": "Failed",
+      "transferred": "Transferred",
+      "voicemail": "Voicemail"
+    },
+    "types": {
+      "appointment": "Appointment",
+      "insurance": "Insurance",
+      "billing": "Billing",
+      "prescription": "Prescription",
+      "triage": "Triage",
+      "general": "General",
+      "follow_up": "Follow-up",
+      "reminder": "Reminder"
+    }
+  },
+  "upcomingAppointments": {
+    "title": "UPCOMING_APPOINTMENTS",
+    "unknownPatient": "Unknown Patient",
+    "appointment": "Appointment",
+    "min": "min",
+    "noUpcoming": "No upcoming appointments"
+  },
+  "quickActions": {
+    "title": "QUICK_ACTIONS",
+    "actions": {
+      "startCampaign": "Start Outbound Campaign",
+      "manualAppointment": "Manual Appointment",
+      "addPatient": "Add New Patient",
+      "viewTranscripts": "View Call Transcripts"
+    }
+  },
+  "aiPerformance": {
+    "title": "AI_PERFORMANCE",
+    "metrics": {
+      "intentRecognition": "Intent Recognition",
+      "callCompletion": "Call Completion",
+      "patientSatisfaction": "Patient Satisfaction"
+    }
+  }
+}

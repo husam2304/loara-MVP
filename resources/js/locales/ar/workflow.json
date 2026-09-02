@@ -1,0 +1,72 @@
+{
+  "title": "مسارات العمل",
+  "subtitle": "تصميم مسار مكالمات متعدد المساعدين (وضع الفريق)",
+  "actions": {
+    "disableSquad": "تعطيل وضع الفريق",
+    "deploySquad": "نشر الفريق"
+  },
+  "status": {
+    "deployed": "منشور",
+    "draft": "مسودة"
+  },
+  "emptyState": {
+    "title": "لا يوجد مسار عمل بعد",
+    "description": "قم بإنشاء مسار عمل لتوجيه المكالمات بين مساعدين متخصصين بالذكاء الاصطناعي. يتم إنشاء مساعد \"الاستقبال\" كنقطة دخول تلقائياً.",
+    "workflowName": "اسم مسار العمل",
+    "createBtn": "إنشاء مسار العمل"
+  },
+  "assistants": {
+    "title": "المساعدين",
+    "addBtn": "إضافة مساعد",
+    "entryBadge": "نقطة الدخول",
+    "tools": "أدوات",
+    "makeEntryPoint": "تعيين كنقطة دخول",
+    "setEntry": "تعيين دخول",
+    "edit": "تعديل",
+    "delete": "حذف",
+    "deleteConfirm": "هل أنت متأكد من إزالة المساعد \"{{name}}\"؟"
+  },
+  "transitions": {
+    "title": "الانتقالات",
+    "addBtn": "إضافة انتقال",
+    "noTransitions": "لا توجد انتقالات بعد. أضف انتقالاً ليتمكن المساعد الأساسي من تسليم المكالمة للمساعدين الآخرين.",
+    "remove": "إزالة",
+    "removeConfirm": "هل أنت متأكد من إزالة هذا الانتقال؟"
+  },
+  "undeployConfirm": "تعطيل وضع الفريق والعودة إلى مساعد واحد؟",
+  "modals": {
+    "assistant": {
+      "editTitle": "تعديل المساعد",
+      "addTitle": "إضافة مساعد",
+      "nameLabel": "الاسم *",
+      "roleLabel": "الدور",
+      "rolePlaceholder": "مثال: قسم الفوترة",
+      "greetingLabel": "رسالة الترحيب",
+      "systemPromptLabel": "توجيهات النظام (Prompt)",
+      "modelLabel": "النموذج *",
+      "temperatureLabel": "مستوى الإبداع (Temperature) *",
+      "voiceProviderLabel": "مزود الصوت *",
+      "voiceNameLabel": "اسم الصوت *",
+      "toolsLabel": "الأدوات *",
+      "saveBtn": "حفظ المساعد",
+      "addBtn": "إضافة المساعد"
+    },
+    "transition": {
+      "title": "إضافة انتقال",
+      "fromLabel": "من المساعد *",
+      "toLabel": "إلى المساعد *",
+      "selectOption": "اختر...",
+      "conditionLabel": "متى (الشرط) *",
+      "conditionPlaceholder": "مثال: المتصل لديه سؤال حول الفاتورة",
+      "handoffLabel": "رسالة التسليم",
+      "handoffPlaceholder": "سأقوم بتحويلك الآن.",
+      "contextLabel": "السياق المُمرر *",
+      "addBtn": "إضافة انتقال"
+    }
+  },
+  "contextPlans": {
+    "all": "تمرير المحادثة كاملة",
+    "lastNMessages": "تمرير الرسائل الأخيرة",
+    "none": "بدء محادثة جديدة"
+  }
+}

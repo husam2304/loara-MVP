@@ -1,0 +1,88 @@
+{
+  "title": "التكامل",
+  "headerTitle": "التكامل والربط",
+  "subtitle": "إعداد روابط خدمات الطرف الثالث ونظم المعلومات",
+  "addBtn": "إضافة تكامل",
+  "stats": {
+    "active": "التكاملات النشطة",
+    "total": "إجمالي التكاملات",
+    "uptime": "وقت التشغيل",
+    "errors": "أخطاء المزامنة",
+    "of": "من",
+    "configured": "تم إعدادها",
+    "days": "أيام",
+    "withoutIncident": "بدون أخطاء",
+    "integrationsWithErrors": "تكاملات بها أخطاء"
+  },
+  "timeSince": {
+    "never": "لم تتم المزامنة",
+    "justNow": "الآن",
+    "minAgo": "قبل {{count}} دقيقة",
+    "hoursAgo": "قبل {{count}} ساعة",
+    "daysAgo": "قبل {{count}} يوم"
+  },
+  "status": {
+    "connected": "متصل",
+    "setupRequired": "بحاجة للإعداد",
+    "error": "خطأ",
+    "disconnected": "غير متصل"
+  },
+  "modals": {
+    "add": {
+      "title": "إضافة تكامل",
+      "allConfigured": "تم إعداد جميع التكاملات المتاحة.",
+      "providerLabel": "المزود",
+      "displayNameLabel": "الاسم المعروض",
+      "displayNamePlaceholder": "مثال: Epic EMR",
+      "cancelBtn": "إلغاء",
+      "addingBtn": "جاري الإضافة...",
+      "addBtn": "إضافة التكامل"
+    },
+    "configure": {
+      "title": "إعداد التكامل",
+      "lastSynced": "آخر مزامنة:",
+      "processing": "جاري المعالجة...",
+      "disconnectBtn": "قطع الاتصال",
+      "connectBtn": "اتصال",
+      "syncBtn": "مزامنة الآن",
+      "removeBtn": "إزالة التكامل",
+      "closeBtn": "إغلاق"
+    }
+  },
+  "card": {
+    "lastSync": "آخر مزامنة: ",
+    "readyToSetup": "جاهز للإعداد",
+    "notConnected": "غير متصل",
+    "connectBtn": "اتصال",
+    "configureBtn": "إعداد",
+    "emptyState": "لا توجد تكاملات مُعدة بعد"
+  },
+  "providers": {
+    "names": {
+      "vapi": "مساعد الذكاء الاصطناعي",
+      "epic": "Epic EMR",
+      "athenahealth": "Athenahealth",
+      "drchrono": "DrChrono",
+      "twilio_voice": "Twilio Voice",
+      "twilio_sms": "Twilio SMS",
+      "sendgrid": "SendGrid Email",
+      "google_calendar": "Google Calendar",
+      "stripe": "Stripe Billing",
+      "dentrix": "Dentrix",
+      "open_dental": "Open Dental"
+    },
+    "descriptions": {
+      "vapi": "مساعد صوتي بالذكاء الاصطناعي للتعامل مع المكالمات الواردة والصادرة مع توجيه ذكي",
+      "epic": "سجلات المرضى، والجدولة، ومزامنة البيانات السريرية مع أنظمة Epic",
+      "athenahealth": "تكامل السجلات الصحية الإلكترونية السحابية لمسارات العمل السريرية",
+      "drchrono": "تكامل السجلات الصحية الإلكترونية وإدارة العيادات",
+      "twilio_voice": "اتصالات VoIP، توجيه المكالمات، والنسخ النصي للصوت في الوقت الفعلي",
+      "twilio_sms": "تذكيرات المواعيد عبر SMS، التأكيدات، والمراسلة ثنائية الاتجاه",
+      "sendgrid": "تذكيرات المواعيد، رسائل المتابعة الإلكترونية، وإشعارات المرضى",
+      "google_calendar": "مزامنة جدول المزود، توفر المواعيد، والحجز",
+      "stripe": "معالجة المدفوعات، تحصيل الدفع المشترك، وتسوية الفواتير",
+      "dentrix": "تكامل نظام إدارة عيادات طب الأسنان",
+      "open_dental": "تكامل برمجيات طب الأسنان مفتوحة المصدر"
+    }
+  }
+}

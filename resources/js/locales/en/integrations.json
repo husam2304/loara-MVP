@@ -1,0 +1,88 @@
+{
+  "title": "Integrations",
+  "headerTitle": "INTEGRATIONS",
+  "subtitle": "Configure IT and third-party service links",
+  "addBtn": "Add Integration",
+  "stats": {
+    "active": "Active Integrations",
+    "total": "Total Integrations",
+    "uptime": "Uptime",
+    "errors": "Sync Errors",
+    "of": "of",
+    "configured": "configured",
+    "days": "days",
+    "withoutIncident": "without incident",
+    "integrationsWithErrors": "integrations with errors"
+  },
+  "timeSince": {
+    "never": "Never synced",
+    "justNow": "Just now",
+    "minAgo": "{{count}} min ago",
+    "hoursAgo": "{{count}}h ago",
+    "daysAgo": "{{count}}d ago"
+  },
+  "status": {
+    "connected": "Connected",
+    "setupRequired": "Setup Required",
+    "error": "Error",
+    "disconnected": "Disconnected"
+  },
+  "modals": {
+    "add": {
+      "title": "ADD_INTEGRATION",
+      "allConfigured": "All available integrations have been configured.",
+      "providerLabel": "Provider",
+      "displayNameLabel": "Display Name",
+      "displayNamePlaceholder": "e.g. Epic EMR",
+      "cancelBtn": "Cancel",
+      "addingBtn": "Adding...",
+      "addBtn": "Add Integration"
+    },
+    "configure": {
+      "title": "CONFIGURE_INTEGRATION",
+      "lastSynced": "Last synced:",
+      "processing": "Processing...",
+      "disconnectBtn": "Disconnect",
+      "connectBtn": "Connect",
+      "syncBtn": "Sync now",
+      "removeBtn": "Remove Integration",
+      "closeBtn": "Close"
+    }
+  },
+  "card": {
+    "lastSync": "Last sync: ",
+    "readyToSetup": "Ready to set up",
+    "notConnected": "Not connected",
+    "connectBtn": "Connect",
+    "configureBtn": "Configure",
+    "emptyState": "No integrations configured yet"
+  },
+  "providers": {
+    "names": {
+      "vapi": "AI Assistant",
+      "epic": "Epic EMR",
+      "athenahealth": "Athenahealth",
+      "drchrono": "DrChrono",
+      "twilio_voice": "Twilio Voice",
+      "twilio_sms": "Twilio SMS",
+      "sendgrid": "SendGrid Email",
+      "google_calendar": "Google Calendar",
+      "stripe": "Stripe Billing",
+      "dentrix": "Dentrix",
+      "open_dental": "Open Dental"
+    },
+    "descriptions": {
+      "vapi": "AI voice assistant for handling inbound/outbound calls with intelligent routing",
+      "epic": "Patient records, scheduling, and clinical data sync with Epic Systems",
+      "athenahealth": "Cloud-based EHR integration for clinical workflows",
+      "drchrono": "EHR and practice management integration",
+      "twilio_voice": "VoIP telephony, call routing, and real-time voice transcription",
+      "twilio_sms": "SMS appointment reminders, confirmations, and two-way messaging",
+      "sendgrid": "Appointment reminders, follow-up emails, and patient notifications",
+      "google_calendar": "Provider schedule sync, appointment availability, and booking",
+      "stripe": "Payment processing, copay collection, and billing reconciliation",
+      "dentrix": "Dental practice management system integration",
+      "open_dental": "Open-source dental software integration"
+    }
+  }
+}

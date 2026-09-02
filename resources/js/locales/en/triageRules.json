@@ -1,0 +1,92 @@
+{
+  "title": "TRIAGE_RULES",
+  "subtitle": "Configure AI call routing, escalation triggers, and priority levels",
+  "newRule": "New Rule",
+  "activeRules": "ACTIVE_TRIAGE_RULES",
+  "escalationPaths": "ESCALATION_PATHS",
+  "alertKeywords": "ALERT_KEYWORDS",
+  "searchRules": "SEARCH_RULES",
+  "searchPlaceholder": "Search rules...",
+  "noRules": "No triage rules found",
+  "noEscalationPaths": "No escalation paths configured",
+  "noKeywords": "No keywords configured",
+  "modal": {
+    "editTitle": "EDIT_TRIAGE_RULE",
+    "newTitle": "NEW_TRIAGE_RULE",
+    "nameLabel": "Rule Name",
+    "namePlaceholder": "e.g. Emergency - Chest Pain",
+    "descLabel": "Description (optional)",
+    "descPlaceholder": "Describe when this rule triggers...",
+    "priorityLabel": "Priority",
+    "actionLabel": "Action",
+    "keywordsLabel": "Keywords",
+    "addKeywordPlaceholder": "Add keyword...",
+    "addBtn": "Add",
+    "cancelBtn": "Cancel",
+    "saveBtn": "Save Rule",
+    "createBtn": "Create Rule",
+    "savingBtn": "Saving...",
+    "targetRoleLabel": "Target Role (optional)",
+    "targetRolePlaceholder": "e.g. provider, nurse, billing",
+    "targetUserLabel": "Target Staff Member (optional)",
+    "targetUserNone": "No specific person"
+  },
+  "escalationModal": {
+    "newTitle": "NEW_ESCALATION_PATH",
+    "editTitle": "EDIT_ESCALATION_PATH",
+    "levelLabel": "Level",
+    "timeoutLabel": "Timeout (seconds)",
+    "nameLabel": "Path Name",
+    "targetRoleLabel": "Target Role",
+    "descLabel": "Description (optional)"
+  },
+  "priorities": {
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
+  },
+  "actions": {
+    "transfer_immediately": "Transfer Immediately",
+    "transfer_nurse": "Transfer to Nurse",
+    "queue_callback": "Queue Callback",
+    "send_alert": "Send Alert",
+    "route_to_voicemail": "Route to Voicemail"
+  },
+  "categories": {
+    "emergency": "Emergency",
+    "clinical": "Clinical",
+    "billing": "Billing",
+    "general": "General"
+  },
+  "stats": {
+    "activeRules": "Active Rules",
+    "of": "of",
+    "total": "total",
+    "escalationPaths": "Escalation Paths",
+    "configured": "configured",
+    "avgTriageTime": "Avg Triage Time",
+    "improvement": "improvement",
+    "accuracy": "Accuracy",
+    "aboveTarget": "Above target"
+  },
+  "table": {
+    "name": "RULE NAME",
+    "priority": "PRIORITY",
+    "keywords": "KEYWORDS",
+    "action": "ACTION",
+    "status": "STATUS",
+    "actions": "ACTIONS",
+    "noRules": "No triage rules found",
+    "keywordsCount": "keywords",
+    "deactivate": "Deactivate rule",
+    "activate": "Activate rule",
+    "edit": "Edit rule",
+    "delete": "Delete rule",
+    "deleteConfirm": "Delete the \"{{name}}\" triage rule?"
+  },
+  "empty": {
+    "noEscalationPaths": "No escalation paths configured",
+    "noKeywords": "No keywords configured"
+  }
+}

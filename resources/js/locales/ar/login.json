@@ -1,0 +1,16 @@
+{
+  "title": "تسجيل الدخول",
+  "signInToAccount": "تسجيل الدخول إلى حسابك",
+  "email": "البريد الإلكتروني",
+  "emailPlaceholder": "you@clinic.com",
+  "password": "كلمة المرور",
+  "forgotPassword": "هل نسيت كلمة المرور؟",
+  "passwordPlaceholder": "أدخل كلمة المرور",
+  "rememberMe": "تذكرني",
+  "signingIn": "جاري تسجيل الدخول...",
+  "signIn": "تسجيل الدخول",
+  "demoAccounts": "حسابات تجريبية",
+  "clickToSignIn": "انقر لتسجيل الدخول فوراً",
+  "noAccount": "ليس لديك حساب؟",
+  "signUp": "إنشاء حساب"
+}

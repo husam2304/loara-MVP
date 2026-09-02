@@ -1,0 +1,53 @@
+{
+    "nav": {
+        "features": "المميزات",
+        "product": "المنتج",
+        "pricing": "الأسعار",
+        "reviews": "التقييمات",
+        "faq": "الأسئلة الشائعة"
+    },
+    "flow": {
+        "start": "بدء",
+        "conversation": "محادثة",
+        "tool": "أداة",
+        "end_call": "إنهاء المكالمة",
+        "transfer": "تحويل المكالمة"
+    },
+    "features": {
+        "ai_calls": "مكالمات الذكاء الاصطناعي",
+        "appointment_booking": "حجز المواعيد",
+        "basic_analytics": "تحليلات أساسية",
+        "advanced_analytics": "تحليلات متقدمة",
+        "sms": "إشعارات الرسائل القصيرة",
+        "integrations": "تكامل الأنظمة",
+        "triage": "قواعد الفرز",
+        "campaigns": "الحملات",
+        "custom_workflows": "مسارات عمل مخصصة",
+        "priority_support": "أولوية الدعم"
+    },
+    "auth": {
+        "signIn": "تسجيل الدخول",
+        "getStarted": "ابدأ الآن",
+        "dashboard": "لوحة التحكم"
+    },
+    "voiceDemo": {
+        "tapToEnd": "انقر لإنهاء المكالمة",
+        "connecting": "جاري الاتصال...",
+        "micNeeded": "الميكروفون مطلوب — أعد المحاولة"
+    },
+    "pricing": {
+        "monthly": "شهري",
+        "yearly": "سنوي",
+        "save20": "وفر 20%",
+        "mostPopular": "الأكثر شعبية",
+        "perMonth": "/شهر",
+        "billedYearly": "تُدفع {{price}}$ سنوياً",
+        "unlimited": "غير محدود",
+        "aiMinutes": "دقائق ذكاء اصطناعي/شهر",
+        "concurrentCalls": "مكالمات متزامنة",
+        "concurrentCall": "مكالمة متزامنة",
+        "teamMembers": "أعضاء فريق",
+        "teamMember": "عضو فريق",
+        "getStarted": "ابدأ الآن"
+    }
+}

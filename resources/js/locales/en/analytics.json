@@ -1,0 +1,53 @@
+{
+  "title": "Analytics",
+  "headerTitle": "ANALYTICS",
+  "subtitle": "Performance metrics, AI insights, and operational trends",
+  "exportBtn": "Export Report",
+  "stats": {
+    "totalCalls": "Total Calls",
+    "aiResolution": "AI Resolution",
+    "avgHandleTime": "Avg Handle Time",
+    "patientSatisfaction": "Patient Satisfaction",
+    "thisMonth": "this month"
+  },
+  "volumeTrends": {
+    "title": "CALL_VOLUME_TRENDS",
+    "subtitle": "Weekly call distribution by resolution type",
+    "totalCalls": "Total Calls",
+    "aiResolved": "AI Resolved",
+    "escalated": "Escalated",
+    "callsTooltip": "{{count}} calls"
+  },
+  "aiPerformance": {
+    "title": "AI_PERFORMANCE",
+    "intentRecognition": "Intent Recognition",
+    "sentimentAnalysis": "Sentiment Analysis",
+    "responseQuality": "Response Quality"
+  },
+  "categories": {
+    "title": "CALL_CATEGORIES",
+    "empty": "No call data available"
+  },
+  "topIntents": {
+    "title": "TOP_INTENTS_DETECTED",
+    "empty": "No intent data available"
+  },
+  "enhanced": {
+    "fromLastMonth": "from last month",
+    "improvement": "improvement",
+    "callDistribution": "CALL_DISTRIBUTION",
+    "totalCallsUpper": "TOTAL CALLS",
+    "distributionLabels": {
+      "appointments": "Appointments",
+      "rxRefills": "Rx Refills",
+      "labInquiries": "Lab Inquiries",
+      "billing": "Billing",
+      "other": "Other"
+    },
+    "metrics": {
+      "callVolume": "Call Volume",
+      "resolutionRate": "Resolution Rate",
+      "avgWaitTime": "Avg Wait Time"
+    }
+  }
+}

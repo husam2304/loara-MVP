@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Clinic Panel — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="clinic-panel">
+    <div class="eyebrow">Features</div>
+    <h1>Clinic Panel</h1>
+    <p class="lead">The day-to-day workspace for clinic staff. Available to clinic roles on an active subscription; some modules require specific plan features.</p>
+
+    <h2>Dashboard</h2>
+    <p>Landing screen at <code>/dashboard</code>. Surfaces today's snapshot — call volume, upcoming and recent appointments, missed calls, and AI performance — plus quick actions and a live notifications feed (missed calls, cancellations, upcoming appointments) shared across the app.</p>
+
+    <h2>Call Center</h2>
+    <p>At <code>/call-center</code>. Shows live/active calls and a paginated call log with caller, type, category, duration, and resolution. Staff can start <strong>outbound</strong> calls — single or batch — which dial through the clinic's Vapi assistant. Call status can be polled live from Vapi. Requires a configured Vapi assistant and phone number; outbound calls respect the plan's minute limit. See <a href="ai-overview.html">AI Voice Agent</a>.</p>
+
+    <h2>Appointments</h2>
+    <p>At <code>/appointments</code> with day and week views. Staff can:</p>
+    <ul>
+        <li><strong>Book</strong> an appointment (patient, provider, type, time) — a conflict check prevents double-booking a provider.</li>
+        <li><strong>Check in</strong> scheduled/confirmed appointments.</li>
+        <li><strong>Reschedule</strong> (also conflict-checked) and <strong>cancel</strong> with a reason.</li>
+    </ul>
+    <p>The page also shows waitlist entries and stats (today's count, remaining, no-show rate vs. the prior period, average duration).</p>
+
+    <h2>Patients</h2>
+    <p>At <code>/patients</code>. Search the directory by name, email, or phone and filter by status. <strong>Add Patient</strong> opens a form to create a record; <strong>Patient detail</strong> shows demographics, allergies, active medications, latest vitals, primary insurance, upcoming appointments, and a combined timeline of past visits and AI calls.</p>
+
+    <h2>Providers</h2>
+    <p>At <code>/providers</code>. Create, edit, and deactivate providers (doctors). Providers carry schedules and block times that feed appointment availability and the AI's <code>check_schedule</code> tool.</p>
+
+    <h2>Triage rules <span class="pill">feature: triage</span></h2>
+    <p>At <code>/triage-rules</code>. Define rules that classify calls by urgency: a name, priority, action (transfer, callback, alert, voicemail), and trigger keywords by category. Rules can be created, edited, toggled active/inactive, and deleted. They power the AI's <code>assess_urgency</code> tool and the escalation paths shown alongside.</p>
+
+    <h2>Integrations <span class="pill">feature: integrations</span></h2>
+    <p>At <code>/integrations</code>. Register third-party connections (EHR, payments, etc.), connect/disconnect them, and run a <strong>Sync</strong> that records an entry in the integration's sync log (audit history). See <a href="white-label.html">connectors note</a> for extending sync with real provider APIs.</p>
+
+    <h2>Analytics</h2>
+    <p>At <code>/analytics</code>. Real metrics computed from the clinic's data: call volume over time, AI resolution rate, average handle time, satisfaction, call categories, and top intents. Includes CSV export. Advanced analytics access is gated by the <code>advanced_analytics</code> feature.</p>
+
+    <h2>Landing-page CMS</h2>
+    <p>At <code>/landing-page</code> (clinic owner). Edit the clinic's public marketing page section by section — hero, features, how-it-works, stats, pricing, CTA, footer, and example workflows — without touching code.</p>
+
+    <h2>Settings</h2>
+    <p>At <code>/settings</code> (clinic owner). Configure:</p>
+    <ul>
+        <li><strong>Clinic profile</strong> — name, contact, address, timezone.</li>
+        <li><strong>Logo &amp; favicon</strong> uploads (validated image types and size).</li>
+        <li><strong>Operating hours</strong> — per-day open/close, used by the AI to know when the clinic is open.</li>
+        <li><strong>AI Assistant</strong> — the full Vapi assistant configuration and phone number (see <a href="vapi-setup.html">Vapi Setup</a>).</li>
+        <li>Reminder and notification preferences.</li>
+    </ul>
+
+    <h2>Team management</h2>
+    <p>Clinic owners manage staff at <code>/admin/users</code> — create, update, and remove users within their clinic, and impersonate a staff member to troubleshoot (see <a href="platform-admin.html">impersonation</a>).</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

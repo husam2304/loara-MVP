@@ -1,0 +1,61 @@
+{
+  "title": "Call Center",
+  "headerTitle": "CALL_CENTER",
+  "subtitle": "Monitor and manage all inbound and outbound calls in real-time",
+  "stats": {
+    "activeCalls": "Active Calls",
+    "inProgress": "in progress",
+    "callsToday": "Calls Today",
+    "total": "total",
+    "avgDuration": "Avg Duration",
+    "today": "today",
+    "missedCalls": "Missed Calls"
+  },
+  "liveCalls": {
+    "title": "LIVE_CALLS",
+    "filters": {
+      "all": "All",
+      "inbound": "Inbound",
+      "outbound": "Outbound"
+    },
+    "unknownCaller": "Unknown Caller",
+    "noActiveCalls": "No active calls"
+  },
+  "callLog": {
+    "title": "CALL_LOG",
+    "viewTranscript": "View",
+    "columns": {
+      "caller": "Caller",
+      "phone": "Phone",
+      "type": "Type",
+      "category": "Category",
+      "duration": "Duration",
+      "status": "Status"
+    },
+    "unknown": "Unknown",
+    "pagination": "Showing {{from}}-{{to}} of {{total}} calls"
+  },
+  "callTypes": {
+    "appointment": "Appointment",
+    "insurance": "Insurance",
+    "billing": "Billing",
+    "prescription": "Prescription",
+    "triage": "Triage",
+    "general": "General",
+    "follow_up": "Follow-up",
+    "reminder": "Reminder"
+  },
+  "callDetail": {
+    "toolLog": "Tool Activity",
+    "noTranscript": "No transcript available for this call.",
+    "transcript": "Transcript",
+    "redacted": "This recording has been redacted.",
+    "recording": "Recording",
+    "summary": "Summary",
+    "sentiment": "Sentiment",
+    "title": "CALL DETAIL",
+    "loadError": "Could not load this call.",
+    "confidence": "AI Confidence",
+    "language": "Language"
+  }
+}

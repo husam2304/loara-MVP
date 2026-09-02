@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Troubleshooting — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="troubleshooting">
+    <div class="eyebrow">Operations</div>
+    <h1>Troubleshooting</h1>
+    <p class="lead">Common issues and their fixes.</p>
+
+    <h2>"Unable to locate file in Vite manifest"</h2>
+    <p>Front-end assets aren't built. Run a production build (or start the dev server):</p>
+    <pre><code>npm run build      # production
+npm run dev        # development</code></pre>
+
+    <h2>Blank page / buttons do nothing</h2>
+    <p>Usually means assets failed to load. Rebuild with <code>npm run build</code>, confirm <code>public/build/manifest.json</code> exists, and check the browser console for asset 404s. If you changed <code>.env</code> on production, run <code>php artisan config:cache</code>.</p>
+
+    <h2>Always redirected to <code>/install</code></h2>
+    <p>The app considers itself "not installed" when the database isn't reachable or hasn't been migrated. Confirm your <code>DB_*</code> settings and run <code>php artisan migrate</code>. A migrated database (a <code>users</code> table) is auto-detected as installed and writes a <code>storage/installed</code> marker.</p>
+
+    <h2>Errors show a stack trace</h2>
+    <p><code>APP_DEBUG=true</code> in production. Set <code>APP_DEBUG=false</code> and <code>APP_ENV=production</code>, then <code>php artisan config:cache</code>. Custom 404/500/503 pages will then be shown instead.</p>
+
+    <h2>Vapi webhook returns 401</h2>
+    <p>The <code>x-vapi-secret</code> header doesn't match <code>VAPI_SERVER_SECRET</code>. Verify both sides match, and clear cached config (<code>php artisan config:cache</code>). See <a href="webhooks.html">Webhooks</a>.</p>
+
+    <h2>AI doesn't answer calls</h2>
+    <ul>
+        <li><code>VAPI_PRIVATE_KEY</code> is set and valid.</li>
+        <li>The clinic has a provisioned phone number and a saved AI configuration (<strong>Settings → AI Assistant</strong>).</li>
+        <li>The Vapi webhook URL points to your public <code>/api/webhooks/vapi</code> and the secret matches.</li>
+        <li>Your Vapi account has call balance.</li>
+        <li>The clinic isn't over its monthly minute limit (inbound calls are declined when exceeded). See <a href="billing.html">Usage metering</a>.</li>
+    </ul>
+
+    <h2>Appointment reminders not sending</h2>
+    <p>The scheduler isn't running. Add the cron entry so <code>schedule:run</code> fires every minute, and make sure a queue worker and SMTP are configured. See <a href="deployment.html">Deployment</a>.</p>
+    <pre><code>* * * * * cd /path/to/app &amp;&amp; php artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1</code></pre>
+
+    <h2>Queued work not processing</h2>
+    <p>Start a worker: <code>php artisan queue:work</code>. The default driver is <code>database</code>; ensure the <code>jobs</code> table exists (it ships in migrations).</p>
+
+    <h2>"This clinic account has been disabled"</h2>
+    <p>A platform admin disabled the clinic. Re-enable it in <strong>Platform → Clinics</strong>. See <a href="platform-admin.html">Platform Admin</a>.</p>
+
+    <h2>Stripe checkout returns but no subscription</h2>
+    <p>The webhook may be delayed or misconfigured. The Billing page shows a "finalizing" state and polls; if it never resolves, confirm the Stripe webhook points to <code>/api/webhooks/stripe</code> with the correct signing secret. See <a href="webhooks.html">Webhooks</a>.</p>
+
+    <h2>Permission denied writing storage</h2>
+    <pre><code>chmod -R 775 storage bootstrap/cache
+chown -R www-data:www-data storage bootstrap/cache</code></pre>
+
+    <h2>Still stuck?</h2>
+    <p>Check <code>storage/logs/laravel.log</code> for the underlying error, and review the <a href="faq.html">FAQ</a>.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

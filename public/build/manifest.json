@@ -1,0 +1,29 @@
+{
+  "_vapi-CuK6pNp_.js": {
+    "file": "assets/vapi-CuK6pNp_.js",
+    "name": "vapi",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx"
+    ]
+  },
+  "resources/css/app.css": {
+    "file": "assets/app-BCCEB9W_.css",
+    "src": "resources/css/app.css",
+    "isEntry": true,
+    "name": "app",
+    "names": [
+      "app.css"
+    ]
+  },
+  "resources/js/app.tsx": {
+    "file": "assets/app-BGKjZQCg.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
+    "isEntry": true,
+    "dynamicImports": [
+      "_vapi-CuK6pNp_.js",
+      "_vapi-CuK6pNp_.js"
+    ]
+  }
+}

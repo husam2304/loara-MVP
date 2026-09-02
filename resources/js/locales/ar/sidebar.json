@@ -1,0 +1,49 @@
+{
+  "clinic": {
+    "noClinic": "لا توجد عيادة",
+    "sections": {
+      "overview": "نظرة عامة",
+      "management": "الإدارة",
+      "clinicAdmin": "إدارة العيادة"
+    },
+    "nav": {
+      "dashboard": "لوحة التحكم",
+      "callCenter": "مركز الاتصال",
+      "appointments": "المواعيد",
+      "patients": "المرضى",
+      "doctors": "الأطباء",
+      "insurance": "التأمين",
+      "analytics": "التحليلات",
+      "triageRules": "قواعد الفرز",
+      "integrations": "التكاملات",
+      "workflow": "سير العمل",
+      "landingPage": "صفحة الهبوط",
+      "billing": "الفوترة",
+      "settings": "الإعدادات",
+      "users": "المستخدمون"
+    },
+    "collapse": "طي",
+    "expandSidebar": "توسيع الشريط الجانبي",
+    "aiAgentActive": "الوكيل الذكي نشط",
+    "readyForCalls": "جاهز لاستقبال المكالمات",
+    "impersonating": "انتحال هوية",
+    "signOut": "تسجيل الخروج"
+  },
+  "platform": {
+    "badge": "إدارة المنصة",
+    "superAdmin": "مسؤول عام",
+    "sections": {
+      "overview": "نظرة عامة",
+      "management": "الإدارة",
+      "configuration": "الإعدادات العامة"
+    },
+    "nav": {
+      "dashboard": "لوحة التحكم",
+      "clinics": "العيادات",
+      "users": "المستخدمون",
+      "pricing": "التسعير",
+      "settings": "الإعدادات"
+    },
+    "signOut": "تسجيل الخروج"
+  }
+}

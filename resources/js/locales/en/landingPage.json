@@ -1,0 +1,152 @@
+{
+  "cms": {
+    "title": "Landing Page CMS",
+    "subtitle": "Manage public landing page content"
+  },
+  "common": {
+    "saving": "Saving...",
+    "saveChanges": "Save Changes",
+    "sectionLabel": "Section Label",
+    "heading": "Heading",
+    "description": "Description",
+    "addItem": "Add Item"
+  },
+  "hero": {
+    "addBadge": "Add Badge"
+  },
+  "features": {
+    "addFeature": "Add Feature"
+  },
+  "howItWorks": {
+    "addStep": "Add Step"
+  },
+  "stats": {
+    "addStat": "Add Stat"
+  },
+  "testimonials": {
+    "add": "Add Testimonial"
+  },
+  "faq": {
+    "add": "Add FAQ"
+  },
+  "workflows": {
+    "add": "Add Flow"
+  },
+  "footer": {
+    "addLink": "Add Link"
+  },
+  "editor": {
+    "tabs": {
+      "hero": "Hero",
+      "features": "Features",
+      "showcase": "Showcase",
+      "howItWorks": "How It Works",
+      "security": "Security",
+      "stats": "Stats",
+      "pricing": "Pricing",
+      "testimonials": "Testimonials",
+      "faq": "FAQ",
+      "cta": "CTA",
+      "footer": "Footer",
+      "workflows": "Workflows"
+    },
+    "pageTitle": "Landing Page — CMS",
+    "sidebarTitle": "Landing Page",
+    "sidebarSubtitle": "Manage your public landing page content",
+    "common": {
+      "icon": "Icon",
+      "title": "Title",
+      "type": "Type",
+      "content": "Content",
+      "name": "Name"
+    },
+    "hero": {
+      "sectionTitle": "Hero Section",
+      "badgeText": "Badge Text",
+      "badgeTextExample": "e.g. AI-Powered Healthcare",
+      "headlineLine1": "Headline Line 1",
+      "headlineLine2": "Headline Line 2",
+      "highlightWord": "Highlight Word",
+      "highlightWordPlaceholder": "Word to highlight in the headline",
+      "primaryCtaText": "Primary CTA Text",
+      "secondaryCtaText": "Secondary CTA Text",
+      "buttonLabel": "Button Label",
+      "badgeTextPlaceholder": "Badge text",
+      "sectionDescription": "The main banner visitors see first"
+    },
+    "features": {
+      "sectionTitle": "Features Section",
+      "sectionDescription": "Highlight your product capabilities"
+    },
+    "howItWorks": {
+      "sectionTitle": "How It Works",
+      "number": "Number",
+      "sectionDescription": "Step-by-step process explanation"
+    },
+    "stats": {
+      "sectionTitle": "Stats Section",
+      "labelExample": "e.g. Patient Satisfaction",
+      "sectionDescription": "Key metrics to build trust"
+    },
+    "pricing": {
+      "sectionTitle": "Pricing Section",
+      "labelExample": "e.g. Pricing",
+      "sectionDescription": "Heading and copy for the pricing area — plans are managed in Admin > Pricing"
+    },
+    "cta": {
+      "sectionTitle": "Call to Action",
+      "headline": "Headline",
+      "primaryButtonText": "Primary Button Text",
+      "secondaryButtonText": "Secondary Button Text",
+      "sectionDescription": "Final conversion section"
+    },
+    "footer": {
+      "sectionTitle": "Footer",
+      "copyrightText": "Copyright Text",
+      "urlPlaceholder": "https://...",
+      "addSocialLink": "Add Social Link",
+      "sectionDescription": "Bottom section with links and copyright"
+    },
+    "workflows": {
+      "sectionTitle": "Workflows",
+      "bookingFlow": "Booking Flow",
+      "triageFlow": "Triage Flow",
+      "topLabelOptional": "Top Label (optional)",
+      "badgeText": "Badge Text",
+      "badgeColor": "Badge Color",
+      "badgeColorExample": "e.g. emerald, blue",
+      "addCard": "Add Card",
+      "sectionDescription": "Visual flow diagrams for booking and triage"
+    },
+    "showcase": {
+      "sectionTitle": "Product Showcase",
+      "items": "Showcase Items",
+      "imageUrlLabel": "Image URL (optional — a labelled placeholder is shown when empty)",
+      "imageUrlPlaceholder": "/images/screenshot.png",
+      "bullets": "Bullets (one per line)",
+      "addItem": "Add Showcase Item",
+      "sectionDescription": "Alternating screenshot + text rows"
+    },
+    "security": {
+      "sectionTitle": "Security & Compliance",
+      "items": "Security Items",
+      "addItem": "Add Security Item",
+      "sectionDescription": "Trust signals for healthcare buyers"
+    },
+    "testimonials": {
+      "sectionTitle": "Testimonials",
+      "items": "Testimonials",
+      "quote": "Quote",
+      "role": "Role / Clinic",
+      "sectionDescription": "Customer quotes and social proof"
+    },
+    "faq": {
+      "sectionTitle": "FAQ",
+      "questions": "Questions",
+      "question": "Question",
+      "answer": "Answer",
+      "addQuestion": "Add Question",
+      "sectionDescription": "Common pre-sales questions"
+    }
+  }
+}

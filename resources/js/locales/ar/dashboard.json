@@ -1,0 +1,73 @@
+{
+  "title": "لوحة القيادة",
+  "headerTitle": "لوحة القيادة",
+  "subtitle": "نظرة عامة على العيادة الخاصة بك",
+  "stats": {
+    "callsToday": "إجمالي مكالمات اليوم",
+    "appointmentsToday": "المواعيد المحجوزة",
+    "avgResponseTime": "متوسط وقت الاستجابة",
+    "resolutionRate": "معدل الحل",
+    "today": "اليوم"
+  },
+  "callActivity": {
+    "title": "نشاط المكالمات",
+    "subtitle": "المكالمات الواردة والصادرة هذا الأسبوع",
+    "inbound": "واردة",
+    "outbound": "صادرة"
+  },
+  "recentCalls": {
+    "title": "المكالمات الأخيرة",
+    "viewAll": "عرض الكل",
+    "unknownCaller": "متصل غير معروف",
+    "noRecentCalls": "لا توجد مكالمات أخيرة",
+    "resolution": {
+      "resolved": "تم الحل",
+      "escalated": "تم التصعيد",
+      "callback": "إعادة اتصال",
+      "voicemail": "بريد صوتي"
+    },
+    "status": {
+      "completed": "مكتملة",
+      "missed": "فائتة",
+      "active": "نشطة",
+      "ringing": "ترن",
+      "failed": "فشلت",
+      "transferred": "محولة",
+      "voicemail": "بريد صوتي"
+    },
+    "types": {
+      "appointment": "موعد",
+      "insurance": "تأمين",
+      "billing": "فوترة",
+      "prescription": "وصفة طبية",
+      "triage": "فرز",
+      "general": "عام",
+      "follow_up": "متابعة",
+      "reminder": "تذكير"
+    }
+  },
+  "upcomingAppointments": {
+    "title": "المواعيد القادمة",
+    "unknownPatient": "مريض غير معروف",
+    "appointment": "موعد",
+    "min": "دقيقة",
+    "noUpcoming": "لا توجد مواعيد قادمة"
+  },
+  "quickActions": {
+    "title": "إجراءات سريعة",
+    "actions": {
+      "startCampaign": "بدء حملة اتصالات صادرة",
+      "manualAppointment": "حجز موعد يدوياً",
+      "addPatient": "إضافة مريض جديد",
+      "viewTranscripts": "عرض نصوص المكالمات"
+    }
+  },
+  "aiPerformance": {
+    "title": "أداء الذكاء الاصطناعي",
+    "metrics": {
+      "intentRecognition": "التعرف على النوايا",
+      "callCompletion": "إكمال المكالمات",
+      "patientSatisfaction": "رضا المرضى"
+    }
+  }
+}

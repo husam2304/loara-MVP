@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: loara
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /up
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: SESSION_DRIVER
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: QUEUE_CONNECTION
+        value: sync
+      - key: FILESYSTEM_DISK
+        value: local
+      # Set these in the Render dashboard (Secret) instead of committing them:
+      # APP_KEY, DB_HOST, DB_PORT, DB_DATABASE, DB_USERNAME, DB_PASSWORD,
+      # VAPI_PRIVATE_KEY, VAPI_PUBLIC_KEY, VAPI_SERVER_SECRET (or set Vapi
+      # keys later from Platform Settings once the app is live), STRIPE_*,
+      # MAIL_* (or configure SMTP later from Platform Settings)

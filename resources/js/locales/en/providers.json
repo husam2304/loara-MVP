@@ -1,0 +1,88 @@
+{
+  "title": "Doctors",
+  "dashboardTitle": "DOCTORS",
+  "dashboardSubtitle": "Manage doctors, schedules, and specialties",
+  "addDoctor": "Add Doctor",
+  "stats": {
+    "totalDoctors": "Total Doctors",
+    "activeDoctors": "Active Doctors",
+    "ofTotal": "of total",
+    "specialties": "Specialties",
+    "avgApptsWeek": "Avg Appts/Week",
+    "acrossActive": "across active doctors"
+  },
+  "directory": {
+    "title": "DOCTOR_DIRECTORY",
+    "searchPlaceholder": "Search doctors...",
+    "allSpecialties": "All Specialties",
+    "allStatus": "All Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "columns": {
+      "doctor": "Doctor",
+      "npi": "NPI",
+      "schedule": "Schedule",
+      "patients": "Patients",
+      "status": "Status",
+      "actions": "Actions"
+    },
+    "noDoctorsFound": "No doctors found",
+    "showing": "Showing {{from}}-{{to}} of {{total}} doctors",
+    "noDoctors": "No doctors"
+  },
+  "schedule": {
+    "noHours": "No hours set",
+    "everyDay": "Every day",
+    "monFri": "Mon–Fri",
+    "unavailable": "Unavailable",
+    "to": "to",
+    "days": {
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday"
+    },
+    "daysShort": {
+      "sun": "Sun",
+      "mon": "Mon",
+      "tue": "Tue",
+      "wed": "Wed",
+      "thu": "Thu",
+      "fri": "Fri",
+      "sat": "Sat"
+    }
+  },
+  "modals": {
+    "new": {
+      "title": "NEW_DOCTOR",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "doctorTitle": "Title",
+      "specialty": "Specialty",
+      "select": "Select...",
+      "npi": "NPI Number (optional)",
+      "npiPlaceholder": "e.g. 1234567890",
+      "color": "Color",
+      "cancel": "Cancel",
+      "create": "Create Doctor",
+      "creating": "Creating..."
+    },
+    "edit": {
+      "title": "EDIT_DOCTOR",
+      "npi": "NPI Number",
+      "status": "Status",
+      "weeklySchedule": "Weekly Schedule",
+      "saveChanges": "Save Changes",
+      "saving": "Saving..."
+    },
+    "delete": {
+      "title": "DELETE_DOCTOR",
+      "confirmation": "Are you sure you want to delete <1>{{name}}</1>? This action can be undone by an administrator.",
+      "delete": "Delete",
+      "deleting": "Deleting..."
+    }
+  }
+}

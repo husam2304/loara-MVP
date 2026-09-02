@@ -1,0 +1,53 @@
+{
+  "title": "التحليلات",
+  "headerTitle": "التحليلات",
+  "subtitle": "مقاييس الأداء، رؤى الذكاء الاصطناعي، والاتجاهات التشغيلية",
+  "exportBtn": "تصدير التقرير",
+  "stats": {
+    "totalCalls": "إجمالي المكالمات",
+    "aiResolution": "حل الذكاء الاصطناعي",
+    "avgHandleTime": "متوسط وقت المعالجة",
+    "patientSatisfaction": "رضا المرضى",
+    "thisMonth": "هذا الشهر"
+  },
+  "volumeTrends": {
+    "title": "اتجاهات حجم المكالمات",
+    "subtitle": "توزيع المكالمات الأسبوعي حسب نوع الحل",
+    "totalCalls": "إجمالي المكالمات",
+    "aiResolved": "تم حلها بواسطة الذكاء الاصطناعي",
+    "escalated": "تم تصعيدها",
+    "callsTooltip": "{{count}} مكالمات"
+  },
+  "aiPerformance": {
+    "title": "أداء الذكاء الاصطناعي",
+    "intentRecognition": "التعرف على النوايا",
+    "sentimentAnalysis": "تحليل المشاعر",
+    "responseQuality": "جودة الاستجابة"
+  },
+  "categories": {
+    "title": "فئات المكالمات",
+    "empty": "لا تتوفر بيانات للمكالمات"
+  },
+  "topIntents": {
+    "title": "أهم النوايا المكتشفة",
+    "empty": "لا تتوفر بيانات للنوايا"
+  },
+  "enhanced": {
+    "fromLastMonth": "مقارنة بالشهر الماضي",
+    "improvement": "تحسن",
+    "callDistribution": "توزيع المكالمات",
+    "totalCallsUpper": "إجمالي المكالمات",
+    "distributionLabels": {
+      "appointments": "المواعيد",
+      "rxRefills": "تجديد الوصفات",
+      "labInquiries": "استفسارات المختبر",
+      "billing": "الفوترة",
+      "other": "أخرى"
+    },
+    "metrics": {
+      "callVolume": "حجم المكالمات",
+      "resolutionRate": "معدل الحل",
+      "avgWaitTime": "متوسط وقت الانتظار"
+    }
+  }
+}

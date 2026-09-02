@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vapi Setup — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="vapi-setup">
+    <div class="eyebrow">AI Voice Agent</div>
+    <h1>Vapi Setup</h1>
+    <p class="lead">Connect your Vapi account so the AI agent can answer and place calls. This is required for all voice features.</p>
+
+    <h2>1. Get your Vapi keys</h2>
+    <p>Create an account at <a href="https://dashboard.vapi.ai" target="_blank" rel="noopener">dashboard.vapi.ai</a> and copy your keys. Add them to <code>.env</code>:</p>
+    <pre><code>VAPI_PRIVATE_KEY=your-private-key
+VAPI_PUBLIC_KEY=your-public-key
+VAPI_BASE_URL=https://api.vapi.ai
+VAPI_SERVER_SECRET=a-long-random-string
+VAPI_WEBHOOK_URL=https://your-domain.com/api/webhooks/vapi</code></pre>
+    <table>
+        <thead><tr><th>Key</th><th>Role</th></tr></thead>
+        <tbody>
+            <tr><td><code>VAPI_PRIVATE_KEY</code></td><td>Server key for the REST client (create assistants, phone numbers, squads). Required.</td></tr>
+            <tr><td><code>VAPI_PUBLIC_KEY</code></td><td>Client key for the in-browser web call widget. Safe to expose.</td></tr>
+            <tr><td><code>VAPI_SERVER_SECRET</code></td><td>Shared secret you choose; Vapi sends it as the <code>x-vapi-secret</code> header so Hiro can verify webhooks.</td></tr>
+            <tr><td><code>VAPI_WEBHOOK_URL</code></td><td>Public URL of your Vapi webhook endpoint.</td></tr>
+        </tbody>
+    </table>
+    <div class="callout danger"><span class="ico">!</span><p>Keep <code>VAPI_PRIVATE_KEY</code> secret — it is never sent to the browser. The <code>VapiService</code> constructor throws if it is missing.</p></div>
+
+    <h2>2. Configure the assistant</h2>
+    <p>In the clinic panel, go to <strong>Settings → AI Assistant</strong>. Here you configure how the agent behaves:</p>
+    <ul>
+        <li>Model provider &amp; model, temperature, confidence threshold.</li>
+        <li>Voice provider, voice, and speaking rate.</li>
+        <li>Greeting message, after-hours message, and system prompt.</li>
+        <li>Behavior toggles: sentiment analysis, auto-escalation, recording, voicemail detection, HIPAA mode, interruptions.</li>
+    </ul>
+    <p>Saving syncs the assistant and its function tools to Vapi via <code>VapiService</code>.</p>
+
+    <h2>3. Provision a phone number</h2>
+    <p>From the same screen, provision a Vapi phone number for the clinic. Inbound calls to that number are routed to the clinic's assistant. The number's status, SIP URI, and provider are stored on the clinic's AI configuration.</p>
+    <div class="callout note"><span class="ico">ℹ</span><p>Your Vapi account must have call balance/credits for the assistant to answer live calls.</p></div>
+
+    <h2>4. Point Vapi at the webhook</h2>
+    <p>Hiro exposes a single Vapi webhook:</p>
+    <pre><code>POST https://your-domain.com/api/webhooks/vapi</code></pre>
+    <p>Every request is verified against <code>VAPI_SERVER_SECRET</code> using the <code>x-vapi-secret</code> header; mismatches are rejected with <code>401</code>. It handles these Vapi message types:</p>
+    <table>
+        <thead><tr><th>Message type</th><th>What Hiro does</th></tr></thead>
+        <tbody>
+            <tr><td><code>assistant-request</code></td><td>Returns the clinic's assistant or squad (and enforces minute limits).</td></tr>
+            <tr><td><code>tool-calls</code></td><td>Dispatches each tool and returns results.</td></tr>
+            <tr><td><code>status-update</code></td><td>Updates the call's lifecycle status.</td></tr>
+            <tr><td><code>transcript</code></td><td>Stores transcript lines (deduplicated).</td></tr>
+            <tr><td><code>end-of-call-report</code></td><td>Stores duration, cost, sentiment, summary, recording; records usage.</td></tr>
+        </tbody>
+    </table>
+    <p>See <a href="webhooks.html">Webhooks</a> for full payload handling.</p>
+
+    <h2>5. Local development tunnel</h2>
+    <p>Vapi must reach your machine to deliver webhooks. Use a tunnel (e.g. Expose or ngrok), then push the current tunnel URL — plus the latest tools and system prompt — to all your Vapi assistants:</p>
+    <pre><code>php artisan vapi:sync-tunnel</code></pre>
+    <p>This rewrites the assistants' server URLs to your tunnel so tool calls and events arrive locally.</p>
+
+    <h2>Multi-assistant flows</h2>
+    <p>For call routing across several specialized assistants (e.g. front desk → billing → nurse), use the <a href="workflows.html">Workflow Builder</a> to compose a Vapi <em>squad</em> and deploy it.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+{
+  "userManagement": {
+    "title": "إدارة المستخدمين",
+    "subtitle": "إدارة المستخدمين والأدوار وصلاحيات الوصول",
+    "stats": {
+      "totalUsers": "إجمالي المستخدمين",
+      "activeUsers": "المستخدمون النشطون",
+      "clinicOwners": "أصحاب العيادات",
+      "customers": "العملاء"
+    },
+    "searchPlaceholder": "البحث عن مستخدمين...",
+    "roles": {
+      "all": "جميع الأدوار",
+      "admin": "مسؤول",
+      "provider": "مقدم رعاية",
+      "staff": "موظف",
+      "billing": "الفوترة",
+      "customer": "عميل"
+    },
+    "addUser": "إضافة مستخدم",
+    "table": {
+      "user": "المستخدم",
+      "role": "الدور",
+      "title": "المسمى الوظيفي",
+      "status": "الحالة",
+      "actions": "الإجراءات",
+      "noUsers": "لم يتم العثور على مستخدمين."
+    },
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "actions": {
+      "impersonate": "انتحال هوية {{name}}",
+      "impersonateConfirm": "انتحال هوية {{name}}؟ سترى التطبيق كما لو كنت هذا المستخدم.",
+      "deactivate": "إلغاء التفعيل",
+      "activate": "تفعيل",
+      "edit": "تعديل",
+      "delete": "حذف",
+      "deleteConfirm": "هل أنت متأكد أنك تريد حذف {{name}}؟"
+    },
+    "modal": {
+      "addTitle": "إضافة مستخدم",
+      "editTitle": "تعديل مستخدم",
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "title": "المسمى الوظيفي",
+      "titlePlaceholder": "مثال: مدير المكتب",
+      "active": "نشط",
+      "cancel": "إلغاء",
+      "createUser": "إنشاء مستخدم",
+      "updateUser": "تحديث المستخدم"
+    }
+  },
+  "pricing": {
+    "pageTitle": "إدارة التسعير",
+    "pageSubtitle": "إدارة باقات الاشتراك والتسعير",
+    "planCount": "{{count}} باقة مُعدّة",
+    "addPlan": "إضافة باقة",
+    "features": {
+      "ai_calls": "مكالمات هاتفية بالذكاء الاصطناعي",
+      "appointment_booking": "حجز المواعيد",
+      "basic_analytics": "تحليلات أساسية",
+      "advanced_analytics": "تحليلات متقدمة",
+      "sms": "إشعارات الرسائل النصية",
+      "integrations": "التكاملات",
+      "triage": "قواعد الفرز",
+      "campaigns": "الحملات",
+      "custom_workflows": "سير عمل مخصص",
+      "priority_support": "دعم ذو أولوية"
+    },
+    "unlimited": "غير محدود",
+    "perMonth": "/شهر",
+    "perYear": "/سنة",
+    "minutes": "دقيقة",
+    "concurrent": "مكالمات متزامنة",
+    "teamMembers": "أعضاء الفريق",
+    "subscribers": "مشترك",
+    "status": {
+      "active": "نشطة",
+      "inactive": "غير نشطة"
+    },
+    "stripe": {
+      "synced": "مُتزامنة مع Stripe",
+      "resync": "إعادة المزامنة مع Stripe",
+      "creating": "جارٍ الإنشاء...",
+      "createProduct": "إنشاء منتج في Stripe"
+    },
+    "actions": {
+      "edit": "تعديل",
+      "delete": "حذف الباقة",
+      "deleteBlocked": "لا يمكن حذف باقة يشترك بها {{count}} مستخدم نشط.",
+      "deleteConfirm": "هل أنت متأكد أنك تريد حذف باقة {{name}}؟"
+    },
+    "form": {
+      "createTitle": "إنشاء باقة",
+      "updateTitle": "تحديث الباقة",
+      "name": "الاسم",
+      "slug": "المعرّف (Slug)",
+      "slugPlaceholder": "مثال: starter",
+      "description": "الوصف",
+      "monthlyPrice": "السعر الشهري ($)",
+      "yearlyPrice": "السعر السنوي ($)",
+      "minutesLimit": "حد الدقائق",
+      "unlimitedHint": "-1 = غير محدود",
+      "concurrent": "المكالمات المتزامنة",
+      "team": "الفريق",
+      "features": "الميزات",
+      "activeVisible": "نشطة (مرئية للعملاء)",
+      "cancel": "إلغاء"
+    }
+  },
+  "paymentGateways": {
+    "pageTitle": "بوابات الدفع",
+    "pageSubtitle": "إعداد بيانات اعتماد مزوّد الدفع لفوترة الاشتراكات",
+    "status": {
+      "connected": "متصلة",
+      "error": "خطأ",
+      "not_configured": "غير مُعدّة"
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "قبول بطاقات الائتمان والخصم وغيرها",
+      "tested": "تم الاختبار في {{date}}"
+    },
+    "webhook": {
+      "title": "رابط Webhook",
+      "instructions": "أضف هذا الرابط إلى لوحة تحكم Stripe ضمن Developers ← Webhooks",
+      "copyToClipboard": "نسخ إلى الحافظة"
+    },
+    "credentials": {
+      "title": "بيانات اعتماد API",
+      "instructions": "يمكنك إيجاد مفاتيح API في لوحة تحكم Stripe ضمن Developers ← API Keys",
+      "currentKeysConfigured": "المفاتيح الحالية المُعدّة:",
+      "publishable": "مفتاح النشر",
+      "secret": "المفتاح السري",
+      "webhook": "Webhook",
+      "publishableKey": "مفتاح النشر (Publishable Key)",
+      "secretKey": "المفتاح السري (Secret Key)",
+      "webhookSecret": "سر Webhook",
+      "enableGateway": "تفعيل البوابة"
+    },
+    "actions": {
+      "saving": "جارٍ الحفظ...",
+      "saveConfiguration": "حفظ الإعدادات",
+      "testing": "جارٍ الاختبار...",
+      "testConnection": "اختبار الاتصال",
+      "remove": "إزالة",
+      "removeConfirm": "هل أنت متأكد أنك تريد إزالة بيانات اعتماد البوابة؟"
+    }
+  }
+}

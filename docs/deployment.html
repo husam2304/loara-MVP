@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Deployment — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="deployment">
+    <div class="eyebrow">Operations</div>
+    <h1>Deployment</h1>
+    <p class="lead">Take Hiro from a working install to a production-ready deployment: secure config, built assets, a queue worker, the scheduler, and reachable webhooks.</p>
+
+    <h2>1. Production environment</h2>
+    <pre><code>APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://app.example.com</code></pre>
+    <div class="callout danger"><span class="ico">!</span><p>Never run production with <code>APP_DEBUG=true</code> — errors would expose stack traces and configuration to visitors.</p></div>
+
+    <h2>2. Optimize &amp; build</h2>
+    <pre><code>composer install --no-dev --optimize-autoloader
+php artisan config:cache
+php artisan route:cache
+php artisan event:cache
+npm install &amp;&amp; npm run build
+php artisan storage:link</code></pre>
+    <div class="callout note"><span class="ico">ℹ</span><p><code>storage:link</code> exposes uploaded logos/favicons. Re-run <code>config:cache</code> whenever you change <code>.env</code>.</p></div>
+
+    <h2>3. Queue worker</h2>
+    <p>Hiro uses the <code>database</code> queue driver by default. Run a worker (via Supervisor, systemd, or your platform's process manager):</p>
+    <pre><code>php artisan queue:work --tries=3 --max-time=3600</code></pre>
+    <p>Example Supervisor program:</p>
+    <pre><code>[program:hiro-worker]
+command=php /var/www/hiro/artisan queue:work --tries=3 --max-time=3600
+autostart=true
+autorestart=true
+numprocs=2
+redirect_stderr=true
+stdout_logfile=/var/www/hiro/storage/logs/worker.log</code></pre>
+
+    <h2>4. Scheduler (cron)</h2>
+    <p>Add Laravel's scheduler to cron. It runs <code>appointments:send-reminders</code> every minute to email upcoming-appointment reminders.</p>
+    <pre><code>* * * * * cd /var/www/hiro &amp;&amp; php artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1</code></pre>
+    <div class="callout note"><span class="ico">ℹ</span><p><strong>PM2 alternative.</strong> The repo ships <code>ecosystem.config.cjs</code> at its root, which runs both the queue worker (<code>queue:work</code>) and the scheduler (<code>schedule:work</code>, no crontab needed) as managed processes:</p></div>
+    <pre><code>pm2 start ecosystem.config.cjs
+pm2 save &amp;&amp; pm2 startup        # persist across reboots
+pm2 reload ecosystem.config.cjs  # zero-downtime reload after each deploy</code></pre>
+    <p>Use either Supervisor + cron <em>or</em> PM2 — not both — so reminders are dispatched and processed exactly once.</p>
+
+    <h2>5. HTTPS &amp; web root</h2>
+    <ul>
+        <li>Point your web server's document root at <code>public/</code>.</li>
+        <li>Serve over <strong>HTTPS</strong> — required by Stripe and Vapi webhooks.</li>
+    </ul>
+
+    <h2>6. Configure webhooks</h2>
+    <p>Register both webhook endpoints with the respective providers (they must be publicly reachable over HTTPS):</p>
+    <table>
+        <thead><tr><th>Provider</th><th>Endpoint</th><th>Secret</th></tr></thead>
+        <tbody>
+            <tr><td>Vapi</td><td><code>/api/webhooks/vapi</code></td><td><code>VAPI_SERVER_SECRET</code></td></tr>
+            <tr><td>Stripe</td><td><code>/api/webhooks/stripe</code></td><td><code>STRIPE_WEBHOOK_SECRET</code></td></tr>
+        </tbody>
+    </table>
+    <p>See <a href="webhooks.html">Webhooks</a>.</p>
+
+    <h2>7. First-run / updates</h2>
+    <p>On a fresh server you can either use the <a href="installation.html">web installer</a> or run migrations manually. After deploying an update, run pending migrations and rebuild caches:</p>
+    <pre><code>php artisan migrate --force
+php artisan config:cache &amp;&amp; php artisan route:cache
+npm run build</code></pre>
+
+    <h2>Deployment checklist</h2>
+    <ul>
+        <li><code>APP_DEBUG=false</code>, <code>APP_ENV=production</code>, valid <code>APP_KEY</code>.</li>
+        <li>Assets built (<code>npm run build</code>); <code>storage:link</code> created.</li>
+        <li>Queue worker running; scheduler cron installed.</li>
+        <li>HTTPS active; both webhooks registered and verified.</li>
+        <li><code>APP_NAME</code> set to your brand (see <a href="white-label.html">White-Label</a>).</li>
+    </ul>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

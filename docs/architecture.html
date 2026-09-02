@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Architecture — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="architecture">
+    <div class="eyebrow">Core Concepts</div>
+    <h1>Architecture</h1>
+    <p class="lead">Hiro is a server-rendered SPA: Laravel 12 on the back end, Inertia.js bridging to a React 19 + TypeScript front end. There is no separate REST API to maintain for the UI — controllers return Inertia pages.</p>
+
+    <h2>Request lifecycle</h2>
+    <ul>
+        <li>Browser requests a route → a Laravel controller resolves data and returns <code>Inertia::render('PageName', $props)</code>.</li>
+        <li>Inertia ships the page component name + props as JSON; React renders <code>resources/js/pages/PageName.tsx</code>.</li>
+        <li>Subsequent navigations are XHR visits — no full page reload.</li>
+    </ul>
+
+    <h2>Two isolated panels</h2>
+    <p>Routes are defined in <code>routes/web.php</code> and split into two non-overlapping areas:</p>
+    <table>
+        <thead><tr><th>Panel</th><th>Prefix</th><th>Gate</th><th>React pages</th></tr></thead>
+        <tbody>
+            <tr><td>Platform (SaaS operator)</td><td><code>/platform</code></td><td><code>role:super_admin</code></td><td><code>resources/js/pages/Platform/</code></td></tr>
+            <tr><td>Clinic (clinic staff)</td><td>everything else</td><td><code>redirect_super_admin</code></td><td><code>resources/js/pages/</code></td></tr>
+        </tbody>
+    </table>
+    <p>A SuperAdmin is bounced out of clinic routes; clinic users cannot reach platform routes. See <a href="roles-and-tenancy.html">Roles &amp; Multi-Tenancy</a>.</p>
+
+    <h2>Middleware stack</h2>
+    <p>Aliases are registered in <code>bootstrap/app.php</code> and layered per route group:</p>
+    <table>
+        <thead><tr><th>Alias</th><th>Effect</th></tr></thead>
+        <tbody>
+            <tr><td><code>role:a,b,c</code></td><td>Gate by <code>UserRole</code> enum.</td></tr>
+            <tr><td><code>subscribed</code></td><td>Require an active <code>ClinicSubscription</code>.</td></tr>
+            <tr><td><code>feature:x</code></td><td>Require a per-plan feature flag (<code>advanced_analytics</code>, <code>triage</code>, <code>integrations</code>, <code>custom_workflows</code>).</td></tr>
+            <tr><td><code>clinic_enabled</code></td><td>Block users whose clinic has been disabled by a platform admin.</td></tr>
+            <tr><td><code>redirect_super_admin</code></td><td>Send SuperAdmins to the platform panel.</td></tr>
+        </tbody>
+    </table>
+    <p>One middleware is <em>prepended</em> to every web request — <code>RedirectIfNotInstalled</code> (first-run installer gate) — and two are <em>appended</em>: <code>EnsureClinicExists</code> and <code>HandleInertiaRequests</code>.</p>
+
+    <h2>Shared Inertia props</h2>
+    <p><code>HandleInertiaRequests::share()</code> exposes data to every page: <code>appName</code>, <code>clinic</code> (with operating hours), <code>auth.user</code>, <code>planFeatures</code>, <code>impersonating</code>, <code>flash</code>, and a computed <code>notifications</code> feed (missed calls, cancelled/upcoming appointments). Add cross-cutting UI state here rather than per-controller.</p>
+
+    <h2>Domain modeling</h2>
+    <ul>
+        <li><strong>Enums everywhere.</strong> ~45 PHP enums in <code>app/Enums/</code> model domain values (roles, statuses, call tool names, plans, etc.). Reuse the enum rather than raw strings.</li>
+        <li><strong>Eloquent relationships</strong> with eager loading to avoid N+1.</li>
+        <li><strong>Form Requests</strong> for validation — over 35 request classes in <code>app/Http/Requests/</code>.</li>
+        <li><strong>Services</strong> in <code>app/Services/</code> hold business logic: <code>VapiService</code>, <code>VapiToolDispatcher</code>, <code>SubscriptionService</code>, <code>UsageService</code>, <code>InsuranceVerificationManager</code>, <code>ClinicProvisioner</code>, and more.</li>
+    </ul>
+
+    <h2>Key subsystems</h2>
+    <div class="cards">
+        <a class="card" href="ai-overview.html"><div class="card-title">AI voice flow</div><div class="card-desc">VapiService + VapiToolDispatcher + the Vapi webhook controller power inbound/outbound calls and tools.</div></a>
+        <a class="card" href="billing.html"><div class="card-title">Billing</div><div class="card-desc">SubscriptionService + pluggable payment gateways behind PaymentGatewayManager; usage via UsageService.</div></a>
+        <a class="card" href="insurance.html"><div class="card-title">Insurance</div><div class="card-desc">InsuranceVerificationManager fronts swappable Claim.MD / Stedi gateways.</div></a>
+        <a class="card" href="workflows.html"><div class="card-title">Workflow builder</div><div class="card-desc">WorkflowNode / WorkflowEdge compose Vapi squads, deployed from the UI.</div></a>
+    </div>
+
+    <h2>Directory map</h2>
+    <pre><code>app/
+  Enums/            domain enums (~45)
+  Http/
+    Controllers/    clinic + Platform/ + Admin/ + Api/ (webhooks)
+    Middleware/     role, feature, subscription, clinic gates
+    Requests/       Form Request validation
+  Models/           Eloquent models (clinic-scoped)
+  Services/         business logic (Vapi, billing, insurance…)
+  Notifications/    mailables
+config/             vapi.php, subscriptions.php, services.php
+database/
+  migrations/  factories/  seeders/   demo data
+resources/js/
+  pages/            Inertia React pages (+ Platform/, Admin/, Auth/)
+  components/        shared React components
+routes/
+  web.php  api.php  console.php</code></pre>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

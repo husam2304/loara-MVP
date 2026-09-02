@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Introduction — Hiro Docs</title>
+    <meta name="description" content="Hiro is a multi-tenant SaaS that gives healthcare clinics an AI voice agent for front-desk tasks, plus a full clinic management dashboard.">
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="introduction">
+    <div class="eyebrow">Get Started</div>
+    <h1>Hiro — AI-Powered Front Desk</h1>
+    <p class="lead">Hiro is a multi-tenant SaaS application that gives healthcare clinics an AI voice agent which answers calls and performs front-desk tasks — booking, rescheduling, patient lookup, insurance checks, and triage — alongside a complete clinic-management dashboard and a platform admin panel for running it as a business.</p>
+
+    <div class="callout tip">
+        <span class="ico">★</span>
+        <p>New here? Jump straight to <a href="installation.html">Installation</a>, then follow the <a href="quickstart.html">Quick Start</a> to log in and explore the seeded demo data.</p>
+    </div>
+
+    <h2>What Hiro does</h2>
+    <p>A clinic plugs Hiro into its phone line. When a patient calls, an AI voice agent (powered by <a href="https://vapi.ai" target="_blank" rel="noopener">Vapi</a>) answers, verifies the caller's identity, and uses server-side tools to look up records, book or move appointments, check insurance eligibility, and assess urgency — escalating to a human when needed. Staff manage everything from a web dashboard: calls, appointments, patients, providers, insurance claims, analytics, and AI configuration.</p>
+
+    <h2>Technology stack</h2>
+    <table>
+        <thead><tr><th>Layer</th><th>Technology</th></tr></thead>
+        <tbody>
+            <tr><td>Backend</td><td>Laravel 12 (PHP 8.2+)</td></tr>
+            <tr><td>Frontend</td><td>Inertia.js v2 + React 19 (TypeScript)</td></tr>
+            <tr><td>Styling</td><td>Tailwind CSS v4</td></tr>
+            <tr><td>AI voice</td><td>Vapi (assistants, phone numbers, squads, tools)</td></tr>
+            <tr><td>Billing</td><td>Stripe (direct integration, no Cashier)</td></tr>
+            <tr><td>Insurance</td><td>Claim.MD &amp; Stedi gateways</td></tr>
+            <tr><td>Database</td><td>MySQL 8 / MariaDB (SQLite for tests)</td></tr>
+            <tr><td>Build</td><td>Vite</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Feature highlights</h2>
+    <div class="cards">
+        <a class="card" href="ai-overview.html"><div class="card-title">AI Voice Agent</div><div class="card-desc">Inbound &amp; outbound calls, 14 server-side tools, identity verification, transcripts, and escalation.</div></a>
+        <a class="card" href="workflows.html"><div class="card-title">Visual Workflow Builder</div><div class="card-desc">Compose multi-assistant call flows (Vapi squads) and deploy them with one click.</div></a>
+        <a class="card" href="clinic-panel.html"><div class="card-title">Clinic Dashboard</div><div class="card-desc">Call center, appointments, patients, providers, triage, analytics, and a landing-page CMS.</div></a>
+        <a class="card" href="billing.html"><div class="card-title">Subscriptions &amp; Billing</div><div class="card-desc">Stripe checkout, customer portal, DB-driven plans, usage metering, and plan-limit enforcement.</div></a>
+        <a class="card" href="insurance.html"><div class="card-title">Insurance</div><div class="card-desc">Eligibility verification and claim submission via swappable Claim.MD / Stedi gateways.</div></a>
+        <a class="card" href="platform-admin.html"><div class="card-title">Platform Admin</div><div class="card-desc">Manage clinics, users, pricing plans, payment gateways, SMTP, and branding.</div></a>
+    </div>
+
+    <h2>How it is organized</h2>
+    <p>Hiro is a true multi-tenant SaaS. A <code>Clinic</code> is the tenant and nearly every record is scoped by <code>clinic_id</code>. The application is split into two completely isolated panels:</p>
+    <ul>
+        <li><strong>Platform panel</strong> (<code>/platform/*</code>) — for the SaaS operator (SuperAdmin): clinics, platform users, pricing plans, payment gateways, and global settings.</li>
+        <li><strong>Clinic panel</strong> (everything else) — for clinic staff: dashboard, call center, appointments, patients, providers, insurance, analytics, workflows, and settings.</li>
+    </ul>
+    <p>See <a href="architecture.html">Architecture</a> and <a href="roles-and-tenancy.html">Roles &amp; Multi-Tenancy</a> for the full picture.</p>
+
+    <h2>Third-party services</h2>
+    <p>Hiro integrates with external providers. You will need accounts/keys for the features you intend to use:</p>
+    <table>
+        <thead><tr><th>Service</th><th>Required for</th><th>Required?</th></tr></thead>
+        <tbody>
+            <tr><td>Vapi</td><td>AI voice agent (the core feature)</td><td>Yes, to use voice</td></tr>
+            <tr><td>Stripe</td><td>Subscriptions &amp; payments</td><td>Yes, to charge</td></tr>
+            <tr><td>Claim.MD or Stedi</td><td>Insurance eligibility &amp; claims</td><td>Optional</td></tr>
+            <tr><td>SMTP mail server</td><td>Email (verification, reminders)</td><td>Recommended</td></tr>
+        </tbody>
+    </table>
+    <div class="callout note"><span class="ico">ℹ</span><p>The dashboard, patient/appointment management, and admin features work without any third-party keys. Vapi and Stripe keys unlock the AI calling and billing features respectively.</p></div>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

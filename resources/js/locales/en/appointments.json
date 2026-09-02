@@ -1,0 +1,135 @@
+{
+    "priorities": {
+        "urgent": "Urgent",
+        "high": "High",
+        "medium": "Medium",
+        "low": "Low"
+    },
+    "time": {
+        "today": "Today",
+        "oneDay": "One Day",
+        "days": "{{count}} days",
+        "anyDate": "Any Date",
+        "am": "AM",
+        "pm": "PM"
+    },
+    "dashboard": {
+        "title": "Appointments",
+        "subtitle": "Manage patient appointments, scheduling, and availability",
+        "newAppointment": "New Appointment",
+        "stats": {
+            "todaysAppointments": "Today's Appointments",
+            "remaining": "{{count}} remaining",
+            "forToday": "for today",
+            "noShowRate": "No-Show Rate",
+            "vsLastMonth": "vs last month",
+            "waitlist": "Waitlist",
+            "priority": "{{count}} priority",
+            "queueEntries": "in queue",
+            "avgDuration": "Avg Duration",
+            "thisMonth": "this month",
+            "completed": "completed"
+        },
+        "schedule": "Schedule",
+        "view": {
+            "day": "Day",
+            "week": "Week",
+            "today": "Today"
+        }
+    },
+    "appointmentBlock": {
+        "appointment": "Appointment",
+        "aiBooked": "AI Booked",
+        "blocked": "Blocked"
+    },
+    "selectedAppointment": {
+        "title": "Selected Appointment",
+        "aiBooked": "AI Booked",
+        "appointment": "Appointment",
+        "details": {
+            "type": "Type",
+            "time": "Time",
+            "doctor": "Doctor",
+            "room": "Room",
+            "status": "Status",
+            "notes": "Notes",
+            "noNotes": "No notes."
+        },
+        "actions": {
+            "checkIn": "Check In",
+            "reschedule": "Reschedule"
+        },
+        "emptyState": "Select an appointment to view details"
+    },
+    "waitlist": {
+        "title": "Waitlist",
+        "emptyState": "No patients in waitlist",
+        "anyType": "Any type",
+        "requested": "Requested:",
+        "waiting": "Waiting"
+    },
+    "modals": {
+        "new": {
+            "title": "New Appointment",
+            "patient": "Patient",
+            "searchPatient": "Search patient...",
+            "changePatient": "Change Patient",
+            "provider": "Provider",
+            "select": "Select...",
+            "type": "Type",
+            "dateTime": "Date & Time",
+            "room": "Room (optional)",
+            "roomPlaceholder": "e.g., Room A",
+            "reason": "Reason (optional)",
+            "reasonPlaceholder": "Reason for visit...",
+            "cancel": "Cancel",
+            "create": "Create Appointment",
+            "creating": "Creating..."
+        },
+        "reschedule": {
+            "title": "Reschedule",
+            "newDateTime": "New Date & Time",
+            "provider": "Provider (optional change)",
+            "reason": "Reason (optional)",
+            "reasonPlaceholder": "Reason for rescheduling...",
+            "cancel": "Cancel",
+            "reschedule": "Reschedule",
+            "rescheduling": "Rescheduling..."
+        },
+        "cancel": {
+            "title": "Cancel Appointment",
+            "confirmation": "Are you sure you want to cancel the appointment for <1>{{name}}</1>?",
+            "reason": "Reason (optional)",
+            "reasonPlaceholder": "Reason for cancellation...",
+            "keep": "Keep",
+            "cancelAppointment": "Cancel Appointment",
+            "cancelling": "Cancelling..."
+        },
+        "scheduleFromPatient": {
+            "title": "SCHEDULE_APPOINTMENT",
+            "patient": "Patient",
+            "doctor": "Doctor *",
+            "selectDoctor": "Select doctor...",
+            "appointmentType": "Appointment Type *",
+            "selectType": "Select type...",
+            "minSuffix": "min",
+            "dateTime": "Date & Time *",
+            "room": "Room",
+            "selectRoom": "Select room...",
+            "reason": "Reason for Visit",
+            "reasonPlaceholder": "e.g. Follow-up, Annual checkup",
+            "notes": "Notes",
+            "notesPlaceholder": "Additional notes...",
+            "scheduling": "Scheduling...",
+            "scheduleAppointment": "Schedule Appointment",
+            "rooms": {
+                "roomA": "Room A",
+                "roomB": "Room B",
+                "roomC": "Room C",
+                "roomD": "Room D",
+                "exam1": "Exam 1",
+                "exam2": "Exam 2"
+            }
+        }
+    }
+}

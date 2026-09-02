@@ -1,0 +1,99 @@
+{
+  "title": "التأمين",
+  "subtitle": "تحقق من التغطية، أدر المطالبات، وتتبع الموافقات",
+  "newClaim": "مطالبة جديدة",
+  "stats": {
+    "totalClaims": "إجمالي المطالبات",
+    "pendingClaims": "المطالبات المعلقة",
+    "approvalRate": "معدل الموافقة",
+    "avgTurnaround": "متوسط وقت الاستجابة",
+    "allTime": "كل الوقت",
+    "awaitingResolution": "في انتظار الحل",
+    "target": "الهدف",
+    "withinSla": "ضمن المدة المحددة",
+    "aboveSla": "تجاوز المدة المحددة",
+    "days": "{{count}}يوم"
+  },
+  "claimsTable": {
+    "title": "المطالبات الأخيرة",
+    "filter": "تصفية",
+    "export": "تصدير",
+    "columns": {
+      "claimId": "رقم المطالبة",
+      "patient": "المريض",
+      "provider": "مقدم الخدمة",
+      "amount": "المبلغ",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    }
+  },
+  "claimStatuses": {
+    "approved": "مقبول",
+    "pending": "معلق",
+    "inReview": "قيد المراجعة",
+    "denied": "مرفوض",
+    "submitted": "مقدم",
+    "appealed": "مستأنف"
+  },
+  "authStatuses": {
+    "approved": "مقبول",
+    "pending": "معلق",
+    "denied": "مرفوض",
+    "expired": "منتهي الصلاحية"
+  },
+  "verificationStatuses": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "error": "خطأ",
+    "unknown": "غير معروف"
+  },
+  "actions": {
+    "submitToPayer": "إرسال إلى شركة التأمين",
+    "checkStatus": "التحقق من الحالة"
+  },
+  "modals": {
+    "newClaim": {
+      "title": "مطالبة جديدة",
+      "patient": "المريض",
+      "searchPatient": "البحث عن مريض...",
+      "changePatient": "تغيير المريض",
+      "insuranceProvider": "شركة التأمين",
+      "select": "اختر...",
+      "claimNumber": "رقم المطالبة",
+      "claimNumberPlaceholder": "مثال: CLM-000123",
+      "amount": "المبلغ ($)",
+      "amountPlaceholder": "0.00",
+      "notes": "الملاحظات (اختياري)",
+      "notesPlaceholder": "ملاحظات إضافية...",
+      "cancel": "إلغاء",
+      "create": "إنشاء مطالبة",
+      "creating": "جارٍ الإنشاء..."
+    }
+  },
+  "verification": {
+    "title": "التحقق من التغطية",
+    "patient": "المريض",
+    "searchPatient": "البحث عن مريض...",
+    "noPatientsFound": "لم يتم العثور على مرضى",
+    "insurancePolicy": "بوليصة التأمين",
+    "selectPolicy": "اختر البوليصة...",
+    "noPolicies": "لا توجد بوليصة تأمين في السجل",
+    "serviceDate": "تاريخ الخدمة",
+    "verifyCoverage": "التحقق من التغطية",
+    "verifying": "جارٍ التحقق...",
+    "status": "الحالة",
+    "plan": "الخطة",
+    "group": "المجموعة",
+    "copay": "الدفع المشترك (Copay)",
+    "deductible": "التحمل المبدئي (Deductible)",
+    "coinsurance": "التأمين المشترك",
+    "oopMax": "الحد الأقصى للمصروفات",
+    "verificationFailed": "فشل التحقق. يرجى المحاولة مرة أخرى."
+  },
+  "recentVerifications": {
+    "title": "التحققات الأخيرة"
+  },
+  "priorAuthorizations": {
+    "title": "الموافقات المسبقة"
+  }
+}

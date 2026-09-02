@@ -1,0 +1,51 @@
+{
+  "tabs": {
+    "all": "All",
+    "medical": "Medical",
+    "calls": "AI Calls"
+  },
+  "actions": {
+    "back": "Back",
+    "edit": "Edit",
+    "schedule": "Schedule"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "deceased": "Deceased"
+  },
+  "patientInfo": {
+    "dob": "DATE OF BIRTH",
+    "phone": "PHONE",
+    "email": "EMAIL",
+    "address": "ADDRESS"
+  },
+  "timeline": {
+    "title": "MEDICAL_TIMELINE",
+    "noEntries": "No timeline entries found"
+  },
+  "appointments": {
+    "title": "UPCOMING_APPOINTMENTS",
+    "defaultName": "Appointment",
+    "at": "at",
+    "noAppointments": "No upcoming appointments"
+  },
+  "medications": {
+    "title": "CURRENT_MEDICATIONS",
+    "refill": "Refill",
+    "noMedications": "No active medications"
+  },
+  "vitals": {
+    "title": "VITALS_SUMMARY",
+    "bloodPressure": "Blood Pressure",
+    "heartRate": "Heart Rate",
+    "temperature": "Temperature",
+    "weight": "Weight",
+    "noVitals": "No vitals recorded"
+  },
+  "allergies": {
+    "title": "ALLERGIES_&_ALERTS",
+    "severe": "(Severe)",
+    "noAllergies": "No known allergies"
+  }
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Installation — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="installation">
+    <div class="eyebrow">Get Started</div>
+    <h1>Installation</h1>
+    <p class="lead">Install Hiro with the built-in web installer (recommended) or manually with the command line.</p>
+
+    <h2>Option A — Web installer</h2>
+    <p>The installer walks you through a requirements check, database configuration, and admin-account creation. It writes your <code>.env</code>, runs migrations, optionally seeds demo data, and locks itself when finished.</p>
+    <ol class="steps">
+        <li><span class="step-title">Upload the files</span> to your server and point the web root at the <code>public/</code> directory.</li>
+        <li><span class="step-title">Create an empty database</span> and note the host, name, username, and password.</li>
+        <li><span class="step-title">Visit <code>https://your-domain.com/install</code></span> and complete the wizard:
+            <ul>
+                <li><strong>Requirements</strong> — verifies PHP version, extensions, and writable paths.</li>
+                <li><strong>Database</strong> — enter your app name, URL, and DB credentials; the connection is tested before saving.</li>
+                <li><strong>Admin</strong> — create the SuperAdmin account; migrations run and demo data is seeded if you opt in.</li>
+                <li><strong>Done</strong> — the installer is locked.</li>
+            </ul>
+        </li>
+    </ol>
+    <div class="callout note"><span class="ico">ℹ</span><p>After completion, a <code>storage/installed</code> marker file is written and the installer redirects away. Delete that file if you ever need to re-run the wizard.</p></div>
+
+    <h2>Option B — Manual installation</h2>
+    <ol class="steps">
+        <li><span class="step-title">Copy the environment file</span> and fill in your values (see <a href="configuration.html">Configuration</a>):
+            <pre><code>cp .env.example .env</code></pre>
+        </li>
+        <li><span class="step-title">Install PHP dependencies</span>:
+            <pre><code>composer install --no-dev --optimize-autoloader</code></pre>
+        </li>
+        <li><span class="step-title">Generate the application key</span>:
+            <pre><code>php artisan key:generate</code></pre>
+        </li>
+        <li><span class="step-title">Run migrations</span> (add <code>--seed</code> to load demo data):
+            <pre><code>php artisan migrate --seed</code></pre>
+        </li>
+        <li><span class="step-title">Install &amp; build the front-end</span>:
+            <pre><code>npm install
+npm run build</code></pre>
+        </li>
+    </ol>
+    <div class="callout tip"><span class="ico">★</span><p>A migrated database is automatically detected as "installed", so a manual install will <em>not</em> redirect you back into the web installer.</p></div>
+
+    <h2>Local development</h2>
+    <p>For local work, a single command runs the PHP server, queue worker, log viewer, and Vite dev server together:</p>
+    <pre><code>composer run dev</code></pre>
+    <p>Or run the Vite dev server on its own:</p>
+    <pre><code>npm run dev</code></pre>
+    <div class="callout warn"><span class="ico">!</span><p>If a UI change does not appear, rebuild assets with <code>npm run build</code> (production) or ensure <code>npm run dev</code> is running (development).</p></div>
+
+    <h2>Verify the install</h2>
+    <ol>
+        <li>Open your site — you should reach the login page.</li>
+        <li>Log in with the seeded SuperAdmin: <code>hiro@mail.com</code> / <code>password</code>.</li>
+        <li>Continue to the <a href="quickstart.html">Quick Start</a>.</li>
+    </ol>
+
+    <h2>Run the test suite (optional)</h2>
+    <p>Hiro ships with an extensive Pest test suite that runs on an in-memory SQLite database:</p>
+    <pre><code>php artisan test --compact</code></pre>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

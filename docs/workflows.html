@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Workflow Builder — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="workflows">
+    <div class="eyebrow">AI Voice Agent</div>
+    <h1>Workflow Builder</h1>
+    <p class="lead">Compose a multi-assistant call flow — a Vapi <em>squad</em> — where calls hand off between specialized assistants (front desk, billing, nurse line), then deploy it with one click.</p>
+
+    <div class="callout note"><span class="ico">ℹ</span><p>The workflow builder requires the <code>custom_workflows</code> plan feature and the <code>clinic_owner</code> role. On lower plans the menu item is hidden and the route redirects to billing.</p></div>
+
+    <h2>Concepts</h2>
+    <table>
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+            <tr><td><strong>Workflow</strong></td><td>The squad container for one clinic (<code>SquadWorkflow</code>).</td></tr>
+            <tr><td><strong>Assistant node</strong></td><td>One AI assistant in the squad (<code>WorkflowNode</code>): name, role, system prompt, greeting, model, temperature, voice, and the tools it may use.</td></tr>
+            <tr><td><strong>Entry point</strong></td><td>The node that answers first. Exactly one node is the entry point.</td></tr>
+            <tr><td><strong>Transition</strong></td><td>A directed hand-off between two nodes (<code>WorkflowEdge</code>): a condition, an optional spoken hand-off message, and how much context to pass.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Create a workflow</h2>
+    <p>Open <strong>Workflow</strong> in the clinic panel. If none exists you'll see an empty state. Enter a name and click <strong>Create workflow</strong> — a "Front Desk" entry-point node is created automatically, pre-filled from your saved AI assistant configuration.</p>
+
+    <h2>Add assistants</h2>
+    <p>Click <strong>Add assistant</strong> and configure:</p>
+    <ul>
+        <li><strong>Name</strong> &amp; optional <strong>role</strong> (e.g. "Billing").</li>
+        <li><strong>Greeting</strong> and <strong>system prompt</strong>.</li>
+        <li><strong>Model</strong> (<code>gpt-4o</code>, <code>gpt-4o-mini</code>, <code>gpt-3.5-turbo</code>) and <strong>temperature</strong> (0–1).</li>
+        <li><strong>Voice provider</strong> (<code>vapi</code>, <code>elevenlabs</code>, <code>azure</code>) and voice name.</li>
+        <li><strong>Tools</strong> — which of the <a href="ai-tools.html">14 tools</a> this assistant may use.</li>
+    </ul>
+    <p>Use <strong>Set entry</strong> to change which node answers first, <strong>Edit</strong> to modify, or <strong>Delete</strong> (the entry node can't be deleted).</p>
+
+    <h2>Add transitions</h2>
+    <p>Click <strong>Add transition</strong> and choose:</p>
+    <ul>
+        <li><strong>From</strong> and <strong>To</strong> assistants.</li>
+        <li><strong>When (condition)</strong> — e.g. "Caller has a billing question".</li>
+        <li><strong>Hand-off message</strong> — spoken as the transfer happens.</li>
+        <li><strong>Context passed</strong> — full conversation, recent messages, or start fresh.</li>
+    </ul>
+
+    <h2>Deploy to Vapi</h2>
+    <p>Click <strong>Deploy squad</strong>. Hiro builds a Vapi squad payload from your nodes and transitions and creates or updates the squad via the API. Validation requires:</p>
+    <ul>
+        <li>At least <strong>2 assistant nodes</strong>.</li>
+        <li>Exactly <strong>one entry-point</strong> node.</li>
+        <li>The entry node has at least <strong>one outgoing transition</strong>.</li>
+        <li><code>VAPI_PRIVATE_KEY</code> is configured.</li>
+        <li>Your AI assistant configuration has been saved (so function tools exist in Vapi).</li>
+    </ul>
+    <p>On success the clinic switches to <strong>squad mode</strong> and inbound calls are served the squad. The page shows a <span class="pill">Deployed</span> badge.</p>
+    <div class="callout warn"><span class="ico">!</span><p>If deployment is blocked, the page shows the exact reason (e.g. "Workflow must have exactly one entry point node" or "Save your AI Assistant configuration first").</p></div>
+
+    <h2>Disable squad mode</h2>
+    <p>Click <strong>Disable squad</strong> to delete the Vapi squad and revert the clinic to a single assistant. The workflow definition is kept so you can redeploy later.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

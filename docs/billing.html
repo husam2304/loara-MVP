@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Billing &amp; Plans — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="billing">
+    <div class="eyebrow">Features</div>
+    <h1>Billing &amp; Plans</h1>
+    <p class="lead">Hiro bills clinics with Stripe (direct integration, no Cashier). Plans are database-driven and editable in the platform panel. Subscriptions, checkout, the customer portal, usage metering, and plan-limit enforcement are all built in.</p>
+
+    <h2>Plans</h2>
+    <p>Plans live in the <code>PlanConfiguration</code> table and are managed at <strong>Platform → Pricing</strong>. The default seed ships four tiers:</p>
+    <table>
+        <thead><tr><th>Plan</th><th>Highlights</th></tr></thead>
+        <tbody>
+            <tr><td><code>starter</code></td><td>AI calls, appointment booking, basic analytics.</td></tr>
+            <tr><td><code>growth</code></td><td>+ advanced analytics, SMS, integrations.</td></tr>
+            <tr><td><code>professional</code></td><td>+ triage, campaigns.</td></tr>
+            <tr><td><code>enterprise</code></td><td>+ custom workflows, priority support; unlimited minutes/seats.</td></tr>
+        </tbody>
+    </table>
+    <p>Each plan defines price (monthly/yearly), minute/concurrent/team limits, and <a href="roles-and-tenancy.html">feature flags</a>. A limit of <code>-1</code> means unlimited.</p>
+
+    <h2>Stripe setup</h2>
+    <ol class="steps">
+        <li><span class="step-title">Add keys</span> to <code>.env</code>:
+            <pre><code>PAYMENT_GATEWAY=stripe
+STRIPE_KEY=pk_live_…
+STRIPE_SECRET=sk_live_…
+STRIPE_WEBHOOK_SECRET=whsec_…</code></pre>
+        </li>
+        <li><span class="step-title">Create / sync plans</span> in <strong>Platform → Pricing</strong>. "Sync to Stripe" creates the products and prices and fills the <code>STRIPE_PRICE_*</code> IDs.</li>
+        <li><span class="step-title">Add the Stripe webhook</span> pointing at <code>/api/webhooks/stripe</code> (see below).</li>
+    </ol>
+
+    <h2>Subscription lifecycle</h2>
+    <p>Handled by <code>SubscriptionService</code> and surfaced on the clinic's <strong>Billing</strong> page:</p>
+    <table>
+        <thead><tr><th>Action</th><th>Behavior</th></tr></thead>
+        <tbody>
+            <tr><td>Checkout</td><td>Creates a Stripe Checkout session and redirects. On return, if the subscription hasn't synced yet the page shows a "finalizing" state and polls until the webhook lands.</td></tr>
+            <tr><td>Customer portal</td><td>Opens Stripe's hosted portal to manage payment methods and invoices.</td></tr>
+            <tr><td>Swap plan</td><td>Changes plan with proration.</td></tr>
+            <tr><td>Cancel</td><td>Cancels at period end (access retained until then).</td></tr>
+            <tr><td>Resume</td><td>Reactivates a cancelled-at-period-end subscription.</td></tr>
+            <tr><td>Trial</td><td>New signups start in <code>trialing</code> for the configured trial length (<code>config/subscriptions.php</code>).</td></tr>
+        </tbody>
+    </table>
+    <p>A grace period after <code>past_due</code> keeps access alive briefly (configurable) before service is gated by the <code>subscribed</code> middleware.</p>
+
+    <h2>Usage metering</h2>
+    <p><code>UsageService</code> records AI call minutes per clinic and compares against the plan's <code>minutes_limit</code>:</p>
+    <ul>
+        <li>Call minutes are recorded from the Vapi <code>end-of-call-report</code>.</li>
+        <li><strong>Outbound</strong> calls are blocked when the limit is exceeded.</li>
+        <li><strong>Inbound</strong> calls are declined at the assistant-request step for over-limit clinics, with a spoken message.</li>
+        <li>A limit of <code>-1</code> (Enterprise) means unlimited — never blocked.</li>
+    </ul>
+    <p>Usage and remaining minutes are shown on the Billing page.</p>
+
+    <h2>Stripe webhooks</h2>
+    <p>Hiro listens at:</p>
+    <pre><code>POST https://your-domain.com/api/webhooks/stripe</code></pre>
+    <p>Signatures are verified with <code>STRIPE_WEBHOOK_SECRET</code> and events are processed idempotently. Handled events keep the local subscription in sync — creation, updates/cancellation, invoice paid, and payment failure (which moves the subscription to <code>past_due</code>). Billing periods are read in a way compatible with current Stripe API versions. Full detail in <a href="webhooks.html">Webhooks</a>.</p>
+
+    <h2>Multiple gateways</h2>
+    <p>Payments go through <code>PaymentGatewayManager</code>, so additional gateways can be added by implementing the gateway contract and configuring them in <strong>Platform → Payment Gateways</strong>. Stripe is the default and reference implementation.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

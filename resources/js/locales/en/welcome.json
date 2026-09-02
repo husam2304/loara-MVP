@@ -1,0 +1,53 @@
+{
+    "nav": {
+        "features": "Features",
+        "product": "Product",
+        "pricing": "Pricing",
+        "reviews": "Reviews",
+        "faq": "FAQ"
+    },
+    "flow": {
+        "start": "START",
+        "conversation": "CONVERSATION",
+        "tool": "TOOL",
+        "end_call": "END CALL",
+        "transfer": "TRANSFER CALL"
+    },
+    "features": {
+        "ai_calls": "AI Phone Calls",
+        "appointment_booking": "Appointment Booking",
+        "basic_analytics": "Basic Analytics",
+        "advanced_analytics": "Advanced Analytics",
+        "sms": "SMS Notifications",
+        "integrations": "Integrations",
+        "triage": "Triage Rules",
+        "campaigns": "Campaigns",
+        "custom_workflows": "Custom Workflows",
+        "priority_support": "Priority Support"
+    },
+    "auth": {
+        "signIn": "Sign In",
+        "getStarted": "Get Started",
+        "dashboard": "Dashboard"
+    },
+    "voiceDemo": {
+        "tapToEnd": "Tap to end call",
+        "connecting": "Connecting…",
+        "micNeeded": "Mic needed — retry"
+    },
+    "pricing": {
+        "monthly": "Monthly",
+        "yearly": "Yearly",
+        "save20": "Save 20%",
+        "mostPopular": "Most Popular",
+        "perMonth": "/mo",
+        "billedYearly": "Billed ${{price}} yearly",
+        "unlimited": "Unlimited",
+        "aiMinutes": "AI minutes/mo",
+        "concurrentCalls": "concurrent calls",
+        "concurrentCall": "concurrent call",
+        "teamMembers": "team members",
+        "teamMember": "team member",
+        "getStarted": "Get Started"
+    }
+}

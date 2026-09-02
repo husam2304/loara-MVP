@@ -1,0 +1,92 @@
+{
+  "title": "قواعد الفرز",
+  "subtitle": "إعداد توجيه مكالمات الذكاء الاصطناعي، ومحفزات التصعيد، ومستويات الأولوية",
+  "newRule": "قاعدة جديدة",
+  "activeRules": "قواعد الفرز النشطة",
+  "escalationPaths": "مسارات التصعيد",
+  "alertKeywords": "كلمات التنبيه",
+  "searchRules": "البحث عن القواعد",
+  "searchPlaceholder": "البحث عن القواعد...",
+  "noRules": "لم يتم العثور على قواعد فرز",
+  "noEscalationPaths": "لا توجد مسارات تصعيد مُعدة",
+  "noKeywords": "لا توجد كلمات تنبيه مُعدة",
+  "modal": {
+    "editTitle": "تعديل قاعدة الفرز",
+    "newTitle": "قاعدة فرز جديدة",
+    "nameLabel": "اسم القاعدة",
+    "namePlaceholder": "مثال: طوارئ - ألم في الصدر",
+    "descLabel": "الوصف (اختياري)",
+    "descPlaceholder": "صف متى يتم تفعيل هذه القاعدة...",
+    "priorityLabel": "الأولوية",
+    "actionLabel": "الإجراء",
+    "keywordsLabel": "الكلمات المفتاحية",
+    "addKeywordPlaceholder": "إضافة كلمة مفتاحية...",
+    "addBtn": "إضافة",
+    "cancelBtn": "إلغاء",
+    "saveBtn": "حفظ القاعدة",
+    "createBtn": "إنشاء القاعدة",
+    "savingBtn": "جاري الحفظ...",
+    "targetRoleLabel": "الدور المستهدف (اختياري)",
+    "targetRolePlaceholder": "مثال: طبيب، ممرض، فوترة",
+    "targetUserLabel": "الموظف المستهدف (اختياري)",
+    "targetUserNone": "لا يوجد شخص محدد"
+  },
+  "escalationModal": {
+    "newTitle": "مسار تصعيد جديد",
+    "editTitle": "تعديل مسار التصعيد",
+    "levelLabel": "المستوى",
+    "timeoutLabel": "المهلة (ثواني)",
+    "nameLabel": "اسم المسار",
+    "targetRoleLabel": "الدور المستهدف",
+    "descLabel": "الوصف (اختياري)"
+  },
+  "priorities": {
+    "critical": "حرج",
+    "high": "مرتفع",
+    "medium": "متوسط",
+    "low": "منخفض"
+  },
+  "actions": {
+    "transfer_immediately": "تحويل فوري",
+    "transfer_nurse": "تحويل إلى ممرض",
+    "queue_callback": "وضع في طابور الاتصال",
+    "send_alert": "إرسال تنبيه",
+    "route_to_voicemail": "تحويل للبريد الصوتي"
+  },
+  "categories": {
+    "emergency": "طوارئ",
+    "clinical": "سريري",
+    "billing": "فوترة",
+    "general": "عام"
+  },
+  "stats": {
+    "activeRules": "القواعد النشطة",
+    "of": "من",
+    "total": "الإجمالي",
+    "escalationPaths": "مسارات التصعيد",
+    "configured": "تم إعدادها",
+    "avgTriageTime": "متوسط وقت الفرز",
+    "improvement": "تحسن",
+    "accuracy": "الدقة",
+    "aboveTarget": "أعلى من الهدف"
+  },
+  "table": {
+    "name": "اسم القاعدة",
+    "priority": "الأولوية",
+    "keywords": "الكلمات المفتاحية",
+    "action": "الإجراء",
+    "status": "الحالة",
+    "actions": "الإجراءات",
+    "noRules": "لا توجد قواعد فرز",
+    "keywordsCount": "كلمات مفتاحية",
+    "deactivate": "إلغاء تفعيل القاعدة",
+    "activate": "تفعيل القاعدة",
+    "edit": "تعديل القاعدة",
+    "delete": "حذف القاعدة",
+    "deleteConfirm": "هل أنت متأكد من حذف قاعدة الفرز \"{{name}}\"؟"
+  },
+  "empty": {
+    "noEscalationPaths": "لا توجد مسارات تصعيد مُعدة",
+    "noKeywords": "لا توجد كلمات تنبيه مُعدة"
+  }
+}

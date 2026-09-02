@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>White-Label &amp; Branding — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="white-label">
+    <div class="eyebrow">Operations</div>
+    <h1>White-Label &amp; Branding</h1>
+    <p class="lead">Hiro is built to be rebranded. The product name flows from a single source to the entire UI, and clinics can apply their own logo and favicon.</p>
+
+    <h2>Product name</h2>
+    <p>The application name is resolved once and shared to every page via the <code>appName</code> Inertia prop. Resolution order:</p>
+    <ol>
+        <li>The <strong>branding app name</strong> set in <strong>Platform → Settings</strong> (a <code>PlatformSetting</code>), if present.</li>
+        <li>Otherwise <code>APP_NAME</code> from <code>.env</code> / <code>config('app.name')</code>.</li>
+    </ol>
+    <p>That single value drives:</p>
+    <ul>
+        <li>The sidebar logo text (clinic and platform panels).</li>
+        <li>Browser tab titles — a global Inertia <code>title</code> callback appends the app name to every page.</li>
+        <li>Auth screens (login, register, password reset) and the public landing page.</li>
+        <li>SMTP test emails and the landing-page footer/copyright defaults.</li>
+    </ul>
+    <pre><code># .env
+APP_NAME="Acme Reception AI"</code></pre>
+    <div class="callout note"><span class="ico">ℹ</span><p>Set the name in <strong>Platform → Settings</strong> to change branding without editing <code>.env</code> or rebuilding. Either way, no code changes are required.</p></div>
+
+    <h2>Logo &amp; favicon</h2>
+    <p>Each clinic can upload its own logo and favicon from <strong>Settings → Clinic</strong> (validated image types and size). These are stored per clinic and shown in that clinic's panel.</p>
+
+    <h2>Landing page</h2>
+    <p>The public marketing page is fully content-managed per clinic via the <a href="clinic-panel.html">landing-page CMS</a> — hero, features, pricing, CTA, footer, and more — so each tenant can present its own brand.</p>
+
+    <h2>Theme &amp; colors</h2>
+    <p>The UI is styled with Tailwind CSS v4 using CSS variables/tokens. Adjust the palette in the Tailwind theme / CSS token definitions and rebuild:</p>
+    <pre><code>npm run build</code></pre>
+
+    <h2>Error &amp; installer pages</h2>
+    <p>Custom error pages (404/403/419/429/500/503) and the web installer display <code>config('app.name')</code>. The installer chrome shows the product name "Hiro" by design, since it runs before a buyer has set their brand; rename it in <code>resources/views/install/</code> if you wish.</p>
+
+    <h2>Extending integrations (connectors)</h2>
+    <p>The integrations module records connections and sync history. To make a sync pull real data from a provider (EHR, calendar, etc.), implement the provider call inside <code>IntegrationSyncService::runProviderSync()</code> — it is the single extension point and already writes structured sync-log entries (records processed/failed, status, timestamps).</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

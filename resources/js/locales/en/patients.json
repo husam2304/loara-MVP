@@ -1,0 +1,76 @@
+{
+  "title": "Patients",
+  "headerTitle": "PATIENTS",
+  "subtitle": "Search, view, and manage patient records",
+  "addBtn": "+ Add Patient",
+  "stats": {
+    "total": "Total Patients",
+    "new": "New Patients",
+    "active": "Active Patients",
+    "inactive": "Inactive Patients",
+    "thisMonth": "this month",
+    "ofTotal": "of total"
+  },
+  "directory": {
+    "title": "PATIENT_DIRECTORY",
+    "searchPlaceholder": "Search patients...",
+    "allStatus": "All Status"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "deceased": "Deceased"
+  },
+  "table": {
+    "patient": "Patient",
+    "dob": "DOB",
+    "phone": "Phone",
+    "insurance": "Insurance",
+    "lastVisit": "Last Visit",
+    "status": "Status",
+    "empty": "No patients found"
+  },
+  "pagination": {
+    "showing": "Showing {{from}}-{{to}} of {{total}} patients",
+    "noPatients": "No patients"
+  },
+  "genders": {
+    "male": "Male",
+    "female": "Female",
+    "other": "Other",
+    "prefer_not_to_say": "Prefer not to say"
+  },
+  "languages": {
+    "en": "English",
+    "es": "Spanish",
+    "zh": "Chinese",
+    "vi": "Vietnamese"
+  },
+  "form": {
+    "firstName": "First Name *",
+    "lastName": "Last Name *",
+    "dateOfBirth": "Date of Birth *",
+    "gender": "Gender *",
+    "phone": "Phone *",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "state": "State",
+    "zipCode": "Zip Code",
+    "emergencyContact": "Emergency Contact",
+    "emergencyContactPlaceholder": "Contact name",
+    "emergencyPhone": "Emergency Phone",
+    "emergencyPhonePlaceholder": "Contact phone",
+    "language": "Language *",
+    "status": "Status *",
+    "notes": "Notes"
+  },
+  "modals": {
+    "addTitle": "ADD_PATIENT",
+    "editTitle": "EDIT_PATIENT",
+    "adding": "Adding...",
+    "addPatient": "Add Patient",
+    "saving": "Saving...",
+    "saveChanges": "Save Changes"
+  }
+}

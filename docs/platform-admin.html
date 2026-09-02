@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Platform Admin — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="platform-admin">
+    <div class="eyebrow">Features</div>
+    <h1>Platform Admin</h1>
+    <p class="lead">The SaaS operator's control panel at <code>/platform/*</code>, available only to the SuperAdmin role. This is where you run Hiro as a business across all tenant clinics.</p>
+
+    <h2>Dashboard</h2>
+    <p>At <code>/platform/dashboard</code> — a top-level view of the platform: clinics, users, subscription/revenue signals, and recent activity across tenants.</p>
+
+    <h2>Clinics</h2>
+    <p>At <code>/platform/clinics</code>. List every clinic and open a detail view. From here you can:</p>
+    <ul>
+        <li><strong>Enable / disable</strong> a clinic. Disabling blocks its users at login and ends active sessions (via the <code>clinic_enabled</code> middleware).</li>
+        <li><strong>Impersonate</strong> a clinic's user to see exactly what they see and provide support.</li>
+    </ul>
+
+    <h2>Platform users</h2>
+    <p>At <code>/platform/users</code> — manage platform-level user accounts (other SuperAdmins / operators).</p>
+
+    <h2>Pricing plans</h2>
+    <p>At <code>/platform/pricing</code>. Plans are stored in the database (<code>PlanConfiguration</code>) and fully editable: name, description, monthly/yearly price, minute/concurrent/team limits, and feature flags. You can create, update, and delete plans, and <strong>sync a plan to Stripe</strong> to create the matching products/prices. See <a href="billing.html">Billing &amp; Plans</a>.</p>
+
+    <h2>Payment gateways</h2>
+    <p>At <code>/platform/payment-gateways</code>. Configure pluggable payment gateways (Stripe by default) behind <code>PaymentGatewayManager</code>. Enter credentials, test the connection, and activate. Adding a gateway is a matter of implementing the gateway contract.</p>
+
+    <h2>Settings</h2>
+    <p>At <code>/platform/settings</code>. Global, platform-wide configuration:</p>
+    <table>
+        <thead><tr><th>Section</th><th>What it controls</th></tr></thead>
+        <tbody>
+            <tr><td>SMTP</td><td>Outgoing mail server; includes a "send test email" action.</td></tr>
+            <tr><td>App name / branding</td><td>The product name shown across the UI (white-label). See <a href="white-label.html">White-Label &amp; Branding</a>.</td></tr>
+            <tr><td>Claim.MD</td><td>Insurance clearinghouse API key, with a connection test.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Impersonation</h2>
+    <p>Two impersonation flows exist, both with a clear "stop impersonating" return:</p>
+    <ul>
+        <li><strong>SuperAdmin → clinic user</strong> — initiated from <code>/platform/clinics</code>. Lets you operate inside a tenant for support.</li>
+        <li><strong>Clinic Owner → clinic staff</strong> — initiated from the clinic's team management at <code>/admin/users</code>.</li>
+    </ul>
+    <p>While impersonating, the shared <code>impersonating</code> Inertia prop drives a banner. Logging out restores the original administrator rather than ending the session.</p>
+
+    <div class="callout warn"><span class="ico">!</span><p>SuperAdmins are intentionally locked out of the clinic panel (the <code>redirect_super_admin</code> middleware bounces them to the platform dashboard). To work inside a clinic, use impersonation.</p></div>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

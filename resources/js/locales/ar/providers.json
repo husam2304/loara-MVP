@@ -1,0 +1,88 @@
+{
+  "title": "الأطباء",
+  "dashboardTitle": "الأطباء",
+  "dashboardSubtitle": "إدارة الأطباء، الجداول الزمنية، والتخصصات",
+  "addDoctor": "إضافة طبيب",
+  "stats": {
+    "totalDoctors": "إجمالي الأطباء",
+    "activeDoctors": "الأطباء النشطون",
+    "ofTotal": "من الإجمالي",
+    "specialties": "التخصصات",
+    "avgApptsWeek": "متوسط المواعيد/أسبوع",
+    "acrossActive": "عبر الأطباء النشطين"
+  },
+  "directory": {
+    "title": "دليل الأطباء",
+    "searchPlaceholder": "البحث عن أطباء...",
+    "allSpecialties": "جميع التخصصات",
+    "allStatus": "جميع الحالات",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "columns": {
+      "doctor": "الطبيب",
+      "npi": "الرقم الوطني (NPI)",
+      "schedule": "الجدول",
+      "patients": "المرضى",
+      "status": "الحالة",
+      "actions": "الإجراءات"
+    },
+    "noDoctorsFound": "لم يتم العثور على أطباء",
+    "showing": "عرض {{from}}-{{to}} من {{total}} أطباء",
+    "noDoctors": "لا يوجد أطباء"
+  },
+  "schedule": {
+    "noHours": "لم يتم تحديد ساعات",
+    "everyDay": "كل يوم",
+    "monFri": "الاثنين - الجمعة",
+    "unavailable": "غير متاح",
+    "to": "إلى",
+    "days": {
+      "sunday": "الأحد",
+      "monday": "الاثنين",
+      "tuesday": "الثلاثاء",
+      "wednesday": "الأربعاء",
+      "thursday": "الخميس",
+      "friday": "الجمعة",
+      "saturday": "السبت"
+    },
+    "daysShort": {
+      "sun": "الأحد",
+      "mon": "الاثنين",
+      "tue": "الثلاثاء",
+      "wed": "الأربعاء",
+      "thu": "الخميس",
+      "fri": "الجمعة",
+      "sat": "السبت"
+    }
+  },
+  "modals": {
+    "new": {
+      "title": "طبيب جديد",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم الأخير",
+      "doctorTitle": "اللقب",
+      "specialty": "التخصص",
+      "select": "اختر...",
+      "npi": "الرقم الوطني (NPI) (اختياري)",
+      "npiPlaceholder": "مثال: 1234567890",
+      "color": "اللون",
+      "cancel": "إلغاء",
+      "create": "إنشاء طبيب",
+      "creating": "جارٍ الإنشاء..."
+    },
+    "edit": {
+      "title": "تعديل الطبيب",
+      "npi": "الرقم الوطني (NPI)",
+      "status": "الحالة",
+      "weeklySchedule": "الجدول الأسبوعي",
+      "saveChanges": "حفظ التغييرات",
+      "saving": "جارٍ الحفظ..."
+    },
+    "delete": {
+      "title": "حذف الطبيب",
+      "confirmation": "هل أنت متأكد من حذف <1>{{name}}</1>؟ يمكن التراجع عن هذا الإجراء بواسطة المسؤول.",
+      "delete": "حذف",
+      "deleting": "جارٍ الحذف..."
+    }
+  }
+}

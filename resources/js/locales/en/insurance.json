@@ -1,0 +1,99 @@
+{
+  "title": "Insurance",
+  "subtitle": "Verify coverage, manage claims, and track authorizations",
+  "newClaim": "New Claim",
+  "stats": {
+    "totalClaims": "Total Claims",
+    "pendingClaims": "Pending Claims",
+    "approvalRate": "Approval Rate",
+    "avgTurnaround": "Avg Turnaround",
+    "allTime": "all time",
+    "awaitingResolution": "awaiting resolution",
+    "target": "target",
+    "withinSla": "within SLA",
+    "aboveSla": "above SLA",
+    "days": "{{count}}d"
+  },
+  "claimsTable": {
+    "title": "Recent Claims",
+    "filter": "Filter",
+    "export": "Export",
+    "columns": {
+      "claimId": "Claim ID",
+      "patient": "Patient",
+      "provider": "Provider",
+      "amount": "Amount",
+      "status": "Status",
+      "actions": "Actions"
+    }
+  },
+  "claimStatuses": {
+    "approved": "Approved",
+    "pending": "Pending",
+    "inReview": "In Review",
+    "denied": "Denied",
+    "submitted": "Submitted",
+    "appealed": "Appealed"
+  },
+  "authStatuses": {
+    "approved": "Approved",
+    "pending": "Pending",
+    "denied": "Denied",
+    "expired": "Expired"
+  },
+  "verificationStatuses": {
+    "active": "Active",
+    "inactive": "Inactive",
+    "error": "Error",
+    "unknown": "Unknown"
+  },
+  "actions": {
+    "submitToPayer": "Submit to Payer",
+    "checkStatus": "Check Status"
+  },
+  "modals": {
+    "newClaim": {
+      "title": "New Claim",
+      "patient": "Patient",
+      "searchPatient": "Search patient...",
+      "changePatient": "Change patient",
+      "insuranceProvider": "Insurance Provider",
+      "select": "Select...",
+      "claimNumber": "Claim Number",
+      "claimNumberPlaceholder": "e.g. CLM-000123",
+      "amount": "Amount ($)",
+      "amountPlaceholder": "0.00",
+      "notes": "Notes (optional)",
+      "notesPlaceholder": "Additional notes...",
+      "cancel": "Cancel",
+      "create": "Create Claim",
+      "creating": "Creating..."
+    }
+  },
+  "verification": {
+    "title": "Coverage Verification",
+    "patient": "Patient",
+    "searchPatient": "Search patient...",
+    "noPatientsFound": "No patients found",
+    "insurancePolicy": "Insurance Policy",
+    "selectPolicy": "Select policy...",
+    "noPolicies": "No insurance policies on file",
+    "serviceDate": "Service Date",
+    "verifyCoverage": "Verify Coverage",
+    "verifying": "Verifying...",
+    "status": "STATUS",
+    "plan": "Plan",
+    "group": "Group",
+    "copay": "Copay",
+    "deductible": "Deductible",
+    "coinsurance": "Coinsurance",
+    "oopMax": "OOP Max",
+    "verificationFailed": "Verification failed. Please try again."
+  },
+  "recentVerifications": {
+    "title": "Recent Verifications"
+  },
+  "priorAuthorizations": {
+    "title": "Prior Authorizations"
+  }
+}

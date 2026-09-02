@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roles &amp; Multi-Tenancy — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="roles-and-tenancy">
+    <div class="eyebrow">Core Concepts</div>
+    <h1>Roles &amp; Multi-Tenancy</h1>
+    <p class="lead">Every clinic is an isolated tenant. Access is controlled by a six-value role enum plus per-plan feature flags.</p>
+
+    <h2>The tenant model</h2>
+    <p>A <code>Clinic</code> is the tenant. Almost every record — patients, appointments, calls, providers, insurance, integrations, workflows — carries a <code>clinic_id</code>. All clinic-scoped queries filter by the authenticated user's clinic, and route-model-bound records are verified to belong to that clinic before any action.</p>
+    <div class="callout note"><span class="ico">ℹ</span><p>SuperAdmins are not attached to any clinic (<code>clinic_id = null</code>); they operate exclusively in the platform panel.</p></div>
+
+    <h2>User roles</h2>
+    <p>Defined by the <code>UserRole</code> enum:</p>
+    <table>
+        <thead><tr><th>Role</th><th>Value</th><th>Scope</th></tr></thead>
+        <tbody>
+            <tr><td>SuperAdmin</td><td><code>super_admin</code></td><td>Platform operator. Manages all clinics, plans, and global settings.</td></tr>
+            <tr><td>Clinic Owner</td><td><code>clinic_owner</code></td><td>Full access within their clinic, including admin/users, billing, workflows, and settings.</td></tr>
+            <tr><td>Provider</td><td><code>provider</code></td><td>Clinical staff — appointments, patients, calls.</td></tr>
+            <tr><td>Staff</td><td><code>staff</code></td><td>Front-desk staff — day-to-day operations.</td></tr>
+            <tr><td>Billing</td><td><code>billing</code></td><td>Billing &amp; subscription management.</td></tr>
+            <tr><td>Customer</td><td><code>customer</code></td><td>Patient-facing. Limited to Dashboard + Billing — intentionally excluded from clinical/PHI routes (call center, appointments, patients, insurance, analytics).</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Gating with middleware</h2>
+    <p>Routes are protected by composable middleware (see <a href="architecture.html">Architecture</a>):</p>
+    <pre><code>// Owner-only, requires an active subscription
+Route::middleware(['role:clinic_owner', 'subscribed'])->group(...);
+
+// Operational/clinical routes — clinic staff only, subscription required.
+// The patient-facing `customer` role is intentionally excluded so it cannot read PHI.
+Route::middleware(['role:clinic_owner,provider,staff,billing', 'subscribed'])->group(...);
+
+// Feature-gated (plan must include the flag)
+Route::middleware('feature:custom_workflows')->group(...);</code></pre>
+
+    <h2>Plan feature flags</h2>
+    <p>Beyond roles, access to certain modules depends on the clinic's plan. Feature flags live on each <code>PlanConfiguration</code> and are enforced by the <code>feature:</code> middleware via <code>FeatureGateService</code>:</p>
+    <table>
+        <thead><tr><th>Flag</th><th>Unlocks</th></tr></thead>
+        <tbody>
+            <tr><td><code>advanced_analytics</code></td><td>Enhanced analytics access.</td></tr>
+            <tr><td><code>triage</code></td><td>Triage rules module.</td></tr>
+            <tr><td><code>integrations</code></td><td>Third-party integrations.</td></tr>
+            <tr><td><code>custom_workflows</code></td><td>Visual workflow (squad) builder.</td></tr>
+        </tbody>
+    </table>
+    <p>Other flags (<code>ai_calls</code>, <code>appointment_booking</code>, <code>sms</code>, <code>campaigns</code>, <code>priority_support</code>) describe plan inclusions surfaced in the UI. Plan/feature mapping is editable in <a href="billing.html">Platform → Pricing</a>.</p>
+
+    <h2>Clinic enable / disable</h2>
+    <p>A platform admin can disable a clinic. Disabled clinics are blocked at login and any active session is logged out by the <code>clinic_enabled</code> middleware. SuperAdmins are unaffected.</p>
+
+    <h2>Impersonation</h2>
+    <p>Two impersonation paths exist, each preserving an audit trail and a one-click return:</p>
+    <ul>
+        <li><strong>SuperAdmin → clinic</strong> from the platform panel (to support a tenant).</li>
+        <li><strong>Clinic Owner → clinic staff</strong> within their own clinic.</li>
+    </ul>
+    <p>The original administrator is restored on logout. See <a href="platform-admin.html">Platform Admin</a>.</p>
+
+    <h2>New-tenant provisioning</h2>
+    <p>When a clinic registers, <code>ClinicProvisioner</code> creates the baseline records a tenant needs to operate: an AI assistant configuration, a full week of operating hours, reminder settings, and the owner's notification preferences. This guarantees a usable starting state immediately after signup.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

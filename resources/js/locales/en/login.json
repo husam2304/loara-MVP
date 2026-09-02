@@ -1,0 +1,16 @@
+{
+  "title": "Login",
+  "signInToAccount": "Sign in to your account",
+  "email": "EMAIL",
+  "emailPlaceholder": "you@clinic.com",
+  "password": "PASSWORD",
+  "forgotPassword": "Forgot password?",
+  "passwordPlaceholder": "Enter your password",
+  "rememberMe": "Remember me",
+  "signingIn": "Signing in...",
+  "signIn": "Sign in",
+  "demoAccounts": "Demo accounts",
+  "clickToSignIn": "Click to sign in instantly",
+  "noAccount": "Don't have an account?",
+  "signUp": "Sign up"
+}

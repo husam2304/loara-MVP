@@ -1,0 +1,199 @@
+{
+  "dashboard": {
+    "title": "لوحة تحكم المنصة",
+    "subtitle": "نظرة عامة على جميع العيادات والمستخدمين والإيرادات",
+    "stats": {
+      "totalClinics": "إجمالي العيادات",
+      "totalUsers": "إجمالي المستخدمين",
+      "activeSubscriptions": "الاشتراكات النشطة",
+      "monthlyRevenue": "الإيرادات الشهرية"
+    },
+    "recentRegistrations": "أحدث التسجيلات",
+    "table": {
+      "clinic": "العيادة",
+      "email": "البريد الإلكتروني",
+      "users": "المستخدمون",
+      "plan": "الباقة",
+      "status": "الحالة",
+      "registered": "تاريخ التسجيل",
+      "noClinics": "لا توجد عيادات مسجلة بعد"
+    },
+    "status": {
+      "active": "نشطة",
+      "disabled": "معطّلة"
+    }
+  },
+  "clinics": {
+    "title": "العيادات",
+    "subtitle": "إدارة جميع العيادات المسجلة",
+    "searchPlaceholder": "البحث عن عيادات...",
+    "table": {
+      "clinic": "العيادة",
+      "email": "البريد الإلكتروني",
+      "users": "المستخدمون",
+      "plan": "الباقة",
+      "status": "الحالة",
+      "enabled": "مفعّلة",
+      "actions": "الإجراءات",
+      "view": "عرض",
+      "noClinics": "لم يتم العثور على عيادات"
+    },
+    "subscriptionNone": "لا يوجد",
+    "pagination": {
+      "showing": "عرض {{from}}-{{to}} من {{total}}"
+    }
+  },
+  "users": {
+    "title": "جميع المستخدمين",
+    "subtitle": "المستخدمون في جميع العيادات",
+    "searchPlaceholder": "البحث عن مستخدمين...",
+    "roles": {
+      "all": "جميع الأدوار",
+      "clinic_owner": "مالك العيادة",
+      "provider": "مقدم رعاية",
+      "staff": "موظف",
+      "billing": "الفوترة",
+      "customer": "عميل"
+    },
+    "table": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "clinic": "العيادة",
+      "role": "الدور",
+      "status": "الحالة",
+      "noUsers": "لم يتم العثور على مستخدمين"
+    },
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "pagination": {
+      "showing": "عرض {{from}}-{{to}} من {{total}}"
+    }
+  },
+  "clinicDetail": {
+    "subtitle": "تفاصيل العيادة وإدارة المستخدمين",
+    "backToClinics": "العودة إلى العيادات",
+    "status": {
+      "active": "نشط",
+      "inactive": "غير نشط"
+    },
+    "info": {
+      "email": "البريد الإلكتروني",
+      "phone": "الهاتف",
+      "timezone": "المنطقة الزمنية",
+      "address": "العنوان",
+      "subscription": "الاشتراك",
+      "none": "لا يوجد",
+      "noSubscription": "لا يوجد اشتراك",
+      "aiAssistant": "المساعد الذكي",
+      "configured": "مُعدّ",
+      "notConfigured": "غير مُعدّ",
+      "registered": "تاريخ التسجيل"
+    },
+    "clinicUsers": "مستخدمو العيادة",
+    "usersCount": "{{count}} مستخدمين",
+    "table": {
+      "name": "الاسم",
+      "email": "البريد الإلكتروني",
+      "role": "الدور",
+      "status": "الحالة",
+      "actions": "الإجراءات",
+      "noUsers": "لا يوجد مستخدمون في هذه العيادة"
+    },
+    "impersonate": "انتحال الهوية"
+  },
+  "settings": {
+    "pageTitle": "إعدادات المنصة",
+    "pageSubtitle": "إعداد خدمات المنصة والهوية البصرية",
+    "tabs": {
+      "branding": "الهوية البصرية",
+      "paymentGateways": "بوابات الدفع",
+      "smtp": "البريد الإلكتروني / SMTP",
+      "claimMd": "Claim.MD",
+      "vapi": "الذكاء الصوتي Vapi"
+    },
+    "branding": {
+      "cardTitle": "هوية التطبيق",
+      "appName": "اسم التطبيق",
+      "save": "حفظ"
+    },
+    "smtp": {
+      "cardTitle": "إعدادات البريد الإلكتروني / SMTP",
+      "cardSubtitle": "إعداد كيفية إرسال المنصة للرسائل الإلكترونية",
+      "mailDriver": "مزوّد البريد",
+      "encryption": "التشفير",
+      "encryptionNone": "بدون",
+      "smtpHost": "مضيف SMTP",
+      "smtpPort": "منفذ SMTP",
+      "username": "اسم المستخدم",
+      "password": "كلمة المرور",
+      "fromAddress": "عنوان المرسل",
+      "fromName": "اسم المرسل",
+      "sendTestEmail": "إرسال بريد تجريبي",
+      "mailers": {
+        "smtp": "SMTP",
+        "ses": "Amazon SES",
+        "postmark": "Postmark",
+        "resend": "Resend",
+        "sendmail": "Sendmail",
+        "log": "سجل (اختبار)"
+      }
+    },
+    "paymentGateways": {
+      "cardTitle": "Stripe",
+      "cardSubtitle": "بوابة دفع فوترة الاشتراكات",
+      "status": {
+        "connected": "متصلة",
+        "error": "خطأ",
+        "not_configured": "غير مُعدّة"
+      },
+      "tested": "تم الاختبار في {{date}}",
+      "webhookUrl": "رابط Webhook",
+      "currentKeys": {
+        "publishable": "مفتاح النشر",
+        "secret": "المفتاح السري",
+        "webhook": "Webhook"
+      },
+      "publishableKey": "مفتاح النشر (Publishable Key)",
+      "secretKey": "المفتاح السري (Secret Key)",
+      "webhookSecret": "سر Webhook",
+      "saveCredentials": "حفظ بيانات الاعتماد",
+      "test": "اختبار",
+      "remove": "إزالة",
+      "removeConfirm": "إزالة بيانات الاعتماد؟"
+    },
+    "claimMd": {
+      "cardTitle": "غرفة مقاصة Claim.MD",
+      "cardSubtitle": "تقديم المطالبات والتحقق من الأهلية ومعالجة ERA",
+      "apiKeyConfigured": "مفتاح API مُعدّ",
+      "notConfigured": "غير مُعدّ",
+      "apiKey": "مفتاح Claim.MD API",
+      "apiKeyPlaceholder": "أدخل مفتاح حساب Claim.MD",
+      "saveApiKey": "حفظ مفتاح API",
+      "testConnection": "اختبار الاتصال"
+    },
+    "failed": "فشل",
+    "vapi": {
+      "cardTitle": "الذكاء الصوتي Vapi",
+      "cardSubtitle": "بيانات اعتماد API للمساعد الصوتي الذي يدير المكالمات وتطبيق الجوال",
+      "configured": "مُعدّ (المصدر: {{source}})",
+      "notConfigured": "غير مُعدّ",
+      "sourceDatabase": "محفوظ في إعدادات المنصة",
+      "sourceEnv": "ملف .env",
+      "webhookUrl": "رابط الويب هوك",
+      "webhookUrlHint": "استخدم هذا الرابط كـ Server URL في مساعدي Vapi لتصل أحداث المكالمات إلى هذا التطبيق.",
+      "privateKey": "المفتاح الخاص",
+      "privateKeyPlaceholder": "أدخل مفتاح Vapi الخاص",
+      "privateKeyHint": "يُستخدم لجميع طلبات Vapi من الخادم. حافظ على سريته.",
+      "publicKey": "المفتاح العام",
+      "publicKeyPlaceholder": "أدخل مفتاح Vapi العام",
+      "publicKeyHint": "آمن للاستخدام في الواجهة الأمامية. يستخدمه تطبيق الجوال لبدء المكالمات.",
+      "serverSecret": "سر الخادم",
+      "serverSecretPlaceholder": "أدخل سر خادم Vapi",
+      "baseUrl": "رابط API الأساسي",
+      "saveKeys": "حفظ المفاتيح",
+      "testConnection": "اختبار الاتصال"
+    }
+  }
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Webhooks — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="webhooks">
+    <div class="eyebrow">Operations</div>
+    <h1>Webhooks</h1>
+    <p class="lead">Hiro exposes two webhook endpoints, defined in <code>routes/api.php</code> and rate-limited to 120 requests/minute. Both verify authenticity before processing.</p>
+
+    <h2>Endpoints</h2>
+    <table>
+        <thead><tr><th>Provider</th><th>Method &amp; path</th><th>Auth</th></tr></thead>
+        <tbody>
+            <tr><td>Vapi</td><td><code>POST /api/webhooks/vapi</code></td><td><code>x-vapi-secret</code> header vs. <code>VAPI_SERVER_SECRET</code></td></tr>
+            <tr><td>Stripe</td><td><code>POST /api/webhooks/stripe</code></td><td>Stripe signature vs. <code>STRIPE_WEBHOOK_SECRET</code></td></tr>
+        </tbody>
+    </table>
+
+    <h2>Vapi webhook</h2>
+    <p>Handled by <code>Api\VapiWebhookController</code>. Each request must include the <code>x-vapi-secret</code> header matching <code>VAPI_SERVER_SECRET</code>; otherwise it is rejected with <code>401</code>. It routes on the message type:</p>
+    <table>
+        <thead><tr><th>message.type</th><th>Action</th></tr></thead>
+        <tbody>
+            <tr><td><code>assistant-request</code></td><td>Resolves the clinic from the call data and returns its assistant or squad. Declines (with a spoken error) if the clinic is over its minute limit.</td></tr>
+            <tr><td><code>tool-calls</code></td><td>Resolves the clinic/call (chat sessions key off <code>chat.id</code> + <code>assistant.id</code>), dispatches each tool through <code>VapiToolDispatcher</code>, logs every invocation, and returns results.</td></tr>
+            <tr><td><code>status-update</code></td><td>Creates or updates the call record and its lifecycle status (queued → ringing → in-progress → ended).</td></tr>
+            <tr><td><code>transcript</code></td><td>Appends transcript lines, deduplicated by timestamp + content.</td></tr>
+            <tr><td><code>end-of-call-report</code></td><td>Finalizes the call: duration, cost, sentiment, AI confidence, summary, recording, and records call-minute usage.</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Configure in Vapi</h3>
+    <p>Set your assistants' server URL to <code>https://your-domain.com/api/webhooks/vapi</code> and the secret to your <code>VAPI_SERVER_SECRET</code>. In local development, <code>php artisan vapi:sync-tunnel</code> pushes your current tunnel URL to all assistants.</p>
+
+    <h2>Stripe webhook</h2>
+    <p>Handled by <code>Api\StripeWebhookController</code>. The raw payload and signature are verified with <code>STRIPE_WEBHOOK_SECRET</code>; invalid signatures are rejected. Events are processed idempotently and keep the local subscription in sync:</p>
+    <table>
+        <thead><tr><th>Event</th><th>Effect</th></tr></thead>
+        <tbody>
+            <tr><td><code>customer.subscription.created</code></td><td>Creates the local subscription (plan detected from the price ID).</td></tr>
+            <tr><td><code>customer.subscription.updated</code> / <code>.deleted</code></td><td>Updates status, plan, billing period; marks cancelled.</td></tr>
+            <tr><td><code>invoice.paid</code></td><td>Records the invoice.</td></tr>
+            <tr><td>payment failure</td><td>Moves the subscription to <code>past_due</code>.</td></tr>
+        </tbody>
+    </table>
+
+    <h3>Configure in Stripe</h3>
+    <p>Add an endpoint at <code>https://your-domain.com/api/webhooks/stripe</code>, subscribe to the subscription and invoice events above, and copy the signing secret into <code>STRIPE_WEBHOOK_SECRET</code>.</p>
+
+    <div class="callout warn"><span class="ico">!</span><p>Webhooks require a publicly reachable HTTPS URL. Behind a firewall or on localhost, use a tunnel (Expose, ngrok) during development.</p></div>
+
+    <h2>Troubleshooting</h2>
+    <ul>
+        <li><strong>401 from Vapi webhook</strong> — the <code>x-vapi-secret</code> doesn't match <code>VAPI_SERVER_SECRET</code> (or the config is cached stale; run <code>php artisan config:cache</code>).</li>
+        <li><strong>Stripe signature failure</strong> — wrong <code>STRIPE_WEBHOOK_SECRET</code>, or a proxy altered the raw body.</li>
+        <li><strong>Events not arriving</strong> — confirm the endpoint is public over HTTPS and not blocked by rate limiting.</li>
+    </ul>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Voice Agent — Overview — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="ai-overview">
+    <div class="eyebrow">AI Voice Agent</div>
+    <h1>AI Voice Agent Overview</h1>
+    <p class="lead">The AI agent is Hiro's core. It answers clinic calls through Vapi and performs front-desk tasks using clinic-scoped server-side tools, escalating to a human when needed.</p>
+
+    <h2>End-to-end flow</h2>
+    <ol class="steps">
+        <li><span class="step-title">A call arrives</span> on the clinic's Vapi phone number (or a web/chat session starts).</li>
+        <li><span class="step-title">Vapi serves the assistant</span> — for inbound calls it asks Hiro which assistant/squad to use via the <code>assistant-request</code> webhook.</li>
+        <li><span class="step-title">The AI uses tools</span> — during the conversation Vapi posts <code>tool-calls</code> to Hiro's webhook. Each call is dispatched by <code>VapiToolDispatcher</code> to a handler.</li>
+        <li><span class="step-title">Hiro responds</span> with a result the assistant reads back to the caller.</li>
+        <li><span class="step-title">The call is recorded</span> — status updates, transcript lines, recording, summary, sentiment, and AI confidence are stored, then surfaced in the Call Center.</li>
+    </ol>
+
+    <h2>Server-side tools</h2>
+    <p>Tools are the actions the AI can take. Each tool is clinic-scoped and returns a structured <code>{ success, result, data }</code> payload. There are 14 tools — see the full <a href="ai-tools.html">AI Tools Reference</a>. Examples: <code>lookup_patient</code>, <code>book_appointment</code>, <code>verify_insurance</code>, <code>assess_urgency</code>, <code>transfer_call</code>.</p>
+
+    <h2>Identity verification</h2>
+    <p>Protected tools (those that read or change patient data) require the caller's identity to be verified first. Verification happens by confirming the patient's <strong>date of birth</strong> — via <code>lookup_patient</code> (when a matching DOB is supplied) or <code>verify_identity</code>. A caller cannot act on a record simply by naming a patient ID.</p>
+    <div class="callout danger"><span class="ico">!</span><p>This applies to web/chat sessions too: a passed <code>patient_id</code> alone never grants access. The DOB confirmation is always required, protecting patient health information (PHI).</p></div>
+    <p>Details in <a href="ai-tools.html">AI Tools Reference → Verification gate</a>.</p>
+
+    <h2>Failure handling &amp; escalation</h2>
+    <p>If a tool fails, the failure is recorded on the call. After <strong>two consecutive failures</strong>, the agent offers to transfer the caller to a staff member. The <code>transfer_call</code> tool records a high-priority callback task and informs the caller, so nothing is dropped.</p>
+
+    <h2>Inbound vs. outbound</h2>
+    <table>
+        <thead><tr><th>Direction</th><th>How it starts</th></tr></thead>
+        <tbody>
+            <tr><td>Inbound</td><td>Patient calls the clinic's Vapi number; Vapi requests the assistant from Hiro.</td></tr>
+            <tr><td>Outbound</td><td>Staff trigger single or batch calls from the <strong>Call Center</strong> (reminders, follow-ups).</td></tr>
+            <tr><td>Web / chat</td><td>Browser-based session using the Vapi public key.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Usage enforcement</h2>
+    <p>Each plan includes a monthly call-minute allowance. Usage is metered per call. Outbound calls are blocked when the limit is exceeded, and inbound calls are declined at the assistant-request step for clinics over their limit (Enterprise plans are unlimited). See <a href="billing.html">Billing &amp; Plans → Usage metering</a>.</p>
+
+    <h2>What gets stored per call</h2>
+    <ul>
+        <li>Status, direction, caller phone/name, start/answer/end timestamps, end reason.</li>
+        <li>Duration, cost, sentiment, AI confidence score, and a summary.</li>
+        <li>Line-by-line transcript and a recording URL (when provided by Vapi).</li>
+        <li>Every tool invocation with its input/output, duration, and success flag.</li>
+    </ul>
+
+    <h2>Next steps</h2>
+    <div class="cards">
+        <a class="card" href="vapi-setup.html"><div class="card-title">Vapi Setup →</div><div class="card-desc">Keys, assistant configuration, phone numbers, and the webhook.</div></a>
+        <a class="card" href="ai-tools.html"><div class="card-title">AI Tools Reference →</div><div class="card-desc">All 14 tools and the verification gate.</div></a>
+    </div>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

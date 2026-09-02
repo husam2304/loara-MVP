@@ -1,0 +1,76 @@
+{
+  "title": "المرضى",
+  "headerTitle": "المرضى",
+  "subtitle": "البحث، العرض، وإدارة سجلات المرضى",
+  "addBtn": "+ إضافة مريض",
+  "stats": {
+    "total": "إجمالي المرضى",
+    "new": "المرضى الجدد",
+    "active": "المرضى النشطون",
+    "inactive": "المرضى غير النشطين",
+    "thisMonth": "هذا الشهر",
+    "ofTotal": "من الإجمالي"
+  },
+  "directory": {
+    "title": "دليل المرضى",
+    "searchPlaceholder": "البحث عن مرضى...",
+    "allStatus": "جميع الحالات"
+  },
+  "status": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "deceased": "متوفى"
+  },
+  "table": {
+    "patient": "المريض",
+    "dob": "تاريخ الميلاد",
+    "phone": "الهاتف",
+    "insurance": "التأمين",
+    "lastVisit": "الزيارة الأخيرة",
+    "status": "الحالة",
+    "empty": "لم يتم العثور على مرضى"
+  },
+  "pagination": {
+    "showing": "عرض {{from}}-{{to}} من {{total}} مرضى",
+    "noPatients": "لا يوجد مرضى"
+  },
+  "genders": {
+    "male": "ذكر",
+    "female": "أنثى",
+    "other": "آخر",
+    "prefer_not_to_say": "أفضل عدم الإفصاح"
+  },
+  "languages": {
+    "en": "الإنجليزية",
+    "es": "الإسبانية",
+    "zh": "الصينية",
+    "vi": "الفيتنامية"
+  },
+  "form": {
+    "firstName": "الاسم الأول *",
+    "lastName": "اسم العائلة *",
+    "dateOfBirth": "تاريخ الميلاد *",
+    "gender": "الجنس *",
+    "phone": "الهاتف *",
+    "email": "البريد الإلكتروني",
+    "address": "العنوان",
+    "city": "المدينة",
+    "state": "المحافظة",
+    "zipCode": "الرمز البريدي",
+    "emergencyContact": "جهة اتصال الطوارئ",
+    "emergencyContactPlaceholder": "اسم جهة الاتصال",
+    "emergencyPhone": "هاتف الطوارئ",
+    "emergencyPhonePlaceholder": "رقم هاتف جهة الاتصال",
+    "language": "اللغة *",
+    "status": "الحالة *",
+    "notes": "ملاحظات"
+  },
+  "modals": {
+    "addTitle": "إضافة مريض",
+    "editTitle": "تعديل بيانات المريض",
+    "adding": "جارٍ الإضافة...",
+    "addPatient": "إضافة مريض",
+    "saving": "جارٍ الحفظ...",
+    "saveChanges": "حفظ التغييرات"
+  }
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Requirements — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="requirements">
+    <div class="eyebrow">Get Started</div>
+    <h1>Requirements</h1>
+    <p class="lead">Confirm your server meets these requirements before installing. The web installer also runs an automated requirements check.</p>
+
+    <h2>Server</h2>
+    <table>
+        <thead><tr><th>Component</th><th>Minimum</th></tr></thead>
+        <tbody>
+            <tr><td>PHP</td><td>8.2 or higher</td></tr>
+            <tr><td>Composer</td><td>2.x</td></tr>
+            <tr><td>Node.js</td><td>20.x or higher (for building front-end assets)</td></tr>
+            <tr><td>npm</td><td>10.x or higher</td></tr>
+            <tr><td>Database</td><td>MySQL 8.0+ / MariaDB 10.6+</td></tr>
+            <tr><td>Web server</td><td>Nginx or Apache (or Laravel Herd/Valet for local dev)</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Required PHP extensions</h2>
+    <p>Most are bundled with a standard PHP build. The installer verifies each one.</p>
+    <ul>
+        <li><code>pdo</code> &amp; <code>pdo_mysql</code></li>
+        <li><code>mbstring</code></li>
+        <li><code>openssl</code></li>
+        <li><code>tokenizer</code></li>
+        <li><code>xml</code></li>
+        <li><code>ctype</code></li>
+        <li><code>json</code></li>
+        <li><code>bcmath</code></li>
+        <li><code>fileinfo</code></li>
+        <li><code>curl</code></li>
+    </ul>
+
+    <h2>Writable paths</h2>
+    <p>The web server user must be able to write to:</p>
+    <ul>
+        <li><code>storage/</code> (and all subdirectories)</li>
+        <li><code>bootstrap/cache/</code></li>
+        <li>the project root (to create/update <code>.env</code> during installation)</li>
+    </ul>
+
+    <pre><code>chmod -R 775 storage bootstrap/cache
+# set ownership to your web server user, e.g. www-data
+chown -R www-data:www-data storage bootstrap/cache</code></pre>
+
+    <h2>Third-party accounts</h2>
+    <table>
+        <thead><tr><th>Service</th><th>Needed for</th><th>Sign up</th></tr></thead>
+        <tbody>
+            <tr><td>Vapi</td><td>AI voice agent</td><td>dashboard.vapi.ai</td></tr>
+            <tr><td>Stripe</td><td>Subscriptions &amp; billing</td><td>dashboard.stripe.com</td></tr>
+            <tr><td>Claim.MD / Stedi</td><td>Insurance (optional)</td><td>claim.md / stedi.com</td></tr>
+        </tbody>
+    </table>
+
+    <div class="callout note"><span class="ico">ℹ</span><p>The AI voice agent also requires a Vapi phone number with available call balance for the assistant to answer real calls. See <a href="vapi-setup.html">Vapi Setup</a>.</p></div>
+
+    <h2>Production essentials</h2>
+    <p>For a live deployment you should also configure:</p>
+    <ul>
+        <li>A <strong>queue worker</strong> (the project defaults to the <code>database</code> queue driver).</li>
+        <li>A <strong>cron entry</strong> running Laravel's scheduler every minute (for appointment reminders).</li>
+        <li><strong>HTTPS</strong> (required by Stripe and Vapi webhooks).</li>
+    </ul>
+    <p>Details in <a href="deployment.html">Deployment</a>.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

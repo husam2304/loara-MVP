@@ -1,0 +1,49 @@
+{
+  "clinic": {
+    "noClinic": "No clinic",
+    "sections": {
+      "overview": "Overview",
+      "management": "Management",
+      "clinicAdmin": "Clinic Admin"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "callCenter": "Call Center",
+      "appointments": "Appointments",
+      "patients": "Patients",
+      "doctors": "Doctors",
+      "insurance": "Insurance",
+      "analytics": "Analytics",
+      "triageRules": "Triage Rules",
+      "integrations": "Integrations",
+      "workflow": "Workflow",
+      "landingPage": "Landing Page",
+      "billing": "Billing",
+      "settings": "Settings",
+      "users": "Users"
+    },
+    "collapse": "Collapse",
+    "expandSidebar": "Expand sidebar",
+    "aiAgentActive": "AI Agent Active",
+    "readyForCalls": "Ready for calls",
+    "impersonating": "Impersonating",
+    "signOut": "Sign out"
+  },
+  "platform": {
+    "badge": "Platform Admin",
+    "superAdmin": "Super Admin",
+    "sections": {
+      "overview": "Overview",
+      "management": "Management",
+      "configuration": "Configuration"
+    },
+    "nav": {
+      "dashboard": "Dashboard",
+      "clinics": "Clinics",
+      "users": "Users",
+      "pricing": "Pricing",
+      "settings": "Settings"
+    },
+    "signOut": "Sign out"
+  }
+}

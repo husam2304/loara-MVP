@@ -1,0 +1,51 @@
+{
+  "tabs": {
+    "all": "الكل",
+    "medical": "طبي",
+    "calls": "مكالمات الذكاء الاصطناعي"
+  },
+  "actions": {
+    "back": "رجوع",
+    "edit": "تعديل",
+    "schedule": "جدولة"
+  },
+  "status": {
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "deceased": "متوفى"
+  },
+  "patientInfo": {
+    "dob": "تاريخ الميلاد",
+    "phone": "رقم الهاتف",
+    "email": "البريد الإلكتروني",
+    "address": "العنوان"
+  },
+  "timeline": {
+    "title": "الخط الزمني الطبي",
+    "noEntries": "لا يوجد سجلات في الخط الزمني"
+  },
+  "appointments": {
+    "title": "المواعيد القادمة",
+    "defaultName": "موعد",
+    "at": "في",
+    "noAppointments": "لا توجد مواعيد قادمة"
+  },
+  "medications": {
+    "title": "الأدوية الحالية",
+    "refill": "تجديد في",
+    "noMedications": "لا توجد أدوية نشطة"
+  },
+  "vitals": {
+    "title": "ملخص العلامات الحيوية",
+    "bloodPressure": "ضغط الدم",
+    "heartRate": "معدل ضربات القلب",
+    "temperature": "الحرارة",
+    "weight": "الوزن",
+    "noVitals": "لم يتم تسجيل أي علامات حيوية"
+  },
+  "allergies": {
+    "title": "الحساسية والتنبيهات",
+    "severe": "(شديدة)",
+    "noAllergies": "لا يوجد حساسية معروفة"
+  }
+}

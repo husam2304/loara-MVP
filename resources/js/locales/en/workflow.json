@@ -1,0 +1,72 @@
+{
+  "title": "WORKFLOW",
+  "subtitle": "Design a multi-assistant call flow (squad mode)",
+  "actions": {
+    "disableSquad": "Disable squad",
+    "deploySquad": "Deploy squad"
+  },
+  "status": {
+    "deployed": "Deployed",
+    "draft": "Draft"
+  },
+  "emptyState": {
+    "title": "No workflow yet",
+    "description": "Create a workflow to route calls between multiple specialised AI assistants. A \"Front Desk\" entry-point assistant is created automatically.",
+    "workflowName": "Workflow name",
+    "createBtn": "Create workflow"
+  },
+  "assistants": {
+    "title": "ASSISTANTS",
+    "addBtn": "Add assistant",
+    "entryBadge": "Entry",
+    "tools": "tools",
+    "makeEntryPoint": "Make entry point",
+    "setEntry": "Set entry",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Remove the \"{{name}}\" assistant?"
+  },
+  "transitions": {
+    "title": "TRANSITIONS",
+    "addBtn": "Add transition",
+    "noTransitions": "No transitions yet. Add a transition so the entry assistant can hand off to others.",
+    "remove": "Remove",
+    "removeConfirm": "Remove this transition?"
+  },
+  "undeployConfirm": "Disable squad mode and revert to a single assistant?",
+  "modals": {
+    "assistant": {
+      "editTitle": "EDIT_ASSISTANT",
+      "addTitle": "ADD_ASSISTANT",
+      "nameLabel": "Name *",
+      "roleLabel": "Role",
+      "rolePlaceholder": "e.g. Billing",
+      "greetingLabel": "Greeting message",
+      "systemPromptLabel": "System prompt",
+      "modelLabel": "Model *",
+      "temperatureLabel": "Temperature *",
+      "voiceProviderLabel": "Voice provider *",
+      "voiceNameLabel": "Voice name *",
+      "toolsLabel": "Tools *",
+      "saveBtn": "Save assistant",
+      "addBtn": "Add assistant"
+    },
+    "transition": {
+      "title": "ADD_TRANSITION",
+      "fromLabel": "From assistant *",
+      "toLabel": "To assistant *",
+      "selectOption": "Select…",
+      "conditionLabel": "When (condition) *",
+      "conditionPlaceholder": "e.g. Caller has a billing question",
+      "handoffLabel": "Handoff message",
+      "handoffPlaceholder": "I'm transferring you now.",
+      "contextLabel": "Context passed *",
+      "addBtn": "Add transition"
+    }
+  },
+  "contextPlans": {
+    "all": "Pass full conversation",
+    "lastNMessages": "Pass recent messages",
+    "none": "Start fresh"
+  }
+}

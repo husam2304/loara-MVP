@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quick Start — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="quickstart">
+    <div class="eyebrow">Get Started</div>
+    <h1>Quick Start</h1>
+    <p class="lead">You have installed Hiro and seeded the demo data. Here is how to log in, explore both panels, and try the AI features.</p>
+
+    <h2>Demo accounts</h2>
+    <p>Seeded by <code>php artisan migrate:fresh --seed</code>. Every seeded user has the password <code>password</code>.</p>
+    <table>
+        <thead><tr><th>Role</th><th>Email</th><th>Lands on</th></tr></thead>
+        <tbody>
+            <tr><td>SuperAdmin (platform)</td><td><code>hiro@mail.com</code></td><td>Platform dashboard</td></tr>
+            <tr><td>Clinic Owner (Enterprise plan — all features)</td><td><code>clinic@mail.com</code></td><td>Clinic dashboard</td></tr>
+        </tbody>
+    </table>
+    <div class="callout tip"><span class="ico">★</span><p>The lead demo clinic (<em>Westside Family Medical Center</em>) is on the Enterprise plan, so every feature — workflow builder, triage, integrations, advanced analytics — is unlocked under <code>clinic@mail.com</code>.</p></div>
+
+    <h2>Explore the Platform panel</h2>
+    <p>Log in as <code>hiro@mail.com</code>. You land at <code>/platform/dashboard</code>. From here you can:</p>
+    <ul>
+        <li>Review and enable/disable <strong>clinics</strong>, and impersonate a clinic to see what its staff sees.</li>
+        <li>Manage <strong>platform users</strong> and <strong>pricing plans</strong>.</li>
+        <li>Configure <strong>payment gateways</strong>, <strong>SMTP</strong>, <strong>Claim.MD</strong>, and <strong>branding</strong>.</li>
+    </ul>
+    <p>See <a href="platform-admin.html">Platform Admin</a>.</p>
+
+    <h2>Explore the Clinic panel</h2>
+    <p>Log in as <code>clinic@mail.com</code>. You land at <code>/dashboard</code>. Try:</p>
+    <ul>
+        <li><strong>Call Center</strong> — view call history and start an outbound call (requires Vapi).</li>
+        <li><strong>Appointments</strong> — book, check-in, reschedule, or cancel (double-booking is prevented).</li>
+        <li><strong>Patients</strong> — search the directory and add a new patient.</li>
+        <li><strong>Workflow</strong> — build a multi-assistant call flow and deploy it to Vapi.</li>
+        <li><strong>Settings</strong> — configure the AI assistant, operating hours, and branding.</li>
+    </ul>
+    <p>See <a href="clinic-panel.html">Clinic Panel</a>.</p>
+
+    <h2>Turn on the AI voice agent</h2>
+    <p>The dashboard works without any keys, but to make the AI answer real calls:</p>
+    <ol class="steps">
+        <li><span class="step-title">Add your Vapi keys</span> to <code>.env</code> (see <a href="configuration.html">Configuration</a>).</li>
+        <li><span class="step-title">Configure the assistant</span> in <strong>Settings → AI Assistant</strong> and provision a phone number.</li>
+        <li><span class="step-title">Point Vapi at your webhook</span> — <code>https://your-domain.com/api/webhooks/vapi</code> with the matching <code>VAPI_SERVER_SECRET</code>.</li>
+        <li><span class="step-title">Call the number</span> and watch the call, transcript, and tool invocations appear in the Call Center.</li>
+    </ol>
+    <p>Full guide: <a href="vapi-setup.html">Vapi Setup</a>.</p>
+
+    <h2>Enable billing</h2>
+    <ol class="steps">
+        <li><span class="step-title">Add Stripe keys</span> to <code>.env</code>.</li>
+        <li><span class="step-title">Define plans</span> in <strong>Platform → Pricing</strong> and sync them to Stripe.</li>
+        <li><span class="step-title">Add the Stripe webhook</span> pointing at <code>/api/webhooks/stripe</code>.</li>
+    </ol>
+    <p>Full guide: <a href="billing.html">Billing &amp; Plans</a>.</p>
+
+    <h2>Reset the demo</h2>
+    <p>To wipe and reseed at any time:</p>
+    <pre><code>php artisan migrate:fresh --seed</code></pre>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

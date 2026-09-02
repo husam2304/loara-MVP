@@ -1,0 +1,61 @@
+{
+  "title": "مركز المكالمات",
+  "headerTitle": "مركز المكالمات",
+  "subtitle": "مراقبة وإدارة جميع المكالمات الواردة والصادرة في الوقت الفعلي",
+  "stats": {
+    "activeCalls": "المكالمات النشطة",
+    "inProgress": "قيد التقدم",
+    "callsToday": "مكالمات اليوم",
+    "total": "الإجمالي",
+    "avgDuration": "متوسط المدة",
+    "today": "اليوم",
+    "missedCalls": "المكالمات الفائتة"
+  },
+  "liveCalls": {
+    "title": "المكالمات المباشرة",
+    "filters": {
+      "all": "الكل",
+      "inbound": "واردة",
+      "outbound": "صادرة"
+    },
+    "unknownCaller": "متصل غير معروف",
+    "noActiveCalls": "لا توجد مكالمات نشطة"
+  },
+  "callLog": {
+    "title": "سجل المكالمات",
+    "viewTranscript": "عرض",
+    "columns": {
+      "caller": "المتصل",
+      "phone": "الهاتف",
+      "type": "النوع",
+      "category": "الفئة",
+      "duration": "المدة",
+      "status": "الحالة"
+    },
+    "unknown": "غير معروف",
+    "pagination": "عرض {{from}}-{{to}} من {{total}} مكالمات"
+  },
+  "callTypes": {
+    "appointment": "موعد",
+    "insurance": "تأمين",
+    "billing": "فوترة",
+    "prescription": "وصفة طبية",
+    "triage": "فرز",
+    "general": "عام",
+    "follow_up": "متابعة",
+    "reminder": "تذكير"
+  },
+  "callDetail": {
+    "toolLog": "نشاط الأدوات",
+    "noTranscript": "لا يتوفر نص لهذه المكالمة.",
+    "transcript": "نص المكالمة",
+    "redacted": "تم حجب تسجيل هذه المكالمة.",
+    "recording": "التسجيل",
+    "summary": "الملخص",
+    "sentiment": "المشاعر",
+    "title": "تفاصيل المكالمة",
+    "loadError": "تعذر تحميل هذه المكالمة.",
+    "confidence": "ثقة الذكاء الاصطناعي",
+    "language": "اللغة"
+  }
+}

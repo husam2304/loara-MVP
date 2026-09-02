@@ -1,0 +1,153 @@
+{
+  "userManagement": {
+    "title": "User Management",
+    "subtitle": "Manage users, roles, and access",
+    "stats": {
+      "totalUsers": "Total Users",
+      "activeUsers": "Active Users",
+      "clinicOwners": "Clinic Owners",
+      "customers": "Customers"
+    },
+    "searchPlaceholder": "Search users...",
+    "roles": {
+      "all": "All Roles",
+      "admin": "Admin",
+      "provider": "Provider",
+      "staff": "Staff",
+      "billing": "Billing",
+      "customer": "Customer"
+    },
+    "addUser": "Add User",
+    "table": {
+      "user": "User",
+      "role": "Role",
+      "title": "Title",
+      "status": "Status",
+      "actions": "Actions",
+      "noUsers": "No users found."
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "actions": {
+      "impersonate": "Impersonate {{name}}",
+      "impersonateConfirm": "Impersonate {{name}}? You will see the app as this user.",
+      "deactivate": "Deactivate",
+      "activate": "Activate",
+      "edit": "Edit",
+      "delete": "Delete",
+      "deleteConfirm": "Are you sure you want to delete {{name}}?"
+    },
+    "modal": {
+      "addTitle": "Add User",
+      "editTitle": "Edit User",
+      "name": "Name",
+      "email": "Email",
+      "role": "Role",
+      "title": "Title",
+      "titlePlaceholder": "e.g. Office Manager",
+      "active": "Active",
+      "cancel": "Cancel",
+      "createUser": "Create User",
+      "updateUser": "Update User"
+    }
+  },
+  "pricing": {
+    "pageTitle": "Pricing Management",
+    "pageSubtitle": "Manage subscription plans and pricing",
+    "planCount": "{{count}} plan(s) configured",
+    "addPlan": "Add Plan",
+    "features": {
+      "ai_calls": "AI Phone Calls",
+      "appointment_booking": "Appointment Booking",
+      "basic_analytics": "Basic Analytics",
+      "advanced_analytics": "Advanced Analytics",
+      "sms": "SMS Notifications",
+      "integrations": "Integrations",
+      "triage": "Triage Rules",
+      "campaigns": "Campaigns",
+      "custom_workflows": "Custom Workflows",
+      "priority_support": "Priority Support"
+    },
+    "unlimited": "Unlimited",
+    "perMonth": "/mo",
+    "perYear": "/year",
+    "minutes": "minutes",
+    "concurrent": "concurrent",
+    "teamMembers": "team members",
+    "subscribers": "subscriber(s)",
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "stripe": {
+      "synced": "Synced to Stripe",
+      "resync": "Re-sync to Stripe",
+      "creating": "Creating...",
+      "createProduct": "Create Stripe Product"
+    },
+    "actions": {
+      "edit": "Edit",
+      "delete": "Delete plan",
+      "deleteBlocked": "Cannot delete plan with {{count}} active subscriber(s).",
+      "deleteConfirm": "Are you sure you want to delete the {{name}} plan?"
+    },
+    "form": {
+      "createTitle": "Create Plan",
+      "updateTitle": "Update Plan",
+      "name": "Name",
+      "slug": "Slug",
+      "slugPlaceholder": "e.g. starter",
+      "description": "Description",
+      "monthlyPrice": "Monthly Price ($)",
+      "yearlyPrice": "Yearly Price ($)",
+      "minutesLimit": "Minutes Limit",
+      "unlimitedHint": "-1 = unlimited",
+      "concurrent": "Concurrent",
+      "team": "Team",
+      "features": "Features",
+      "activeVisible": "Active (visible to customers)",
+      "cancel": "Cancel"
+    }
+  },
+  "paymentGateways": {
+    "pageTitle": "Payment Gateways",
+    "pageSubtitle": "Configure payment provider credentials for subscription billing",
+    "status": {
+      "connected": "Connected",
+      "error": "Error",
+      "not_configured": "Not Configured"
+    },
+    "stripe": {
+      "name": "Stripe",
+      "description": "Accept credit cards, debit cards, and more",
+      "tested": "Tested {{date}}"
+    },
+    "webhook": {
+      "title": "Webhook URL",
+      "instructions": "Add this URL to your Stripe Dashboard under Developers \u2192 Webhooks",
+      "copyToClipboard": "Copy to clipboard"
+    },
+    "credentials": {
+      "title": "API Credentials",
+      "instructions": "Find your API keys in the Stripe Dashboard under Developers \u2192 API Keys",
+      "currentKeysConfigured": "Current keys configured:",
+      "publishable": "Publishable",
+      "secret": "Secret",
+      "webhook": "Webhook",
+      "publishableKey": "Publishable Key",
+      "secretKey": "Secret Key",
+      "webhookSecret": "Webhook Secret",
+      "enableGateway": "Enable gateway"
+    },
+    "actions": {
+      "saving": "Saving...",
+      "saveConfiguration": "Save Configuration",
+      "testing": "Testing...",
+      "testConnection": "Test Connection",
+      "remove": "Remove",
+      "removeConfirm": "Are you sure you want to remove the gateway credentials?"
+    }
+  }
+}

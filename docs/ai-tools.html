@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Tools Reference — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="ai-tools">
+    <div class="eyebrow">AI Voice Agent</div>
+    <h1>AI Tools Reference</h1>
+    <p class="lead">The 14 server-side tools the AI agent can invoke during a call. Each is clinic-scoped and returns a structured <code>{ success, result, data }</code> payload. Tools are dispatched by <code>VapiToolDispatcher</code> and named by the <code>CallToolName</code> enum.</p>
+
+    <h2>Verification gate</h2>
+    <p>Tools that read or modify patient data are <strong>protected</strong> — they require the caller's identity to be verified first (by confirming date of birth). If a protected tool is called before verification, it returns a prompt to identify the patient instead of running.</p>
+    <table>
+        <thead><tr><th>Protected tools</th></tr></thead>
+        <tbody>
+            <tr><td><code>book_appointment</code>, <code>reschedule_appointment</code>, <code>cancel_appointment</code>, <code>verify_insurance</code>, <code>list_upcoming_appointments</code></td></tr>
+        </tbody>
+    </table>
+    <div class="callout danger"><span class="ico">!</span><p>A <code>patient_id</code> supplied in tool arguments is never trusted on its own. Identity is established only through a matching date of birth via <code>lookup_patient</code> or <code>verify_identity</code> — this protects PHI on phone, web, and chat sessions alike.</p></div>
+
+    <h2>Identity &amp; lookup</h2>
+    <table>
+        <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+        <tbody>
+            <tr><td><code>lookup_patient</code></td><td>Find a patient by phone, name, and/or date of birth (caller ID is used automatically when no phone is provided). Sets the call's patient. Auto-verifies when a supplied DOB matches, or when no DOB is on file.</td></tr>
+            <tr><td><code>verify_identity</code></td><td>Confirm a patient's date of birth to mark the call as verified. Accepts an explicit <code>patient_id</code> or uses the one already on the call.</td></tr>
+            <tr><td><code>create_patient_lead</code></td><td>Create a new patient record from a first/last name when no match is found — captures the caller as a lead and verifies them.</td></tr>
+        </tbody>
+    </table>
+
+    <h2>Scheduling</h2>
+    <table>
+        <thead><tr><th>Tool</th><th>Purpose</th><th></th></tr></thead>
+        <tbody>
+            <tr><td><code>check_appointment_types</code></td><td>List the clinic's bookable appointment types and durations.</td><td></td></tr>
+            <tr><td><code>check_schedule</code></td><td>Find available slots for a provider/date.</td><td></td></tr>
+            <tr><td><code>book_appointment</code></td><td>Book an appointment. Performs an atomic conflict check to prevent double-booking a provider.</td><td><span class="pill">protected</span></td></tr>
+            <tr><td><code>reschedule_appointment</code></td><td>Move an existing appointment to a new date/time.</td><td><span class="pill">protected</span></td></tr>
+            <tr><td><code>cancel_appointment</code></td><td>Cancel an appointment.</td><td><span class="pill">protected</span></td></tr>
+            <tr><td><code>list_upcoming_appointments</code></td><td>List the patient's upcoming appointments.</td><td><span class="pill">protected</span></td></tr>
+        </tbody>
+    </table>
+
+    <h2>Insurance &amp; triage</h2>
+    <table>
+        <thead><tr><th>Tool</th><th>Purpose</th><th></th></tr></thead>
+        <tbody>
+            <tr><td><code>verify_insurance</code></td><td>Run an eligibility check against the patient's insurance via the configured gateway.</td><td><span class="pill">protected</span></td></tr>
+            <tr><td><code>assess_urgency</code></td><td>Evaluate symptoms against triage rules/keywords and return an urgency level and recommended action.</td><td></td></tr>
+        </tbody>
+    </table>
+
+    <h2>Hand-off &amp; follow-up</h2>
+    <table>
+        <thead><tr><th>Tool</th><th>Purpose</th></tr></thead>
+        <tbody>
+            <tr><td><code>create_callback_task</code></td><td>Create a staff callback task (categorized) so a human follows up.</td></tr>
+            <tr><td><code>transfer_call</code></td><td>Record a transfer request, create a high-priority callback task, and tell the caller a team member will follow up (also shares the clinic line).</td></tr>
+            <tr><td><code>send_sms</code></td><td>Queue a text message as a front-desk task to be sent to the caller. <em>(Hiro records the request; wire a real SMS provider to auto-send.)</em></td></tr>
+        </tbody>
+    </table>
+
+    <h2>Return shape</h2>
+    <p>Every tool returns a consistent structure that the assistant reads back to the caller:</p>
+    <pre><code>{
+  "success": true,
+  "result": "Found and verified patient: Jane Doe. Identity confirmed.",
+  "data": { "patient_id": 42, "name": "Jane Doe", "verified": true }
+}</code></pre>
+    <p>On failure, <code>success</code> is <code>false</code> and the failure is tracked on the call. After two consecutive failures the agent offers a transfer (see <a href="ai-overview.html">Overview → escalation</a>).</p>
+
+    <h2>Extending tools</h2>
+    <p>Tools are added in two places: register the name in the <code>CallToolName</code> enum and add a handler branch in <code>VapiToolDispatcher::dispatch()</code>. Sync the updated tool definitions to Vapi (saving the AI configuration, or <code>php artisan vapi:sync-tunnel</code> in local dev).</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>

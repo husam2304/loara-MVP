@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Insurance — Hiro Docs</title>
+    <link rel="stylesheet" href="assets/docs.css">
+</head>
+<body>
+<main class="article" data-page="insurance">
+    <div class="eyebrow">Features</div>
+    <h1>Insurance</h1>
+    <p class="lead">Verify patient insurance eligibility and submit claims through swappable clearinghouse gateways. Available in the clinic panel at <code>/insurance</code>.</p>
+
+    <h2>Gateways</h2>
+    <p><code>InsuranceVerificationManager</code> fronts pluggable gateways so you can switch clearinghouses without changing the rest of the app:</p>
+    <table>
+        <thead><tr><th>Gateway</th><th>Use</th><th>Credentials</th></tr></thead>
+        <tbody>
+            <tr><td>Claim.MD</td><td>Eligibility &amp; claim submission</td><td><code>CLAIMMD_API_KEY</code> (or via Platform → Settings)</td></tr>
+            <tr><td>Stedi</td><td>Eligibility</td><td><code>STEDI_API_KEY</code>, <code>STEDI_BASE_URL</code></td></tr>
+        </tbody>
+    </table>
+    <p>The Claim.MD gateway resolves its API key from the Platform-managed gateway configuration first, then falls back to <code>config/services.php</code>.</p>
+
+    <h2>Eligibility verification</h2>
+    <p>From the Insurance screen, run an eligibility check for a patient's policy. The request is sent to the active gateway, which returns coverage status and plan details. The AI agent can also trigger this during a call via the <code>verify_insurance</code> tool (after the caller is verified).</p>
+
+    <h2>Claims</h2>
+    <ul>
+        <li><strong>Submit a claim</strong> — <code>POST /insurance/{claim}/submit</code> sends the claim to the gateway and stores the returned claim ID and status.</li>
+        <li><strong>Check status</strong> — <code>GET /insurance/{claim}/status</code> re-queries the gateway.</li>
+        <li><strong>Payer list</strong> — <code>GET /insurance/payers</code> returns supported payers.</li>
+    </ul>
+
+    <h2>Prior authorizations</h2>
+    <p>The Insurance screen lists prior authorizations alongside eligibility and claims so front-desk staff have a single place to manage payer interactions.</p>
+
+    <div class="callout note"><span class="ico">ℹ</span><p>Insurance features require a clearinghouse account and API key. Without one, the rest of Hiro (calls, appointments, patients) is unaffected — the module simply has no gateway to call.</p></div>
+
+    <h2>Configuration</h2>
+    <p>Set credentials in <code>.env</code>:</p>
+    <pre><code>CLAIMMD_API_KEY=your-claim-md-key
+STEDI_API_KEY=your-stedi-key
+STEDI_BASE_URL=https://healthcare.stedi.com</code></pre>
+    <p>Or manage the Claim.MD key from <strong>Platform → Settings → Claim.MD</strong>, where you can also test the connection.</p>
+</main>
+<script src="assets/docs.js"></script>
+</body>
+</html>
