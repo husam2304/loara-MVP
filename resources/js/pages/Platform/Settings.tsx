@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FormEvent, useState } from 'react';
 import {
     Save, Palette, Mail, Shield, CreditCard, Eye, EyeOff, Loader2, Send,
-    CheckCircle2, AlertCircle, Copy, Check, Zap, Trash2, Circle,
+    CheckCircle2, AlertCircle, Copy, Check, Zap, Trash2, Circle, PhoneCall,
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { PlatformLayout } from '@/components/PlatformLayout';
@@ -14,8 +14,10 @@ import { router } from '@inertiajs/react';
 interface PlatformSettingsProps {
     smtpConfig: SmtpConfig;
     claimMdConfig: ClaimMdConfig;
+    vapiConfig: VapiConfig;
     gatewayConfigs: GatewayConfiguration[];
     stripeWebhookUrl: string;
+    vapiWebhookUrl: string;
     appName: string;
 }
 
@@ -28,9 +30,14 @@ interface ClaimMdConfig {
     api_key: string; is_configured: boolean;
 }
 
-type TabId = 'branding' | 'smtp' | 'payment-gateways' | 'claim-md';
+interface VapiConfig {
+    private_key: string; public_key: string; server_secret: string; base_url: string;
+    is_configured: boolean; source: 'database' | 'env' | 'none';
+}
 
-export default function Settings({ smtpConfig, claimMdConfig, gatewayConfigs, stripeWebhookUrl, appName }: PlatformSettingsProps) {
+type TabId = 'branding' | 'smtp' | 'payment-gateways' | 'claim-md' | 'vapi';
+
+export default function Settings({ smtpConfig, claimMdConfig, vapiConfig, gatewayConfigs, stripeWebhookUrl, vapiWebhookUrl, appName }: PlatformSettingsProps) {
     const { t } = useTranslation('platform');
     const tr = (key: string, opts?: Record<string, unknown>) => t(`settings.${key}`, opts as never);
     const [activeTab, setActiveTab] = useState<TabId>('branding');
@@ -40,6 +47,7 @@ export default function Settings({ smtpConfig, claimMdConfig, gatewayConfigs, st
         { id: 'payment-gateways', label: tr('tabs.paymentGateways'), icon: CreditCard },
         { id: 'smtp', label: tr('tabs.smtp'), icon: Mail },
         { id: 'claim-md', label: tr('tabs.claimMd'), icon: Shield },
+        { id: 'vapi', label: tr('tabs.vapi'), icon: PhoneCall },
     ];
 
     return (
@@ -75,6 +83,7 @@ export default function Settings({ smtpConfig, claimMdConfig, gatewayConfigs, st
                     {activeTab === 'smtp' && <SmtpTab config={smtpConfig} />}
                     {activeTab === 'payment-gateways' && <PaymentGatewaysTab gatewayConfigs={gatewayConfigs} webhookUrl={stripeWebhookUrl} />}
                     {activeTab === 'claim-md' && <ClaimMdTab config={claimMdConfig} />}
+                    {activeTab === 'vapi' && <VapiTab config={vapiConfig} webhookUrl={vapiWebhookUrl} />}
                 </div>
             </div>
         </PlatformLayout>
@@ -265,6 +274,76 @@ function ClaimMdTab({ config }: { config: ClaimMdConfig }) {
                 <div className="flex items-center gap-3 border-t border-[var(--border)] pt-4">
                     <SaveBtn processing={form.processing} label={tr('saveApiKey')} />
                     <button type="button" onClick={() => { setTesting(true); setTestStatus(null); axios.post('/platform/settings/claim-md/test').then(r => setTestStatus({ type: 'success', message: r.data.message })).catch(e => setTestStatus({ type: 'error', message: e.response?.data?.message ?? t('settings.failed') })).finally(() => setTesting(false)); }} disabled={testing || !config.is_configured} className={secondaryBtn}>{testing ? <Loader2 size={14} className="animate-spin" /> : <Zap size={14} />} {tr('testConnection')}</button>
+                </div>
+            </form>
+        </Card>
+    );
+}
+
+// ===================== Vapi Tab =====================
+
+function VapiTab({ config, webhookUrl }: { config: VapiConfig; webhookUrl: string }) {
+    const { t } = useTranslation('platform');
+    const tr = (key: string, opts?: Record<string, unknown>) => t(`settings.vapi.${key}`, opts as never);
+    const form = useForm({
+        private_key: config.private_key ?? '',
+        public_key: config.public_key ?? '',
+        server_secret: config.server_secret ?? '',
+        base_url: config.base_url ?? 'https://api.vapi.ai',
+    });
+    const [testStatus, setTestStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+    const [testing, setTesting] = useState(false);
+    const [showPrivate, setShowPrivate] = useState(false);
+    const [showPublic, setShowPublic] = useState(false);
+    const [showSecret, setShowSecret] = useState(false);
+    const [copied, setCopied] = useState(false);
+
+    const sourceLabel = config.source === 'database' ? tr('sourceDatabase') : config.source === 'env' ? tr('sourceEnv') : tr('notConfigured');
+
+    return (
+        <Card icon={PhoneCall} title={tr('cardTitle')} subtitle={tr('cardSubtitle')}>
+            <div className="flex flex-col gap-4 p-5">
+                <div className="flex items-center gap-2">
+                    <span className={`inline-flex h-2 w-2 rounded-full ${config.is_configured ? 'bg-emerald-400' : 'bg-red-400'}`} />
+                    <span className="font-mono text-[11px] text-[var(--muted-foreground)]">{config.is_configured ? tr('configured', { source: sourceLabel }) : tr('notConfigured')}</span>
+                </div>
+                <div>
+                    <label className="mb-1 block font-mono text-[11px] font-medium uppercase text-[var(--muted-foreground)]">{tr('webhookUrl')}</label>
+                    <div className="flex items-center gap-2">
+                        <div className="flex-1 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border)] bg-[var(--secondary)] px-3 py-2"><code className="font-mono text-[12px]" dir="ltr">{webhookUrl}</code></div>
+                        <button type="button" onClick={() => { navigator.clipboard.writeText(webhookUrl); setCopied(true); setTimeout(() => setCopied(false), 2000); }} className="flex h-9 w-9 items-center justify-center rounded-[var(--radius-md)] border border-[var(--border)]">{copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}</button>
+                    </div>
+                    <p className="mt-1 font-primary text-[11px] text-[var(--muted-foreground)]">{tr('webhookUrlHint')}</p>
+                </div>
+            </div>
+            <form onSubmit={e => { e.preventDefault(); setTestStatus(null); form.put('/platform/settings/vapi', { preserveScroll: true }); }} className="flex flex-col gap-4 border-t border-[var(--border)] p-5">
+                <FieldLabel label={tr('privateKey')} error={form.errors.private_key}>
+                    <div className="relative">
+                        <input type={showPrivate ? 'text' : 'password'} value={form.data.private_key} onChange={e => form.setData('private_key', e.target.value)} placeholder={tr('privateKeyPlaceholder')} dir="ltr" className={inputClass + ' pe-10 font-mono'} />
+                        <button type="button" onClick={() => setShowPrivate(!showPrivate)} className="absolute end-3 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]">{showPrivate ? <EyeOff size={14} /> : <Eye size={14} />}</button>
+                    </div>
+                    <p className="mt-1 font-primary text-[11px] text-[var(--muted-foreground)]">{tr('privateKeyHint')}</p>
+                </FieldLabel>
+                <FieldLabel label={tr('publicKey')} error={form.errors.public_key}>
+                    <div className="relative">
+                        <input type={showPublic ? 'text' : 'password'} value={form.data.public_key} onChange={e => form.setData('public_key', e.target.value)} placeholder={tr('publicKeyPlaceholder')} dir="ltr" className={inputClass + ' pe-10 font-mono'} />
+                        <button type="button" onClick={() => setShowPublic(!showPublic)} className="absolute end-3 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]">{showPublic ? <EyeOff size={14} /> : <Eye size={14} />}</button>
+                    </div>
+                    <p className="mt-1 font-primary text-[11px] text-[var(--muted-foreground)]">{tr('publicKeyHint')}</p>
+                </FieldLabel>
+                <FieldLabel label={tr('serverSecret')} error={form.errors.server_secret}>
+                    <div className="relative">
+                        <input type={showSecret ? 'text' : 'password'} value={form.data.server_secret} onChange={e => form.setData('server_secret', e.target.value)} placeholder={tr('serverSecretPlaceholder')} dir="ltr" className={inputClass + ' pe-10 font-mono'} />
+                        <button type="button" onClick={() => setShowSecret(!showSecret)} className="absolute end-3 top-1/2 -translate-y-1/2 text-[var(--muted-foreground)]">{showSecret ? <EyeOff size={14} /> : <Eye size={14} />}</button>
+                    </div>
+                </FieldLabel>
+                <FieldLabel label={tr('baseUrl')} error={form.errors.base_url}>
+                    <input type="text" value={form.data.base_url} onChange={e => form.setData('base_url', e.target.value)} placeholder="https://api.vapi.ai" dir="ltr" className={inputClass} />
+                </FieldLabel>
+                {testStatus && <StatusBanner type={testStatus.type} message={testStatus.message} />}
+                <div className="flex items-center gap-3 border-t border-[var(--border)] pt-4">
+                    <SaveBtn processing={form.processing} label={tr('saveKeys')} />
+                    <button type="button" onClick={() => { setTesting(true); setTestStatus(null); axios.post('/platform/settings/vapi/test').then(r => setTestStatus({ type: 'success', message: r.data.message })).catch(e => setTestStatus({ type: 'error', message: e.response?.data?.message ?? t('settings.failed') })).finally(() => setTesting(false)); }} disabled={testing || !config.is_configured} className={secondaryBtn}>{testing ? <Loader2 size={14} className="animate-spin" /> : <Zap size={14} />} {tr('testConnection')}</button>
                 </div>
             </form>
         </Card>
