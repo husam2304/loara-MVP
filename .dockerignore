@@ -7,8 +7,6 @@ storage/framework/cache/data/*
 storage/framework/sessions/*
 storage/framework/views/*
 tests
-public/hot
-
 .env
 .env.example
 *.md

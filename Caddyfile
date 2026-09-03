@@ -1,0 +1,17 @@
+{
+	frankenphp
+	order php_server before file_server
+	auto_https off
+}
+
+:{$PORT}
+
+root * /var/www/html/public
+encode gzip
+
+php_server
+
+log {
+	output stdout
+	format console
+}

@@ -8,13 +8,12 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-# ---- Stage 2: PHP runtime ----
-FROM php:8.4-cli
+# ---- Stage 2: PHP runtime (FrankenPHP: Caddy + PHP in one binary, proper
+# concurrency — unlike `php artisan serve`, which is dev-only and handles
+# one request at a time) ----
+FROM dunglas/frankenphp:1-php8.4
 
-RUN apt-get update && apt-get install -y \
-    git unzip libzip-dev libpng-dev libonig-dev libxml2-dev libicu-dev \
-    && docker-php-ext-install pdo_mysql mbstring bcmath exif pcntl gd zip intl \
-    && rm -rf /var/lib/apt/lists/*
+RUN install-php-extensions pdo_mysql mbstring bcmath exif pcntl gd zip intl opcache
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -31,6 +30,8 @@ RUN composer install --no-scripts --no-autoloader --optimize-autoloader
 # Copy app code, then bring in built frontend assets from stage 1
 COPY . .
 COPY --from=frontend /app/public/build ./public/build
+COPY Caddyfile /etc/caddy/Caddyfile
+COPY opcache.ini /usr/local/etc/php/conf.d/zz-opcache.ini
 
 RUN composer dump-autoload --optimize \
     && mkdir -p storage/framework/{cache,sessions,views} storage/logs bootstrap/cache \

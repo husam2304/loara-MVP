@@ -12,8 +12,11 @@ PORT="${PORT:-10000}"
 # doesn't detect an open port within a short scan window — migrations plus
 # the full demo seed (14 seeders) can take longer than that window, so the
 # server has to be listening *before* that work starts, not after.
-echo "Starting on port $PORT"
-php artisan serve --host=0.0.0.0 --port="$PORT" &
+# FrankenPHP (Caddy + PHP) replaces the old `php artisan serve` — that was
+# Laravel's dev-only server, single request at a time, which is why the app
+# felt sluggish even under light concurrent use.
+echo "Starting FrankenPHP on port $PORT"
+frankenphp run --config /etc/caddy/Caddyfile --adapter caddyfile &
 SERVER_PID=$!
 sleep 2
 
