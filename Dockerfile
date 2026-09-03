@@ -15,6 +15,16 @@ FROM dunglas/frankenphp:1-php8.4
 
 RUN install-php-extensions pdo_mysql mbstring bcmath exif pcntl gd zip intl opcache
 
+# The official FrankenPHP image sets cap_net_bind_service on the binary so
+# it CAN bind privileged ports (<1024) like 80/443. Render's sandboxed
+# runtime refuses to exec binaries carrying Linux capabilities at all —
+# "Operation not permitted" — regardless of which port we actually use.
+# We bind Render's assigned high port ($PORT, e.g. 10000), so the
+# capability isn't needed; stripping it lets the binary run normally.
+RUN apt-get update && apt-get install -y --no-install-recommends libcap2-bin \
+    && setcap -r "$(which frankenphp)" \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
