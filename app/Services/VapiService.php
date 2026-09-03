@@ -564,8 +564,8 @@ class VapiService
                 'assistant.started',
             ],
             'model' => [
-                'provider' => 'groq', // $config['model_provider'] ?? 'openai',
-                'model' => 'openai/gpt-oss-20b', // $config['model'] ?? 'gpt-4o',
+                'provider' => ' "openai', // $config['model_provider'] ?? 'openai',
+                'model' => 'gpt-4.1-mini', // $config['model'] ?? 'gpt-4o',
                 'temperature' => 0.7, // (float)  ($config['temperature'] ?? 0.7),
                 'messages' => [
                     [
@@ -576,8 +576,9 @@ class VapiService
             ],
             'voice' => array_filter([
                 'provider' => 'vapi',
-                'language' => 'ar',
-                'version' => '2',
+                'version' => '1',
+                'speed'=> '1.1',
+
                 // match(strtolower($config['voice_provider'] ?? 'vapi')) {
                 //     'elevenlabs', 'eleven_labs', '11labs' => '11labs',
                 //     default => strtolower($config['voice_provider'] ?? 'vapi')
